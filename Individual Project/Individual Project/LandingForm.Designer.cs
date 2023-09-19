@@ -1,0 +1,218 @@
+﻿namespace Individual_Project
+{
+    partial class LandingForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnGames = new System.Windows.Forms.Button();
+            this.btnSubmissions = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnBans = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbSubmAnnouncement = new System.Windows.Forms.GroupBox();
+            this.gbBans = new System.Windows.Forms.GroupBox();
+            this.btnSubmAnnouncement = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.lblSubmAnnouncement = new System.Windows.Forms.Label();
+            this.lblUsersBanned = new System.Windows.Forms.Label();
+            this.gbSubmAnnouncement.SuspendLayout();
+            this.gbBans.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnGames
+            // 
+            this.btnGames.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGames.Location = new System.Drawing.Point(12, 12);
+            this.btnGames.Name = "btnGames";
+            this.btnGames.Size = new System.Drawing.Size(213, 97);
+            this.btnGames.TabIndex = 0;
+            this.btnGames.Text = "Games";
+            this.btnGames.UseVisualStyleBackColor = false;
+            // 
+            // btnSubmissions
+            // 
+            this.btnSubmissions.BackColor = System.Drawing.Color.Aqua;
+            this.btnSubmissions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmissions.Location = new System.Drawing.Point(232, 12);
+            this.btnSubmissions.Name = "btnSubmissions";
+            this.btnSubmissions.Size = new System.Drawing.Size(213, 97);
+            this.btnSubmissions.TabIndex = 1;
+            this.btnSubmissions.Text = "Submissions";
+            this.btnSubmissions.UseVisualStyleBackColor = false;
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.BackColor = System.Drawing.Color.Turquoise;
+            this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.Location = new System.Drawing.Point(451, 12);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(213, 97);
+            this.btnUsers.TabIndex = 2;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.UseVisualStyleBackColor = false;
+            // 
+            // btnBans
+            // 
+            this.btnBans.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBans.Location = new System.Drawing.Point(670, 12);
+            this.btnBans.Name = "btnBans";
+            this.btnBans.Size = new System.Drawing.Size(213, 97);
+            this.btnBans.TabIndex = 3;
+            this.btnBans.Text = "Bans";
+            this.btnBans.UseVisualStyleBackColor = false;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Tomato;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(885, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(135, 97);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(381, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(274, 32);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Welcome, ~~user~~!";
+            // 
+            // gbSubmAnnouncement
+            // 
+            this.gbSubmAnnouncement.Controls.Add(this.lblSubmAnnouncement);
+            this.gbSubmAnnouncement.Controls.Add(this.btnSubmAnnouncement);
+            this.gbSubmAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSubmAnnouncement.Location = new System.Drawing.Point(75, 285);
+            this.gbSubmAnnouncement.Name = "gbSubmAnnouncement";
+            this.gbSubmAnnouncement.Size = new System.Drawing.Size(370, 160);
+            this.gbSubmAnnouncement.TabIndex = 6;
+            this.gbSubmAnnouncement.TabStop = false;
+            this.gbSubmAnnouncement.Text = "New submissions";
+            // 
+            // gbBans
+            // 
+            this.gbBans.Controls.Add(this.lblUsersBanned);
+            this.gbBans.Controls.Add(this.button7);
+            this.gbBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbBans.Location = new System.Drawing.Point(565, 285);
+            this.gbBans.Name = "gbBans";
+            this.gbBans.Size = new System.Drawing.Size(351, 160);
+            this.gbBans.TabIndex = 7;
+            this.gbBans.TabStop = false;
+            this.gbBans.Text = "Ban Information";
+            // 
+            // btnSubmAnnouncement
+            // 
+            this.btnSubmAnnouncement.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnSubmAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmAnnouncement.Location = new System.Drawing.Point(88, 102);
+            this.btnSubmAnnouncement.Name = "btnSubmAnnouncement";
+            this.btnSubmAnnouncement.Size = new System.Drawing.Size(212, 52);
+            this.btnSubmAnnouncement.TabIndex = 0;
+            this.btnSubmAnnouncement.Text = "View new submissions";
+            this.btnSubmAnnouncement.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.DarkCyan;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(70, 102);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(212, 52);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Bans";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // lblSubmAnnouncement
+            // 
+            this.lblSubmAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubmAnnouncement.Location = new System.Drawing.Point(32, 29);
+            this.lblSubmAnnouncement.Name = "lblSubmAnnouncement";
+            this.lblSubmAnnouncement.Size = new System.Drawing.Size(317, 61);
+            this.lblSubmAnnouncement.TabIndex = 1;
+            this.lblSubmAnnouncement.Text = "Currently, there are \"\" submissions. Review them now!";
+            this.lblSubmAnnouncement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblUsersBanned
+            // 
+            this.lblUsersBanned.AutoSize = true;
+            this.lblUsersBanned.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsersBanned.Location = new System.Drawing.Point(21, 29);
+            this.lblUsersBanned.Name = "lblUsersBanned";
+            this.lblUsersBanned.Size = new System.Drawing.Size(324, 25);
+            this.lblUsersBanned.TabIndex = 1;
+            this.lblUsersBanned.Text = "At the moment, \"\" users are banned.";
+            // 
+            // LandingForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1032, 553);
+            this.Controls.Add(this.gbBans);
+            this.Controls.Add(this.gbSubmAnnouncement);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnBans);
+            this.Controls.Add(this.btnUsers);
+            this.Controls.Add(this.btnSubmissions);
+            this.Controls.Add(this.btnGames);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "LandingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main";
+            this.gbSubmAnnouncement.ResumeLayout(false);
+            this.gbBans.ResumeLayout(false);
+            this.gbBans.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnGames;
+        private System.Windows.Forms.Button btnSubmissions;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnBans;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbSubmAnnouncement;
+        private System.Windows.Forms.Label lblSubmAnnouncement;
+        private System.Windows.Forms.Button btnSubmAnnouncement;
+        private System.Windows.Forms.GroupBox gbBans;
+        private System.Windows.Forms.Label lblUsersBanned;
+        private System.Windows.Forms.Button button7;
+    }
+}

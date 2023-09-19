@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>User</Name>
         <Access>Public</Access>
-        <Location left="760" top="275" />
+        <Location left="1260" top="295" />
         <Size width="774" height="298" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public User()</Member>
@@ -28,7 +28,7 @@
       <Entity type="Class">
         <Name>UserController</Name>
         <Access>Public</Access>
-        <Location left="243" top="303" />
+        <Location left="743" top="323" />
         <Size width="288" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">IUserManagement userManager</Member>
@@ -47,7 +47,7 @@
       <Entity type="Class">
         <Name>Ban</Name>
         <Access>Public</Access>
-        <Location left="1748" top="290" />
+        <Location left="2248" top="310" />
         <Size width="496" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
@@ -63,7 +63,7 @@
       <Entity type="Class">
         <Name>BanController</Name>
         <Access>Public</Access>
-        <Location left="2357" top="290" />
+        <Location left="2857" top="310" />
         <Size width="252" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">IBanManagement banManager</Member>
@@ -76,7 +76,7 @@
       <Entity type="Class">
         <Name>Submission</Name>
         <Access>Public</Access>
-        <Location left="895" top="718" />
+        <Location left="1395" top="738" />
         <Size width="535" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Submission()</Member>
@@ -93,7 +93,7 @@
       <Entity type="Class">
         <Name>SubmissionController</Name>
         <Access>Public</Access>
-        <Location left="840" top="1096" />
+        <Location left="1340" top="1116" />
         <Size width="685" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public bool Create(RankedSubmission submission)</Member>
@@ -115,7 +115,7 @@
       <Entity type="Enum">
         <Name>EnumPlatform</Name>
         <Access>Public</Access>
-        <Location left="1626" top="747" />
+        <Location left="1395" top="1024" />
         <Size width="162" height="520" />
         <Collapsed>True</Collapsed>
         <Value>PC</Value>
@@ -146,55 +146,327 @@
         <Value>N64</Value>
         <Value>Mac</Value>
       </Entity>
+      <Entity type="Class">
+        <Name>RankedSubmission</Name>
+        <Access>Public</Access>
+        <Location left="525" top="1183" />
+        <Size width="761" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public RankedSubmission()</Member>
+        <Member type="Constructor">public RankedSubmission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, string link, int rank)</Member>
+        <Member type="Constructor">public RankedSubmission(int id, User user, DateOnly date, TimeSpan time, EnumPlatform platform, bool approved, bool pending, string link, int rank)</Member>
+        <Member type="Property">public bool Approved { get; set; }</Member>
+        <Member type="Property">public bool Pending { get; set; }</Member>
+        <Member type="Property">public string Link { get; set; }</Member>
+        <Member type="Property">public int Rank { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UnrankedSubmission</Name>
+        <Access>Public</Access>
+        <Location left="2098" top="1162" />
+        <Size width="802" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public UnrankedSubmission()</Member>
+        <Member type="Constructor">public UnrankedSubmission(int id, User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, bool TAS, bool glitchless, bool anypercent)</Member>
+        <Member type="Constructor">public UnrankedSubmission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, bool TAS, bool glitchless, bool anypercent)</Member>
+        <Member type="Property">public bool TAS { get; set; }</Member>
+        <Member type="Property">public bool Glitchless { get; set; }</Member>
+        <Member type="Property">public bool AnyPercent { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Game</Name>
+        <Access>Public</Access>
+        <Location left="543" top="816" />
+        <Size width="730" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Game(int id, string name, string company, DateOnly releaseDate, string trailerLink, int noOfRuns, int noOfPlayers, TimeSpan bestTime, TimeSpan totalTime, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
+        <Member type="Constructor">public Game(string name, string company, DateOnly releaseDate, string trailerLink, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
+        <Member type="Property">public int ID { get; set; }</Member>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">publicstring Company { get; set; }</Member>
+        <Member type="Property">public DateOnly ReleaseDate { get; set; }</Member>
+        <Member type="Property">public string Genres { get; set; }</Member>
+        <Member type="Property">public string Platforms { get; set; }</Member>
+        <Member type="Property">public string TrailerLink { get; set; }</Member>
+        <Member type="Property">public int NumberOfRuns { get; set; }</Member>
+        <Member type="Property">public int NumberOfPlayers { get; set; }</Member>
+        <Member type="Property">public TimeSpan BestTime { get; set; }</Member>
+        <Member type="Property">public TimeSpan TotalTime { get; set; }</Member>
+        <Member type="Property">public string PictureLink { get; set; }</Member>
+        <Member type="Property">public string BackgroundPictureLink { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>EnumGenre</Name>
+        <Access>Public</Access>
+        <Location left="1071" top="681" />
+        <Size width="162" height="541" />
+        <Collapsed>True</Collapsed>
+        <Value>Roguelike</Value>
+        <Value>Horror</Value>
+        <Value>Survival</Value>
+        <Value>ARPG</Value>
+        <Value>MOBA</Value>
+        <Value>Puzzle</Value>
+        <Value>OpenWorld</Value>
+        <Value>PointAndClick</Value>
+        <Value>Sandbox</Value>
+        <Value>Simulator</Value>
+        <Value>Racing</Value>
+        <Value>Sports</Value>
+        <Value>Adventure</Value>
+        <Value>Action</Value>
+        <Value>JRPG</Value>
+        <Value>MMORPG</Value>
+        <Value>MMO</Value>
+        <Value>RPG</Value>
+        <Value>FPS</Value>
+        <Value>Platformer</Value>
+        <Value>Shooter</Value>
+        <Value>Strategy</Value>
+        <Value>Casual</Value>
+        <Value>Arcade</Value>
+        <Value>Indie</Value>
+        <Value>BattleRoyale</Value>
+        <Value>RolePlaying</Value>
+        <Value>TowerDefense</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameController</Name>
+        <Access>Public</Access>
+        <Location left="105" top="937" />
+        <Size width="304" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">iGameManagement gameManager</Member>
+        <Member type="Method">public bool Create(Game game)</Member>
+        <Member type="Method">public Game? ReadById(int id)</Member>
+        <Member type="Method">public Game[] ReadAll()</Member>
+        <Member type="Method">public Game[] ReadOnePageByName(int page, string name)</Member>
+        <Member type="Method">public Game[] ReadAllByName(string name)</Member>
+        <Member type="Method">public Game[] ReadAllSearch(string name, string company)</Member>
+        <Member type="Method">public bool Update(Game game)</Member>
+        <Member type="Method">public bool Delete(Game game)</Member>
+        <Member type="Method">public int GetTotalPages(int pagesize)</Member>
+        <Member type="Method">public bool UserPlayedBefore(User user, Game game)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IGameManagement</Name>
+        <Access>Public</Access>
+        <Location left="10" top="660" />
+        <Size width="314" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool Create(Game game)</Member>
+        <Member type="Method">Game? ReadById(int id)</Member>
+        <Member type="Method">Game[] ReadAll()</Member>
+        <Member type="Method">Game[] ReadOnePageByName(int page, string name)</Member>
+        <Member type="Method">Game[] ReadAllByName(string name)</Member>
+        <Member type="Method">Game[] ReadAllBySearch(string name, string company)</Member>
+        <Member type="Method">bool Update(Game game)</Member>
+        <Member type="Method">bool Delete(Game game)</Member>
+        <Member type="Method">int GetTotalPages(int pagesize)</Member>
+        <Member type="Method">bool UserPlayedBefore(User user, Game game)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserManagement</Name>
+        <Access>Public</Access>
+        <Location left="403" top="347" />
+        <Size width="275" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool Create(user User)</Member>
+        <Member type="Method">User[] ReadAll()</Member>
+        <Member type="Method">User[] ReadAllUsers()</Member>
+        <Member type="Method">User[] ReadAllAdmins()</Member>
+        <Member type="Method">User[] ReadAllUsersSearch(string search)</Member>
+        <Member type="Method">bool Update(User user)</Member>
+        <Member type="Method">bool Delete(User user)</Member>
+        <Member type="Method">User? GetUserFromUsername(string username)</Member>
+        <Member type="Method">User? GetUserFromId(int id)</Member>
+        <Member type="Method">string? GetSalt(User user)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IBanManagement</Name>
+        <Access>Public</Access>
+        <Location left="3159" top="347" />
+        <Size width="215" height="113" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool Create(Ban ban)</Member>
+        <Member type="Method">Ban[] ReadAll()</Member>
+        <Member type="Method">Ban[] ReadAllSearch(string search)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISubmissionManagement</Name>
+        <Access>Public</Access>
+        <Location left="1340" top="1614" />
+        <Size width="690" height="282" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool Create(RankedSubmission submission)</Member>
+        <Member type="Method">bool Create(UnrankedSubmission submission)</Member>
+        <Member type="Method">Submission[] ReadRecent(string username)</Member>
+        <Member type="Method">Submission[] ReadRecent(int userId)</Member>
+        <Member type="Method">UnrankedSubmission[] ReadByGame(int gameId, string username)</Member>
+        <Member type="Method">UnrankedSubmission[] ReadByUser(int userId)</Member>
+        <Member type="Method">RankedSubmission[] ReadRanked(int id)</Member>
+        <Member type="Method">RankedSubmission[] ReadRankedByUser(int userId)</Member>
+        <Member type="Method">RankedSubmission[] ReadPendingAdmin(int pendingSearch, string usernameSearch, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">RankedSubmission[] ReadApprovedAdmin(int approvedSearch, string usernameSearch, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">RankedSubmission[] ReadRankedByGame(int gameId, string username)</Member>
+        <Member type="Method">bool UpdateRanked(RankedSubmission submission)</Member>
+        <Member type="Method">bool Delete(RankedSubmission submission)</Member>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1671</X>
+          <Y>1089</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1671</X>
+          <Y>993</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1311</X>
+          <Y>1270</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2035</X>
+          <Y>1295</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2050</X>
+          <Y>1295</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="4">
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1171</X>
-          <Y>1069</Y>
+          <X>1478</X>
+          <Y>994</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1171</X>
-          <Y>973</Y>
+          <X>1478</X>
+          <Y>994</Y>
         </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Dependency" first="6" second="4">
+      <Relationship type="Dependency" first="9" second="6">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="9" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1150</X>
+          <Y>756</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="11" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>375</X>
+          <Y>912</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>349</X>
+          <Y>768</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>709</X>
+          <Y>465</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>703</X>
+          <Y>465</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>

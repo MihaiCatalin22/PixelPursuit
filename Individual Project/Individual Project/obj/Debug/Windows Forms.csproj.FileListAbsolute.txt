@@ -1,0 +1,12 @@
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\bin\Debug\Individual Project.exe.config
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\bin\Debug\Individual Project.exe
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\bin\Debug\Individual Project.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Windows Forms.csproj.AssemblyReference.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.LoginForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.Properties.Resources.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Windows Forms.csproj.GenerateResource.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Windows Forms.csproj.CoreCompileInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual Project.exe
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual Project.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.LandingForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.GamesForm.resources

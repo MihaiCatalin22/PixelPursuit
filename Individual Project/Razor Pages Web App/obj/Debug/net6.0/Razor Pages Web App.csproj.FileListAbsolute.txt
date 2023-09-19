@@ -1,0 +1,30 @@
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\appsettings.Development.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\appsettings.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.staticwebassets.runtime.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.exe
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.deps.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.runtimeconfig.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\bin\Debug\net6.0\Razor Pages Web App.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.GeneratedMSBuildEditorConfig.editorconfig
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.AssemblyInfoInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.AssemblyInfo.cs
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.csproj.CoreCompileInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.MvcApplicationPartsAssemblyInfo.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.RazorAssemblyInfo.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.RazorAssemblyInfo.cs
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets\msbuild.Razor Pages Web App.Microsoft.AspNetCore.StaticWebAssets.props
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets\msbuild.build.Razor Pages Web App.props
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Razor Pages Web App.props
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Razor Pages Web App.props
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets.pack.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets.build.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\staticwebassets.development.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\scopedcss\bundle\Razor Pages Web App.styles.css
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\scopedcss\projectbundle\Razor Pages Web App.bundle.scp.css
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\refint\Razor Pages Web App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\Razor Pages Web App.genruntimeconfig.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App\obj\Debug\net6.0\ref\Razor Pages Web App.dll
