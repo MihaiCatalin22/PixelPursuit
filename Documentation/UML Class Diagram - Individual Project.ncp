@@ -1,0 +1,201 @@
+<Project>
+  <Name>UML Class Diagram - Individual Project</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>UML Class Diagram</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>User</Name>
+        <Access>Public</Access>
+        <Location left="760" top="275" />
+        <Size width="774" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public User()</Member>
+        <Member type="Constructor">public User(string username, string password, string email, bool isAdmin)</Member>
+        <Member type="Constructor">public User(int id, string username, string password, string email, DateOnly registrationDate, string profilePicture, string bio, bool banned, bool isAdmin)</Member>
+        <Member type="Property">public int ID { get; set; }</Member>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public string Password { get; set; }</Member>
+        <Member type="Property">public string Email { get; set; }</Member>
+        <Member type="Property">public string Email { get; set; }</Member>
+        <Member type="Property">public DateOnly RegistrationDate { get; set; }</Member>
+        <Member type="Property">public string ProfilePicture { get; set; }</Member>
+        <Member type="Property">public string Bio { get; set; }</Member>
+        <Member type="Property">public bool Banned { get; set; }</Member>
+        <Member type="Property">public bool IsAdmin { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserController</Name>
+        <Access>Public</Access>
+        <Location left="243" top="303" />
+        <Size width="288" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IUserManagement userManager</Member>
+        <Member type="Method">public bool Create(User user)</Member>
+        <Member type="Method">public User[] ReadAll()</Member>
+        <Member type="Method">public User[] ReadAllMembers()</Member>
+        <Member type="Method">public User[] ReadAllAdmins()</Member>
+        <Member type="Method">public User[] ReaddAllMembersSearch(string search)</Member>
+        <Member type="Method">public bool Update(User user)</Member>
+        <Member type="Method">public bool Delete(User user)</Member>
+        <Member type="Method">public User? GetUserFromUsername(string username)</Member>
+        <Member type="Method">public User? GetUserFromId(int id)</Member>
+        <Member type="Method">public string? GetSalt(User user)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Ban</Name>
+        <Access>Public</Access>
+        <Location left="1748" top="290" />
+        <Size width="496" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
+        <Member type="Constructor">public Ban(int id, DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public DateOnly StartDate { get; set; }</Member>
+        <Member type="Property">public DateOnly EndDate { get; set; }</Member>
+        <Member type="Property">public string Reason { get; set; }</Member>
+        <Member type="Property">public User User { get; set; }</Member>
+        <Member type="Property">public User Admin { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BanController</Name>
+        <Access>Public</Access>
+        <Location left="2357" top="290" />
+        <Size width="252" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IBanManagement banManager</Member>
+        <Member type="Method">public bool Create(Ban ban)</Member>
+        <Member type="Method">public Ban[] ReadAll()</Member>
+        <Member type="Method">public Ban[] ReadAllSearch(string search)</Member>
+        <Member type="Method">public bool UnbanUser(User user)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Submission</Name>
+        <Access>Public</Access>
+        <Location left="895" top="718" />
+        <Size width="535" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Submission()</Member>
+        <Member type="Constructor">public Submission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform)</Member>
+        <Member type="Constructor">public Submission(int id, User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform)</Member>
+        <Member type="Property">public int Id { get; set; }</Member>
+        <Member type="Property">public User User { get; set; }</Member>
+        <Member type="Property">public Game Game { get; set; }</Member>
+        <Member type="Property">public DateOnly Date { get; set; }</Member>
+        <Member type="Property">public TimeSpan TotalTime { get; set; }</Member>
+        <Member type="Property">public EnumPlatform Platform { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SubmissionController</Name>
+        <Access>Public</Access>
+        <Location left="840" top="1096" />
+        <Size width="685" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool Create(RankedSubmission submission)</Member>
+        <Member type="Method">public bool Create(UnrankedSubmission submission)</Member>
+        <Member type="Method">public Submission[] ReadRecent(string username)</Member>
+        <Member type="Method">public UnrankedSubmission[] ReadByGame(int gameId, string username)</Member>
+        <Member type="Method">public UnrankedSubmission[] ReadByUser(id userId)</Member>
+        <Member type="Method">public RankedSubmission ReadRanked(int id)</Member>
+        <Member type="Method">public RankedSubmission[] ReadPendingAdmin(int pendingSearch, string usernameSearch, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">public RankedSubmission[] ReadApprovedAdmin(int approvedSearch, string usernameSearch, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">public RankedSubmission[] ReadRankedByGame(int gameId, string username)</Member>
+        <Member type="Method">public RankedSubmission[] ReadRankedByUser(int userId)</Member>
+        <Member type="Method">public bool UpdateRanked(RankedSubmission submission)</Member>
+        <Member type="Method">public bool Delete(RankedSubmission submission)</Member>
+        <Member type="Method">public int CalculateRank(RankedSubmission submission)</Member>
+        <Member type="Method">public int PredictRank(RankedSubmission submission)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>EnumPlatform</Name>
+        <Access>Public</Access>
+        <Location left="1626" top="747" />
+        <Size width="162" height="520" />
+        <Collapsed>True</Collapsed>
+        <Value>PC</Value>
+        <Value>Playstation</Value>
+        <Value>Playstation2</Value>
+        <Value>Playstation3</Value>
+        <Value>Playstation4</Value>
+        <Value>Playstation5</Value>
+        <Value>PlaystationVita</Value>
+        <Value>PlaystationPortable</Value>
+        <Value>Xbox</Value>
+        <Value>Xbox360</Value>
+        <Value>XboxOne</Value>
+        <Value>XboxOneS</Value>
+        <Value>XboxOneX</Value>
+        <Value>XboxSeriesS</Value>
+        <Value>XboxSeriesX</Value>
+        <Value>NintendoDS</Value>
+        <Value>Nintendo2DS</Value>
+        <Value>Nintendo3DS</Value>
+        <Value>NintendoWii</Value>
+        <Value>NintendoWiiU</Value>
+        <Value>NintendoSwitch</Value>
+        <Value>Android</Value>
+        <Value>iOS</Value>
+        <Value>SteamDeck</Value>
+        <Value>NES</Value>
+        <Value>N64</Value>
+        <Value>Mac</Value>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1171</X>
+          <Y>1069</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1171</X>
+          <Y>973</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
