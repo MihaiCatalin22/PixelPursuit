@@ -33,13 +33,13 @@
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnBans = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.gbSubmAnnouncement = new System.Windows.Forms.GroupBox();
-            this.gbBans = new System.Windows.Forms.GroupBox();
-            this.btnSubmAnnouncement = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.lblSubmAnnouncement = new System.Windows.Forms.Label();
+            this.btnSubmAnnouncement = new System.Windows.Forms.Button();
+            this.gbBans = new System.Windows.Forms.GroupBox();
             this.lblUsersBanned = new System.Windows.Forms.Label();
+            this.btnInfoBans = new System.Windows.Forms.Button();
             this.gbSubmAnnouncement.SuspendLayout();
             this.gbBans.SuspendLayout();
             this.SuspendLayout();
@@ -99,15 +99,15 @@
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // lblWelcome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(381, 141);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(274, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Welcome, ~~user~~!";
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(381, 141);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(274, 32);
+            this.lblWelcome.TabIndex = 5;
+            this.lblWelcome.Text = "Welcome, ~~user~~!";
             // 
             // gbSubmAnnouncement
             // 
@@ -121,17 +121,15 @@
             this.gbSubmAnnouncement.TabStop = false;
             this.gbSubmAnnouncement.Text = "New submissions";
             // 
-            // gbBans
+            // lblSubmAnnouncement
             // 
-            this.gbBans.Controls.Add(this.lblUsersBanned);
-            this.gbBans.Controls.Add(this.button7);
-            this.gbBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbBans.Location = new System.Drawing.Point(565, 285);
-            this.gbBans.Name = "gbBans";
-            this.gbBans.Size = new System.Drawing.Size(351, 160);
-            this.gbBans.TabIndex = 7;
-            this.gbBans.TabStop = false;
-            this.gbBans.Text = "Ban Information";
+            this.lblSubmAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubmAnnouncement.Location = new System.Drawing.Point(32, 29);
+            this.lblSubmAnnouncement.Name = "lblSubmAnnouncement";
+            this.lblSubmAnnouncement.Size = new System.Drawing.Size(317, 61);
+            this.lblSubmAnnouncement.TabIndex = 1;
+            this.lblSubmAnnouncement.Text = "Currently, there are \"\" submissions. Review them now!";
+            this.lblSubmAnnouncement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSubmAnnouncement
             // 
@@ -144,26 +142,17 @@
             this.btnSubmAnnouncement.Text = "View new submissions";
             this.btnSubmAnnouncement.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // gbBans
             // 
-            this.button7.BackColor = System.Drawing.Color.DarkCyan;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(70, 102);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(212, 52);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Bans";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // lblSubmAnnouncement
-            // 
-            this.lblSubmAnnouncement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubmAnnouncement.Location = new System.Drawing.Point(32, 29);
-            this.lblSubmAnnouncement.Name = "lblSubmAnnouncement";
-            this.lblSubmAnnouncement.Size = new System.Drawing.Size(317, 61);
-            this.lblSubmAnnouncement.TabIndex = 1;
-            this.lblSubmAnnouncement.Text = "Currently, there are \"\" submissions. Review them now!";
-            this.lblSubmAnnouncement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbBans.Controls.Add(this.lblUsersBanned);
+            this.gbBans.Controls.Add(this.btnInfoBans);
+            this.gbBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbBans.Location = new System.Drawing.Point(565, 285);
+            this.gbBans.Name = "gbBans";
+            this.gbBans.Size = new System.Drawing.Size(351, 160);
+            this.gbBans.TabIndex = 7;
+            this.gbBans.TabStop = false;
+            this.gbBans.Text = "Ban Information";
             // 
             // lblUsersBanned
             // 
@@ -175,6 +164,17 @@
             this.lblUsersBanned.TabIndex = 1;
             this.lblUsersBanned.Text = "At the moment, \"\" users are banned.";
             // 
+            // btnInfoBans
+            // 
+            this.btnInfoBans.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnInfoBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInfoBans.Location = new System.Drawing.Point(70, 102);
+            this.btnInfoBans.Name = "btnInfoBans";
+            this.btnInfoBans.Size = new System.Drawing.Size(212, 52);
+            this.btnInfoBans.TabIndex = 0;
+            this.btnInfoBans.Text = "Bans";
+            this.btnInfoBans.UseVisualStyleBackColor = false;
+            // 
             // LandingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -182,7 +182,7 @@
             this.ClientSize = new System.Drawing.Size(1032, 553);
             this.Controls.Add(this.gbBans);
             this.Controls.Add(this.gbSubmAnnouncement);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnBans);
             this.Controls.Add(this.btnUsers);
@@ -207,12 +207,12 @@
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Button btnBans;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.GroupBox gbSubmAnnouncement;
         private System.Windows.Forms.Label lblSubmAnnouncement;
         private System.Windows.Forms.Button btnSubmAnnouncement;
         private System.Windows.Forms.GroupBox gbBans;
         private System.Windows.Forms.Label lblUsersBanned;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnInfoBans;
     }
 }
