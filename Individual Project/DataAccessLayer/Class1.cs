@@ -1,4 +1,4 @@
-﻿namespace Class_Library
+﻿namespace DataAccessLayer
 {
     public class Class1
     {

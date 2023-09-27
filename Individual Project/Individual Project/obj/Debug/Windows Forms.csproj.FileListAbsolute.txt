@@ -10,3 +10,12 @@ E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual Project.pdb
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.LandingForm.resources
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.GamesForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.AddGameForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.BansForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.BanUserForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.PendingSubmissionsForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.SubmissionForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.SubmissionReviewForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.UpdateGameForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.UserDetailsForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Individual Project\obj\Debug\Individual_Project.UsersForm.resources

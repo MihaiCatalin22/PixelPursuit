@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows Forms", "Individual Project\Windows Forms.csproj", "{8C455E25-BB1D-4841-8CC6-A3D0D5BA819B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razor Pages Web App", "Razor Pages Web App\Razor Pages Web App.csproj", "{045C7FCF-D7DD-4ECD-8F62-BF15A790D7A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Razor Pages Web App", "Razor Pages Web App\Razor Pages Web App.csproj", "{045C7FCF-D7DD-4ECD-8F62-BF15A790D7A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class Library", "Class Library\Class Library.csproj", "{A3782908-8A8A-4EE8-981D-DC3C484EBB5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "Class Library\ClassLibrary.csproj", "{A3782908-8A8A-4EE8-981D-DC3C484EBB5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
