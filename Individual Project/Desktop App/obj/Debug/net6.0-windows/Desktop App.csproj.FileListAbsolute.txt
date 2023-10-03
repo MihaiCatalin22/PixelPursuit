@@ -1,0 +1,62 @@
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.csproj.AssemblyReference.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.AddGameForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.BansForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.BanUserForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.GamesForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.LandingForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.LoginForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.PendingSubmissionsForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.SubmissionForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.SubmissionReviewForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.UpdateGameForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.UserDetailsForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Individual_Project.UsersForm.resources
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.csproj.GenerateResource.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.GeneratedMSBuildEditorConfig.editorconfig
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.AssemblyInfoInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.AssemblyInfo.cs
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.csproj.CoreCompileInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Desktop App.exe
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Desktop App.deps.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Desktop App.runtimeconfig.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Desktop App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Desktop App.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Azure.Core.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Azure.Identity.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Abstractions.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\Microsoft.SqlServer.Server.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\System.Memory.Data.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\System.Runtime.Caching.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\ClassLibrary.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\ClassLibrary.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.csproj.CopyComplete
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\refint\Desktop App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\Desktop App.genruntimeconfig.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\obj\Debug\net6.0-windows\ref\Desktop App.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll

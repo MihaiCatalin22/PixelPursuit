@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Desktop_App</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Class Library\ClassLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AddGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BansForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BanUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GamesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LandingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PendingSubmissionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SubmissionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SubmissionReviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UpdateGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

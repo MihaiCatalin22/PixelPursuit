@@ -12,23 +12,29 @@ namespace Class_Library.DAL
 {
     public class UserDAL : IUserManagement
     {
-        public string CONNECTION_STRING = "Server = mssqlstud.fhict.local; Datbase = dbi500157_dbindivid; User Id = dbi500157_dbindivid; Password = individual";
+        public string CONNECTION_STRING = "Server = mssqlstud.fhict.local; Database = dbi500157_dbind2; User Id = dbi500157_dbind2; Password = individual2023;";
         public bool Create(User user)
         {
             try
             {
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
-                    string sql = "INSERT INTO [User] (Username, Password, Email, RegistrationDate, Bio, Banned, IsAdmin) VALUES (@username, @password, @email, @registrationDate, @bio, @banned, @isAdmin)";
+                    string sql = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, UsernameColour, ProfilePicture, Bio, Banned, IsAdmin) VALUES (@username, @password, @salt, @email, @registrationDate, @usernameColour, @profilePicture, @bio, @banned, @isAdmin)";
 
-                    using (SqlCommand cmd = new SqlCommand(sql,conn))
+                    string salt = HashPassword.GenerateSalt();
+                    user.Password = HashPassword.GenerateHashedPassword(user.Password, salt);
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", user.Username);
                         cmd.Parameters.AddWithValue("@password", user.Password);
+                        cmd.Parameters.AddWithValue("@salt", salt);
                         cmd.Parameters.AddWithValue("@email", user.Email);
-                        cmd.Parameters.AddWithValue("@registrationDate", user.RegistrationDate.ToDateTime(TimeOnly.MinValue));
-                        cmd.Parameters.AddWithValue("@bio", user.Bio);
-                        cmd.Parameters.AddWithValue("@banned", user.Banned);
+                        cmd.Parameters.AddWithValue("@registrationDate", user.RegistrationDate.ToDateTime(TimeOnly.MinValue));                        
+                        cmd.Parameters.AddWithValue("@usernameColour", user.UsernameColour);
+                        cmd.Parameters.AddWithValue("@profilePicture", user.ProfilePicture);
+                        cmd.Parameters.AddWithValue("@bio", user.Bio ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@banned", user.Banned ?? (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
 
                         conn.Open();
@@ -36,35 +42,7 @@ namespace Class_Library.DAL
 
                         if (result < 0) return false;
                     }
-                }
-                return true;
-            }
-            catch (Exception ex) 
-            {
-                return false;
-            }
-        }
-        public bool Update(User user) 
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "UPDATE [User] SET Username = @username, Password = @password, Email = @email, Bio = @bio, Banned = @banned WHERE Id = @id";
-                    using (SqlCommand cmd = new SqlCommand(sql,conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", user.Id);
-                        cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@password", user.Password);
-                        cmd.Parameters.AddWithValue("@email", user.Email);
-                        cmd.Parameters.AddWithValue("@bio", user.Bio);
-                        cmd.Parameters.AddWithValue("@banned", user.Banned);
 
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-
-                        if (result < 0) return false;
-                    }
                 }
                 return true;
             }
@@ -73,29 +51,7 @@ namespace Class_Library.DAL
                 return false;
             }
         }
-        public bool Delete(User user)
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "DELETE FROM [User] WHERE Id = @id";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", user.Id);
 
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-                        if (result < 0) return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
         public User[] ReadAll()
         {
             try
@@ -104,15 +60,18 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User]";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
+
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
+
                 }
                 return users.ToArray();
             }
@@ -121,6 +80,8 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+
+
         public User[] ReadAllUsers()
         {
             try
@@ -129,16 +90,19 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User] WHERE IsAdmin = @isAdmin";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@isAdmin", false);
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
+
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
+
                 }
                 return users.ToArray();
             }
@@ -147,6 +111,7 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+
         public User[] ReadAllUsersSearch(string search)
         {
             try
@@ -155,17 +120,20 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User] WHERE IsAdmin = @isAdmin AND (Username LIKE @search OR Email LIKE @search)";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@search", "%" + search + "%");
                         cmd.Parameters.AddWithValue("@isAdmin", false);
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
+
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
+
                 }
                 return users.ToArray();
             }
@@ -174,6 +142,8 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+
+
         public User[] ReadAllAdmins()
         {
             try
@@ -182,22 +152,85 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User] WHERE IsAdmin = @isAdmin";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@isAdmin", true);
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
+
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
+
                 }
                 return users.ToArray();
             }
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public bool Update(User user)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "UPDATE [User] SET Username = @username, Password = @password, Email = @email, UsernameColour = @usernameColour, ProfilePicture = @profilePicture, Bio = @bio, Banned = @banned WHERE Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", user.Id);
+                        cmd.Parameters.AddWithValue("@username", user.Username);
+                        cmd.Parameters.AddWithValue("@password", user.Password);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        //cmd.Parameters.AddWithValue("@country", user.Country ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@usernameColour", user.UsernameColour);
+                        cmd.Parameters.AddWithValue("@profilePicture", user.ProfilePicture);
+                        cmd.Parameters.AddWithValue("@bio", user.Bio ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@banned", user.Banned);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(User user)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "DELETE FROM [User] WHERE Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", user.Id);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
         public User? GetUserFromUsername(string username)
@@ -208,17 +241,20 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User] WHERE Username = @username";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
+
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
 
                         if (dr.Read())
                         {
-                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8]));
+                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
                         }
                     }
+
                 }
                 return user;
             }
@@ -227,6 +263,7 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+
         public User? GetUserFromId(int id)
         {
             try
@@ -235,18 +272,52 @@ namespace Class_Library.DAL
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM [User] WHERE Id = @id";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
+
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
-                        if(dr.Read())
+
+                        if (dr.Read())
                         {
-                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToBoolean(dr[7]), Convert.ToBoolean(dr[8]));
+                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
                         }
                     }
+
                 }
                 return user;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public string? GetSalt(User user)
+        {
+            try
+            {
+                string salt = string.Empty;
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "SELECT Salt FROM [User] Where Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", user.Id);
+
+                        conn.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            salt = dr[0].ToString();
+                        }
+                    }
+
+                }
+                return salt;
             }
             catch (Exception ex)
             {

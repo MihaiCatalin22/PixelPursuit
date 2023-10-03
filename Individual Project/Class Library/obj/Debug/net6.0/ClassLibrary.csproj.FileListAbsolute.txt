@@ -2,3 +2,11 @@ E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.AssemblyInfoInputs.cache
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.AssemblyInfo.cs
 E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.csproj.CoreCompileInputs.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\bin\Debug\net6.0\ClassLibrary.deps.json
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\bin\Debug\net6.0\ClassLibrary.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\bin\Debug\net6.0\ClassLibrary.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.csproj.AssemblyReference.cache
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\refint\ClassLibrary.dll
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ClassLibrary.pdb
+E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Class Library\obj\Debug\net6.0\ref\ClassLibrary.dll

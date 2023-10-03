@@ -7,4 +7,8 @@
     <RootNamespace>Razor_Pages_Web_App</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Class Library\ClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

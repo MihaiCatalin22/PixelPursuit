@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Razor Pages Web App.bundle.scp.css"
     },
     {
+      "Id": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\css\\Default_pfp.png",
+      "PackagePath": "staticwebassets\\css\\Default_pfp.png"
+    },
+    {
       "Id": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

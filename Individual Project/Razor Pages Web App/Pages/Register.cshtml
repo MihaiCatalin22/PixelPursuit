@@ -1,0 +1,53 @@
+﻿@page
+@model Razor_Pages_Web_App.Pages.RegisterModel
+@{
+	ViewData["Title"] = "Create account";
+}
+<partial name="_ValidationScriptsPartial" />
+<div class="text-center">
+	<h1>Create a user account</h1>
+	<br />
+
+	<form method="post">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+		<div class="form-group row justify-content-md-center" style="font-size:large;">
+			<div class="col col-lg-2">
+				<label asp-for="Email">Email:*</label>
+			</div>
+			<div class="col col-lg-2">
+				<input type="email" asp-for="Email" class="form-control" />
+			</div>
+			<span class="text-danger" asp-validation-for="Email"></span>
+		</div>
+		<br />
+
+		<div class="form-group row justify-content-md-center" style="font-size:large;">
+			<div class="col col-lg-2">
+				<label asp-for="Username">Username:*</label>
+			</div>
+			<div class="col col-lg-2">
+				<input type="text" asp-for="Username" class="form-control" />
+			</div>
+			<span class="text-danger" asp-validation-for="Username"></span>
+		</div>
+		<br />
+
+		<div class="form-group row justify-content-md-center" style="font-size:large;">
+			<div class="col col-lg-2">
+				<label asp-for="Password">Password:*</label>
+			</div>
+			<div class="col col-lg-2">
+				<input type="password" asp-for="Password" class="form-control" />
+			</div>
+			<span class="text-danger" asp-validation-for="Password"></span>
+		</div>
+		<br />
+
+		<div class="form-group row justify-content-md-center" style="font-size:large;">
+			<div class="text-center">
+				<input type="submit" class="btn btn-primary" value="Create account" />
+			</div>
+		</div>
+	</form>
+</div>

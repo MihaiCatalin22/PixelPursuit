@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rZ5KR5YNS7KOgHC4fd9Fht41lW6HrnwZNshAu0XnJBjJHqd6jy3E9cP/97N5/COjMwJWUh4TQbTOisT5JSAYHQ==",
+  "dgSpecHash": "IMHTSQw/1Gn4m8afrcLE8s50DNhZZ7s8bAeSzhjpNQEHT97xB71gS8s14vzqgA5o5Zpvj32tp5Zatt19tRYOUg==",
   "success": true,
   "projectFilePath": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Class Library\\ClassLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Citalin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Citalin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\Citalin\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Citalin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Citalin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Citalin\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

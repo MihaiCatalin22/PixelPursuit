@@ -2,6 +2,7 @@
 using Class_Library.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ namespace Class_Library.Controllers
         {
             userManager = _userManager;
         }
-
 
         public bool Create(User user)
         {
@@ -32,16 +32,11 @@ namespace Class_Library.Controllers
             }
             return false;
         }
+
         public bool Update(User user)
         {
             if (user != null && GetUserFromId(user.Id) != null)
                 return userManager.Update(user);
-            return false;
-        }
-        public bool Delete(User user)
-        {
-            if (user != null && GetUserFromId(user.Id) != null)
-                return userManager.Delete(user);
             return false;
         }
 
@@ -49,17 +44,14 @@ namespace Class_Library.Controllers
         {
             return userManager.ReadAll();
         }
-
         public User[] ReadAllUsers()
         {
             return userManager.ReadAllUsers();
         }
-
         public User[] ReadAllAdmins()
         {
             return userManager.ReadAllAdmins();
         }
-
         public User[] ReadAllUsersSearch(string search)
         {
             return userManager.ReadAllUsersSearch(search);
@@ -78,5 +70,20 @@ namespace Class_Library.Controllers
                 return userManager.GetUserFromId(id);
             return null;
         }
+
+        public bool Delete(User user)
+        {
+            if (user != null && GetUserFromId(user.Id) != null)
+                return userManager.Delete(user);
+            return false;
+        }
+
+        public string? GetSalt(User user)
+        {
+            if (user != null && GetUserFromId(user.Id) != null)
+                return userManager.GetSalt(user);
+            return null;
+        }
     }
 }
+

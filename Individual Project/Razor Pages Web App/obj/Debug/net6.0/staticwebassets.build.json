@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sM6iUZvA0xvGdfqnXvcYRtM7oxKs7cUtf7xXydLJd34=",
+  "Hash": "oNZYDdajYmVCzmfjYJ9pNiGboMqweOV/stkD8lazH4M=",
   "Source": "Razor Pages Web App",
   "BasePath": "_content/Razor Pages Web App",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Razor Pages Web App.bundle.scp.css"
+    },
+    {
+      "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\css\\Default_pfp.png",
+      "SourceId": "Razor Pages Web App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\",
+      "BasePath": "_content/Razor Pages Web App",
+      "RelativePath": "css/Default_pfp.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Default_pfp.png"
     },
     {
       "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\css\\site.css",
