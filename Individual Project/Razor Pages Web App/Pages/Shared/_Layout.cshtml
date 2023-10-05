@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3" style="background-color: #2a2727">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3" style="background-color: black">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #e1c977" asp-area="" asp-page="/Index">Main page</a>
+                            <a class="nav-link" style="color: white" asp-area="" asp-page="/Index">Main page</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Games" asp-route-id="0">Games</a>
@@ -29,10 +29,10 @@
                         @if (ViewData["Message"] == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-success" asp-area="" asp-page="/Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-page="/Login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-info" asp-area="" asp-page="/Register">Create Account</a>
+                                <a class="nav-link" asp-area="" asp-page="/Register">Create Account</a>
                             </li>
                         }
                         else

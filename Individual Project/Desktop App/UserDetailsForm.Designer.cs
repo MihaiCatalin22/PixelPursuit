@@ -28,125 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblUserInfo = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblRegDate = new System.Windows.Forms.Label();
-            this.lblBio = new System.Windows.Forms.Label();
-            this.lblBanned = new System.Windows.Forms.Label();
-            this.btnBan = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblUserInfo = new Label();
+            lblUsername = new Label();
+            lblEmail = new Label();
+            lblRegDate = new Label();
+            lblBio = new Label();
+            lblBanned = new Label();
+            btnBan = new Button();
+            btnBack = new Button();
+            SuspendLayout();
             // 
             // lblUserInfo
             // 
-            this.lblUserInfo.AutoSize = true;
-            this.lblUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserInfo.Location = new System.Drawing.Point(188, 18);
-            this.lblUserInfo.Name = "lblUserInfo";
-            this.lblUserInfo.Size = new System.Drawing.Size(222, 32);
-            this.lblUserInfo.TabIndex = 0;
-            this.lblUserInfo.Text = "User information";
+            lblUserInfo.AutoSize = true;
+            lblUserInfo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserInfo.Location = new Point(188, 22);
+            lblUserInfo.Name = "lblUserInfo";
+            lblUserInfo.Size = new Size(222, 32);
+            lblUserInfo.TabIndex = 0;
+            lblUserInfo.Text = "User information";
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(206, 81);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(108, 25);
-            this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Username:";
+            lblUsername.AutoSize = true;
+            lblUsername.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsername.Location = new Point(206, 101);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(108, 25);
+            lblUsername.TabIndex = 1;
+            lblUsername.Text = "Username:";
             // 
             // lblEmail
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(248, 120);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(66, 25);
-            this.lblEmail.TabIndex = 2;
-            this.lblEmail.Text = "Email:";
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmail.Location = new Point(248, 150);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(66, 25);
+            lblEmail.TabIndex = 2;
+            lblEmail.Text = "Email:";
             // 
             // lblRegDate
             // 
-            this.lblRegDate.AutoSize = true;
-            this.lblRegDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegDate.Location = new System.Drawing.Point(151, 160);
-            this.lblRegDate.Name = "lblRegDate";
-            this.lblRegDate.Size = new System.Drawing.Size(163, 25);
-            this.lblRegDate.TabIndex = 3;
-            this.lblRegDate.Text = "Registration date:";
+            lblRegDate.AutoSize = true;
+            lblRegDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRegDate.Location = new Point(151, 200);
+            lblRegDate.Name = "lblRegDate";
+            lblRegDate.Size = new Size(163, 25);
+            lblRegDate.TabIndex = 3;
+            lblRegDate.Text = "Registration date:";
             // 
             // lblBio
             // 
-            this.lblBio.AutoSize = true;
-            this.lblBio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBio.Location = new System.Drawing.Point(268, 199);
-            this.lblBio.Name = "lblBio";
-            this.lblBio.Size = new System.Drawing.Size(46, 25);
-            this.lblBio.TabIndex = 4;
-            this.lblBio.Text = "Bio:";
+            lblBio.AutoSize = true;
+            lblBio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBio.Location = new Point(268, 249);
+            lblBio.Name = "lblBio";
+            lblBio.Size = new Size(46, 25);
+            lblBio.TabIndex = 4;
+            lblBio.Text = "Bio:";
             // 
             // lblBanned
             // 
-            this.lblBanned.AutoSize = true;
-            this.lblBanned.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBanned.Location = new System.Drawing.Point(297, 260);
-            this.lblBanned.Name = "lblBanned";
-            this.lblBanned.Size = new System.Drawing.Size(0, 25);
-            this.lblBanned.TabIndex = 5;
+            lblBanned.AutoSize = true;
+            lblBanned.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBanned.Location = new Point(297, 325);
+            lblBanned.Name = "lblBanned";
+            lblBanned.Size = new Size(0, 25);
+            lblBanned.TabIndex = 5;
             // 
             // btnBan
             // 
-            this.btnBan.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnBan.Location = new System.Drawing.Point(347, 249);
-            this.btnBan.Name = "btnBan";
-            this.btnBan.Size = new System.Drawing.Size(109, 53);
-            this.btnBan.TabIndex = 6;
-            this.btnBan.Text = "Ban user";
-            this.btnBan.UseVisualStyleBackColor = false;
+            btnBan.BackColor = Color.OrangeRed;
+            btnBan.Location = new Point(347, 311);
+            btnBan.Margin = new Padding(3, 4, 3, 4);
+            btnBan.Name = "btnBan";
+            btnBan.Size = new Size(109, 66);
+            btnBan.TabIndex = 6;
+            btnBan.Text = "Ban user";
+            btnBan.UseVisualStyleBackColor = false;
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.Turquoise;
-            this.btnBack.Location = new System.Drawing.Point(185, 249);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(109, 53);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Go back";
-            this.btnBack.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.Turquoise;
+            btnBack.Location = new Point(185, 311);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(109, 66);
+            btnBack.TabIndex = 7;
+            btnBack.Text = "Go back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // UserDetailsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 353);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnBan);
-            this.Controls.Add(this.lblBanned);
-            this.Controls.Add(this.lblBio);
-            this.Controls.Add(this.lblRegDate);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.lblUserInfo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "UserDetailsForm";
-            this.Text = "User Details";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(632, 441);
+            Controls.Add(btnBack);
+            Controls.Add(btnBan);
+            Controls.Add(lblBanned);
+            Controls.Add(lblBio);
+            Controls.Add(lblRegDate);
+            Controls.Add(lblEmail);
+            Controls.Add(lblUsername);
+            Controls.Add(lblUserInfo);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "UserDetailsForm";
+            Text = "User Details";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblUserInfo;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblRegDate;
-        private System.Windows.Forms.Label lblBio;
-        private System.Windows.Forms.Label lblBanned;
-        private System.Windows.Forms.Button btnBan;
-        private System.Windows.Forms.Button btnBack;
+        private Label lblUserInfo;
+        private Label lblUsername;
+        private Label lblEmail;
+        private Label lblRegDate;
+        private Label lblBio;
+        private Label lblBanned;
+        private Button btnBan;
+        private Button btnBack;
     }
 }

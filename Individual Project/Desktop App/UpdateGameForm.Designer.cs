@@ -28,292 +28,307 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnShowPlatformList = new System.Windows.Forms.Button();
-            this.btnShowGenreList = new System.Windows.Forms.Button();
-            this.tbPlatform = new System.Windows.Forms.TextBox();
-            this.tbGenre = new System.Windows.Forms.TextBox();
-            this.tbBKGCoverLink = new System.Windows.Forms.TextBox();
-            this.tbCoverLink = new System.Windows.Forms.TextBox();
-            this.tbTrailerLink = new System.Windows.Forms.TextBox();
-            this.tbDeveloper = new System.Windows.Forms.TextBox();
-            this.tbTitle = new System.Windows.Forms.TextBox();
-            this.dtpReleaseDate = new System.Windows.Forms.DateTimePicker();
-            this.btnUpdateGame = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.lblPlatform = new System.Windows.Forms.Label();
-            this.lblGenre = new System.Windows.Forms.Label();
-            this.lblBKGCoverLink = new System.Windows.Forms.Label();
-            this.lblCoverLink = new System.Windows.Forms.Label();
-            this.lblTrailerLink = new System.Windows.Forms.Label();
-            this.lblRelDate = new System.Windows.Forms.Label();
-            this.lblDeveloper = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblUpdateGame = new System.Windows.Forms.Label();
-            this.clbGenre = new System.Windows.Forms.CheckedListBox();
-            this.clbPlatform = new System.Windows.Forms.CheckedListBox();
-            this.SuspendLayout();
+            btnShowPlatformList = new Button();
+            btnShowGenreList = new Button();
+            tbPlatform = new TextBox();
+            tbGenre = new TextBox();
+            tbBKGCoverLink = new TextBox();
+            tbCoverLink = new TextBox();
+            tbTrailerLink = new TextBox();
+            tbDeveloper = new TextBox();
+            tbTitle = new TextBox();
+            dtpReleaseDate = new DateTimePicker();
+            btnUpdateGame = new Button();
+            btnBack = new Button();
+            lblPlatform = new Label();
+            lblGenre = new Label();
+            lblBKGCoverLink = new Label();
+            lblCoverLink = new Label();
+            lblTrailerLink = new Label();
+            lblRelDate = new Label();
+            lblDeveloper = new Label();
+            lblTitle = new Label();
+            lblUpdateGame = new Label();
+            clbGenre = new CheckedListBox();
+            clbPlatform = new CheckedListBox();
+            SuspendLayout();
             // 
             // btnShowPlatformList
             // 
-            this.btnShowPlatformList.Location = new System.Drawing.Point(466, 285);
-            this.btnShowPlatformList.Name = "btnShowPlatformList";
-            this.btnShowPlatformList.Size = new System.Drawing.Size(30, 23);
-            this.btnShowPlatformList.TabIndex = 46;
-            this.btnShowPlatformList.Text = "(..)";
-            this.btnShowPlatformList.UseVisualStyleBackColor = true;
+            btnShowPlatformList.Location = new Point(466, 356);
+            btnShowPlatformList.Margin = new Padding(3, 4, 3, 4);
+            btnShowPlatformList.Name = "btnShowPlatformList";
+            btnShowPlatformList.Size = new Size(30, 29);
+            btnShowPlatformList.TabIndex = 46;
+            btnShowPlatformList.Text = "(..)";
+            btnShowPlatformList.UseVisualStyleBackColor = true;
             // 
             // btnShowGenreList
             // 
-            this.btnShowGenreList.Location = new System.Drawing.Point(466, 254);
-            this.btnShowGenreList.Name = "btnShowGenreList";
-            this.btnShowGenreList.Size = new System.Drawing.Size(30, 23);
-            this.btnShowGenreList.TabIndex = 45;
-            this.btnShowGenreList.Text = "(..)";
-            this.btnShowGenreList.UseVisualStyleBackColor = true;
+            btnShowGenreList.Location = new Point(466, 318);
+            btnShowGenreList.Margin = new Padding(3, 4, 3, 4);
+            btnShowGenreList.Name = "btnShowGenreList";
+            btnShowGenreList.Size = new Size(30, 29);
+            btnShowGenreList.TabIndex = 45;
+            btnShowGenreList.Text = "(..)";
+            btnShowGenreList.UseVisualStyleBackColor = true;
             // 
             // tbPlatform
             // 
-            this.tbPlatform.Location = new System.Drawing.Point(265, 285);
-            this.tbPlatform.Name = "tbPlatform";
-            this.tbPlatform.Size = new System.Drawing.Size(231, 22);
-            this.tbPlatform.TabIndex = 42;
+            tbPlatform.Location = new Point(265, 356);
+            tbPlatform.Margin = new Padding(3, 4, 3, 4);
+            tbPlatform.Name = "tbPlatform";
+            tbPlatform.Size = new Size(231, 27);
+            tbPlatform.TabIndex = 42;
             // 
             // tbGenre
             // 
-            this.tbGenre.Location = new System.Drawing.Point(265, 255);
-            this.tbGenre.Name = "tbGenre";
-            this.tbGenre.Size = new System.Drawing.Size(231, 22);
-            this.tbGenre.TabIndex = 41;
+            tbGenre.Location = new Point(265, 319);
+            tbGenre.Margin = new Padding(3, 4, 3, 4);
+            tbGenre.Name = "tbGenre";
+            tbGenre.Size = new Size(231, 27);
+            tbGenre.TabIndex = 41;
             // 
             // tbBKGCoverLink
             // 
-            this.tbBKGCoverLink.Location = new System.Drawing.Point(265, 226);
-            this.tbBKGCoverLink.Name = "tbBKGCoverLink";
-            this.tbBKGCoverLink.Size = new System.Drawing.Size(231, 22);
-            this.tbBKGCoverLink.TabIndex = 40;
+            tbBKGCoverLink.Location = new Point(265, 282);
+            tbBKGCoverLink.Margin = new Padding(3, 4, 3, 4);
+            tbBKGCoverLink.Name = "tbBKGCoverLink";
+            tbBKGCoverLink.Size = new Size(231, 27);
+            tbBKGCoverLink.TabIndex = 40;
             // 
             // tbCoverLink
             // 
-            this.tbCoverLink.Location = new System.Drawing.Point(265, 197);
-            this.tbCoverLink.Name = "tbCoverLink";
-            this.tbCoverLink.Size = new System.Drawing.Size(231, 22);
-            this.tbCoverLink.TabIndex = 39;
+            tbCoverLink.Location = new Point(265, 246);
+            tbCoverLink.Margin = new Padding(3, 4, 3, 4);
+            tbCoverLink.Name = "tbCoverLink";
+            tbCoverLink.Size = new Size(231, 27);
+            tbCoverLink.TabIndex = 39;
             // 
             // tbTrailerLink
             // 
-            this.tbTrailerLink.Location = new System.Drawing.Point(265, 167);
-            this.tbTrailerLink.Name = "tbTrailerLink";
-            this.tbTrailerLink.Size = new System.Drawing.Size(231, 22);
-            this.tbTrailerLink.TabIndex = 38;
+            tbTrailerLink.Location = new Point(265, 209);
+            tbTrailerLink.Margin = new Padding(3, 4, 3, 4);
+            tbTrailerLink.Name = "tbTrailerLink";
+            tbTrailerLink.Size = new Size(231, 27);
+            tbTrailerLink.TabIndex = 38;
             // 
             // tbDeveloper
             // 
-            this.tbDeveloper.Location = new System.Drawing.Point(265, 109);
-            this.tbDeveloper.Name = "tbDeveloper";
-            this.tbDeveloper.Size = new System.Drawing.Size(231, 22);
-            this.tbDeveloper.TabIndex = 37;
+            tbDeveloper.Location = new Point(265, 136);
+            tbDeveloper.Margin = new Padding(3, 4, 3, 4);
+            tbDeveloper.Name = "tbDeveloper";
+            tbDeveloper.Size = new Size(231, 27);
+            tbDeveloper.TabIndex = 37;
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(265, 73);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(231, 22);
-            this.tbTitle.TabIndex = 36;
+            tbTitle.Location = new Point(265, 91);
+            tbTitle.Margin = new Padding(3, 4, 3, 4);
+            tbTitle.Name = "tbTitle";
+            tbTitle.Size = new Size(231, 27);
+            tbTitle.TabIndex = 36;
             // 
             // dtpReleaseDate
             // 
-            this.dtpReleaseDate.Location = new System.Drawing.Point(265, 137);
-            this.dtpReleaseDate.Name = "dtpReleaseDate";
-            this.dtpReleaseDate.Size = new System.Drawing.Size(231, 22);
-            this.dtpReleaseDate.TabIndex = 35;
+            dtpReleaseDate.Location = new Point(265, 171);
+            dtpReleaseDate.Margin = new Padding(3, 4, 3, 4);
+            dtpReleaseDate.Name = "dtpReleaseDate";
+            dtpReleaseDate.Size = new Size(231, 27);
+            dtpReleaseDate.TabIndex = 35;
             // 
             // btnUpdateGame
             // 
-            this.btnUpdateGame.BackColor = System.Drawing.Color.Thistle;
-            this.btnUpdateGame.Location = new System.Drawing.Point(393, 324);
-            this.btnUpdateGame.Name = "btnUpdateGame";
-            this.btnUpdateGame.Size = new System.Drawing.Size(103, 59);
-            this.btnUpdateGame.TabIndex = 34;
-            this.btnUpdateGame.Text = "Add game";
-            this.btnUpdateGame.UseVisualStyleBackColor = false;
+            btnUpdateGame.BackColor = Color.Thistle;
+            btnUpdateGame.Location = new Point(393, 405);
+            btnUpdateGame.Margin = new Padding(3, 4, 3, 4);
+            btnUpdateGame.Name = "btnUpdateGame";
+            btnUpdateGame.Size = new Size(103, 74);
+            btnUpdateGame.TabIndex = 34;
+            btnUpdateGame.Text = "Add game";
+            btnUpdateGame.UseVisualStyleBackColor = false;
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnBack.Location = new System.Drawing.Point(265, 324);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(103, 59);
-            this.btnBack.TabIndex = 33;
-            this.btnBack.Text = "Go back";
-            this.btnBack.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.DeepSkyBlue;
+            btnBack.Location = new Point(265, 405);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(103, 74);
+            btnBack.TabIndex = 33;
+            btnBack.Text = "Go back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // lblPlatform
             // 
-            this.lblPlatform.AutoSize = true;
-            this.lblPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblPlatform.Location = new System.Drawing.Point(120, 285);
-            this.lblPlatform.Name = "lblPlatform";
-            this.lblPlatform.Size = new System.Drawing.Size(98, 20);
-            this.lblPlatform.TabIndex = 32;
-            this.lblPlatform.Text = "Platform(s):";
+            lblPlatform.AutoSize = true;
+            lblPlatform.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPlatform.Location = new Point(120, 356);
+            lblPlatform.Name = "lblPlatform";
+            lblPlatform.Size = new Size(98, 20);
+            lblPlatform.TabIndex = 32;
+            lblPlatform.Text = "Platform(s):";
             // 
             // lblGenre
             // 
-            this.lblGenre.AutoSize = true;
-            this.lblGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblGenre.Location = new System.Drawing.Point(137, 255);
-            this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(81, 20);
-            this.lblGenre.TabIndex = 31;
-            this.lblGenre.Text = "Genre(s):";
+            lblGenre.AutoSize = true;
+            lblGenre.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblGenre.Location = new Point(137, 319);
+            lblGenre.Name = "lblGenre";
+            lblGenre.Size = new Size(81, 20);
+            lblGenre.TabIndex = 31;
+            lblGenre.Text = "Genre(s):";
             // 
             // lblBKGCoverLink
             // 
-            this.lblBKGCoverLink.AutoSize = true;
-            this.lblBKGCoverLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblBKGCoverLink.Location = new System.Drawing.Point(39, 226);
-            this.lblBKGCoverLink.Name = "lblBKGCoverLink";
-            this.lblBKGCoverLink.Size = new System.Drawing.Size(179, 20);
-            this.lblBKGCoverLink.TabIndex = 30;
-            this.lblBKGCoverLink.Text = "Background cover link:";
+            lblBKGCoverLink.AutoSize = true;
+            lblBKGCoverLink.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBKGCoverLink.Location = new Point(39, 282);
+            lblBKGCoverLink.Name = "lblBKGCoverLink";
+            lblBKGCoverLink.Size = new Size(179, 20);
+            lblBKGCoverLink.TabIndex = 30;
+            lblBKGCoverLink.Text = "Background cover link:";
             // 
             // lblCoverLink
             // 
-            this.lblCoverLink.AutoSize = true;
-            this.lblCoverLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCoverLink.Location = new System.Drawing.Point(130, 197);
-            this.lblCoverLink.Name = "lblCoverLink";
-            this.lblCoverLink.Size = new System.Drawing.Size(88, 20);
-            this.lblCoverLink.TabIndex = 29;
-            this.lblCoverLink.Text = "Cover link:";
+            lblCoverLink.AutoSize = true;
+            lblCoverLink.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCoverLink.Location = new Point(130, 246);
+            lblCoverLink.Name = "lblCoverLink";
+            lblCoverLink.Size = new Size(88, 20);
+            lblCoverLink.TabIndex = 29;
+            lblCoverLink.Text = "Cover link:";
             // 
             // lblTrailerLink
             // 
-            this.lblTrailerLink.AutoSize = true;
-            this.lblTrailerLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTrailerLink.Location = new System.Drawing.Point(126, 167);
-            this.lblTrailerLink.Name = "lblTrailerLink";
-            this.lblTrailerLink.Size = new System.Drawing.Size(92, 20);
-            this.lblTrailerLink.TabIndex = 28;
-            this.lblTrailerLink.Text = "Trailer link:";
+            lblTrailerLink.AutoSize = true;
+            lblTrailerLink.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTrailerLink.Location = new Point(126, 209);
+            lblTrailerLink.Name = "lblTrailerLink";
+            lblTrailerLink.Size = new Size(92, 20);
+            lblTrailerLink.TabIndex = 28;
+            lblTrailerLink.Text = "Trailer link:";
             // 
             // lblRelDate
             // 
-            this.lblRelDate.AutoSize = true;
-            this.lblRelDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblRelDate.Location = new System.Drawing.Point(106, 137);
-            this.lblRelDate.Name = "lblRelDate";
-            this.lblRelDate.Size = new System.Drawing.Size(112, 20);
-            this.lblRelDate.TabIndex = 27;
-            this.lblRelDate.Text = "Release date:";
+            lblRelDate.AutoSize = true;
+            lblRelDate.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRelDate.Location = new Point(106, 171);
+            lblRelDate.Name = "lblRelDate";
+            lblRelDate.Size = new Size(112, 20);
+            lblRelDate.TabIndex = 27;
+            lblRelDate.Text = "Release date:";
             // 
             // lblDeveloper
             // 
-            this.lblDeveloper.AutoSize = true;
-            this.lblDeveloper.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDeveloper.Location = new System.Drawing.Point(128, 105);
-            this.lblDeveloper.Name = "lblDeveloper";
-            this.lblDeveloper.Size = new System.Drawing.Size(90, 20);
-            this.lblDeveloper.TabIndex = 26;
-            this.lblDeveloper.Text = "Developer:";
+            lblDeveloper.AutoSize = true;
+            lblDeveloper.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDeveloper.Location = new Point(128, 131);
+            lblDeveloper.Name = "lblDeveloper";
+            lblDeveloper.Size = new Size(90, 20);
+            lblDeveloper.TabIndex = 26;
+            lblDeveloper.Text = "Developer:";
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTitle.Location = new System.Drawing.Point(127, 73);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(91, 20);
-            this.lblTitle.TabIndex = 25;
-            this.lblTitle.Text = "Game title:";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitle.Location = new Point(127, 91);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(91, 20);
+            lblTitle.TabIndex = 25;
+            lblTitle.Text = "Game title:";
             // 
             // lblUpdateGame
             // 
-            this.lblUpdateGame.AutoSize = true;
-            this.lblUpdateGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblUpdateGame.Location = new System.Drawing.Point(260, 9);
-            this.lblUpdateGame.Name = "lblUpdateGame";
-            this.lblUpdateGame.Size = new System.Drawing.Size(145, 25);
-            this.lblUpdateGame.TabIndex = 24;
-            this.lblUpdateGame.Text = "Update a game";
+            lblUpdateGame.AutoSize = true;
+            lblUpdateGame.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUpdateGame.Location = new Point(260, 11);
+            lblUpdateGame.Name = "lblUpdateGame";
+            lblUpdateGame.Size = new Size(145, 25);
+            lblUpdateGame.TabIndex = 24;
+            lblUpdateGame.Text = "Update a game";
             // 
             // clbGenre
             // 
-            this.clbGenre.FormattingEnabled = true;
-            this.clbGenre.Location = new System.Drawing.Point(265, 255);
-            this.clbGenre.Name = "clbGenre";
-            this.clbGenre.Size = new System.Drawing.Size(231, 89);
-            this.clbGenre.TabIndex = 43;
+            clbGenre.FormattingEnabled = true;
+            clbGenre.Location = new Point(265, 319);
+            clbGenre.Margin = new Padding(3, 4, 3, 4);
+            clbGenre.Name = "clbGenre";
+            clbGenre.Size = new Size(231, 92);
+            clbGenre.TabIndex = 43;
             // 
             // clbPlatform
             // 
-            this.clbPlatform.FormattingEnabled = true;
-            this.clbPlatform.Location = new System.Drawing.Point(265, 294);
-            this.clbPlatform.Name = "clbPlatform";
-            this.clbPlatform.Size = new System.Drawing.Size(231, 89);
-            this.clbPlatform.TabIndex = 44;
+            clbPlatform.FormattingEnabled = true;
+            clbPlatform.Location = new Point(265, 368);
+            clbPlatform.Margin = new Padding(3, 4, 3, 4);
+            clbPlatform.Name = "clbPlatform";
+            clbPlatform.Size = new Size(231, 92);
+            clbPlatform.TabIndex = 44;
             // 
             // UpdateGameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 403);
-            this.Controls.Add(this.btnShowPlatformList);
-            this.Controls.Add(this.btnShowGenreList);
-            this.Controls.Add(this.tbPlatform);
-            this.Controls.Add(this.tbGenre);
-            this.Controls.Add(this.tbBKGCoverLink);
-            this.Controls.Add(this.tbCoverLink);
-            this.Controls.Add(this.tbTrailerLink);
-            this.Controls.Add(this.tbDeveloper);
-            this.Controls.Add(this.tbTitle);
-            this.Controls.Add(this.dtpReleaseDate);
-            this.Controls.Add(this.btnUpdateGame);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lblPlatform);
-            this.Controls.Add(this.lblGenre);
-            this.Controls.Add(this.lblBKGCoverLink);
-            this.Controls.Add(this.lblCoverLink);
-            this.Controls.Add(this.lblTrailerLink);
-            this.Controls.Add(this.lblRelDate);
-            this.Controls.Add(this.lblDeveloper);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblUpdateGame);
-            this.Controls.Add(this.clbGenre);
-            this.Controls.Add(this.clbPlatform);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "UpdateGameForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Update a game";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(642, 504);
+            Controls.Add(btnShowPlatformList);
+            Controls.Add(btnShowGenreList);
+            Controls.Add(tbPlatform);
+            Controls.Add(tbGenre);
+            Controls.Add(tbBKGCoverLink);
+            Controls.Add(tbCoverLink);
+            Controls.Add(tbTrailerLink);
+            Controls.Add(tbDeveloper);
+            Controls.Add(tbTitle);
+            Controls.Add(dtpReleaseDate);
+            Controls.Add(btnUpdateGame);
+            Controls.Add(btnBack);
+            Controls.Add(lblPlatform);
+            Controls.Add(lblGenre);
+            Controls.Add(lblBKGCoverLink);
+            Controls.Add(lblCoverLink);
+            Controls.Add(lblTrailerLink);
+            Controls.Add(lblRelDate);
+            Controls.Add(lblDeveloper);
+            Controls.Add(lblTitle);
+            Controls.Add(lblUpdateGame);
+            Controls.Add(clbGenre);
+            Controls.Add(clbPlatform);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "UpdateGameForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Update a game";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnShowPlatformList;
-        private System.Windows.Forms.Button btnShowGenreList;
-        private System.Windows.Forms.TextBox tbPlatform;
-        private System.Windows.Forms.TextBox tbGenre;
-        private System.Windows.Forms.TextBox tbBKGCoverLink;
-        private System.Windows.Forms.TextBox tbCoverLink;
-        private System.Windows.Forms.TextBox tbTrailerLink;
-        private System.Windows.Forms.TextBox tbDeveloper;
-        private System.Windows.Forms.TextBox tbTitle;
-        private System.Windows.Forms.DateTimePicker dtpReleaseDate;
-        private System.Windows.Forms.Button btnUpdateGame;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label lblPlatform;
-        private System.Windows.Forms.Label lblGenre;
-        private System.Windows.Forms.Label lblBKGCoverLink;
-        private System.Windows.Forms.Label lblCoverLink;
-        private System.Windows.Forms.Label lblTrailerLink;
-        private System.Windows.Forms.Label lblRelDate;
-        private System.Windows.Forms.Label lblDeveloper;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblUpdateGame;
-        private System.Windows.Forms.CheckedListBox clbGenre;
-        private System.Windows.Forms.CheckedListBox clbPlatform;
+        private Button btnShowPlatformList;
+        private Button btnShowGenreList;
+        private TextBox tbPlatform;
+        private TextBox tbGenre;
+        private TextBox tbBKGCoverLink;
+        private TextBox tbCoverLink;
+        private TextBox tbTrailerLink;
+        private TextBox tbDeveloper;
+        private TextBox tbTitle;
+        private DateTimePicker dtpReleaseDate;
+        private Button btnUpdateGame;
+        private Button btnBack;
+        private Label lblPlatform;
+        private Label lblGenre;
+        private Label lblBKGCoverLink;
+        private Label lblCoverLink;
+        private Label lblTrailerLink;
+        private Label lblRelDate;
+        private Label lblDeveloper;
+        private Label lblTitle;
+        private Label lblUpdateGame;
+        private CheckedListBox clbGenre;
+        private CheckedListBox clbPlatform;
     }
 }

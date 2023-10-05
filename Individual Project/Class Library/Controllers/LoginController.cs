@@ -12,18 +12,18 @@ namespace Class_Library.Controllers
     public class LoginController
     {
         private UserController userController = new UserController(new UserDAL());
-        private BanController banController = new BanController(new BanDAL());
+        //private BanController banController = new BanController(new BanDAL());
         public User? LoginUsername(string username, string password)
         {
             foreach (User user in userController.ReadAllUsers())
             {               
                 if (user.Username == username && user.Password == password)
                 {
-                    if (banController.UnbanUser(user))
-                    {
-                        user.Banned = false;
-                        userController.Update(user);
-                    }
+                    //if (banController.UnbanUser(user))
+                    //{
+                    //    user.Banned = false;
+                    //    userController.Update(user);
+                    //}
                     return user;
                 }
             }
@@ -37,11 +37,11 @@ namespace Class_Library.Controllers
                
                 if (user.Email == email && user.Password == password)
                 {
-                    if (banController.UnbanUser(user))
-                    {
-                        user.Banned = false;
-                        userController.Update(user);
-                    }
+                    //if (banController.UnbanUser(user))
+                    //{
+                    //    user.Banned = false;
+                    //    userController.Update(user);
+                    //}
                     return user;
                 }
             }

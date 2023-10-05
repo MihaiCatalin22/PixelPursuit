@@ -17,7 +17,6 @@
         <Member type="Property">public string Username { get; set; }</Member>
         <Member type="Property">public string Password { get; set; }</Member>
         <Member type="Property">public string Email { get; set; }</Member>
-        <Member type="Property">public string Email { get; set; }</Member>
         <Member type="Property">public DateOnly RegistrationDate { get; set; }</Member>
         <Member type="Property">public string ProfilePicture { get; set; }</Member>
         <Member type="Property">public string Bio { get; set; }</Member>
@@ -34,19 +33,20 @@
         <Member type="Field">IUserManagement userManager</Member>
         <Member type="Method">public bool Create(User user)</Member>
         <Member type="Method">public User[] ReadAll()</Member>
-        <Member type="Method">public User[] ReadAllMembers()</Member>
+        <Member type="Method">public User[] ReadAllUsers()</Member>
         <Member type="Method">public User[] ReadAllAdmins()</Member>
-        <Member type="Method">public User[] ReaddAllMembersSearch(string search)</Member>
+        <Member type="Method">public User[] ReadAllUsersSearch(string search)</Member>
         <Member type="Method">public bool Update(User user)</Member>
         <Member type="Method">public bool Delete(User user)</Member>
         <Member type="Method">public User? GetUserFromUsername(string username)</Member>
         <Member type="Method">public User? GetUserFromId(int id)</Member>
+        <Member type="Method">public string? GetSalt(User user)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Ban</Name>
         <Access>Public</Access>
-        <Location left="2248" top="310" />
+        <Location left="2248" top="322" />
         <Size width="496" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
@@ -283,6 +283,7 @@
         <Member type="Method">bool Delete(User user)</Member>
         <Member type="Method">User? GetUserFromUsername(string username)</Member>
         <Member type="Method">User? GetUserFromId(int id)</Member>
+        <Member type="Method">string? GetSalt(User user)</Member>
       </Entity>
       <Entity type="Interface">
         <Name>IBanManagement</Name>
@@ -314,37 +315,91 @@
         <Member type="Method">bool UpdateRanked(RankedSubmission submission)</Member>
         <Member type="Method">bool Delete(RankedSubmission submission)</Member>
       </Entity>
+      <Entity type="Class">
+        <Name>HashPassword</Name>
+        <Access>Public</Access>
+        <Location left="553" top="34" />
+        <Size width="343" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public string GenerateHashedPassword(string password, string salt)</Member>
+        <Member type="Method">public string GenerateSalt()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LoginController</Name>
+        <Access>Public</Access>
+        <Location left="1625" top="26" />
+        <Size width="360" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">UserController userController = new (new UserDAL())</Member>
+        <Member type="Field">BanController banController = new(new BanDAL())</Member>
+        <Member type="Method">public User? LoginUsername(string username, string password)</Member>
+        <Member type="Method">public User? LoginEmail(string email, string password)</Member>
+        <Member type="Method">public User? LoginUsernameAdmin(string username, string password)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BanDAL</Name>
+        <Access>Public</Access>
+        <Location left="3522" top="347" />
+        <Size width="213" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool Create(Ban ban)</Member>
+        <Member type="Method">public Ban[] ReadAll()</Member>
+        <Member type="Method">public Ban[] ReadAllSearch(string search)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserDAL</Name>
+        <Access>Public</Access>
+        <Location left="77" top="326" />
+        <Size width="266" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool Create(User user)</Member>
+        <Member type="Method">public User[] ReadAll()</Member>
+        <Member type="Method">public User[] ReadAllUsers()</Member>
+        <Member type="Method">public User[] ReadAllAdmins()</Member>
+        <Member type="Method">public User[] ReadAllUsersSearch()</Member>
+        <Member type="Method">public bool Update(user User)</Member>
+        <Member type="Method">public bool Delete(user User)</Member>
+        <Member type="Method">public string? GetSalt(user User)</Member>
+        <Member type="Method">public User? GetUserFromUsername(string username)</Member>
+        <Member type="Method">public User? GetUserFromId(int id)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -379,6 +434,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="6" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -391,10 +448,14 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="9" second="6">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="9" second="10">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -403,12 +464,16 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="11" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="12">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -422,19 +487,17 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="3" second="14">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
       <Relationship type="Association" first="5" second="15">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="13">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -444,6 +507,70 @@
         <BendPoint relativeToStartShape="False">
           <X>703</X>
           <Y>465</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="17" second="16">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="17" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="17" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="18" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3481</X>
+          <Y>417</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="19" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="19" second="16">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>501</X>
+          <Y>148</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>

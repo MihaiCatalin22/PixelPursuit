@@ -28,254 +28,270 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnBans = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.btnSubmissions = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.lblGames = new System.Windows.Forms.Label();
-            this.gbFilters = new System.Windows.Forms.GroupBox();
-            this.tbDeveloper = new System.Windows.Forms.TextBox();
-            this.tbGame = new System.Windows.Forms.TextBox();
-            this.lblDeveloper = new System.Windows.Forms.Label();
-            this.lblGame = new System.Windows.Forms.Label();
-            this.btnDeleteGame = new System.Windows.Forms.Button();
-            this.btnAddGame = new System.Windows.Forms.Button();
-            this.btnUpdateGame = new System.Windows.Forms.Button();
-            this.lvGames = new System.Windows.Forms.ListView();
-            this.columnHeaderEmpty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDeveloper = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderGame = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbFilters.SuspendLayout();
-            this.SuspendLayout();
+            btnLogout = new Button();
+            btnBans = new Button();
+            btnUsers = new Button();
+            btnSubmissions = new Button();
+            btnBack = new Button();
+            lblGames = new Label();
+            gbFilters = new GroupBox();
+            tbDeveloper = new TextBox();
+            tbGame = new TextBox();
+            lblDeveloper = new Label();
+            lblGame = new Label();
+            btnDeleteGame = new Button();
+            btnAddGame = new Button();
+            btnUpdateGame = new Button();
+            lvGames = new ListView();
+            columnHeaderEmpty = new ColumnHeader();
+            columnHeaderDeveloper = new ColumnHeader();
+            columnHeaderGame = new ColumnHeader();
+            gbFilters.SuspendLayout();
+            SuspendLayout();
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.Tomato;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(883, 12);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(135, 97);
-            this.btnLogout.TabIndex = 9;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.Tomato;
+            btnLogout.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.Location = new Point(883, 15);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(135, 121);
+            btnLogout.TabIndex = 9;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnBans
             // 
-            this.btnBans.BackColor = System.Drawing.Color.DarkCyan;
-            this.btnBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBans.Location = new System.Drawing.Point(668, 12);
-            this.btnBans.Name = "btnBans";
-            this.btnBans.Size = new System.Drawing.Size(213, 97);
-            this.btnBans.TabIndex = 8;
-            this.btnBans.Text = "Bans";
-            this.btnBans.UseVisualStyleBackColor = false;
+            btnBans.BackColor = Color.DarkCyan;
+            btnBans.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBans.Location = new Point(668, 15);
+            btnBans.Margin = new Padding(3, 4, 3, 4);
+            btnBans.Name = "btnBans";
+            btnBans.Size = new Size(213, 121);
+            btnBans.TabIndex = 8;
+            btnBans.Text = "Bans";
+            btnBans.UseVisualStyleBackColor = false;
+            btnBans.Click += btnBans_Click;
             // 
             // btnUsers
             // 
-            this.btnUsers.BackColor = System.Drawing.Color.Turquoise;
-            this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.Location = new System.Drawing.Point(449, 12);
-            this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(213, 97);
-            this.btnUsers.TabIndex = 7;
-            this.btnUsers.Text = "Users";
-            this.btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.BackColor = Color.Turquoise;
+            btnUsers.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUsers.Location = new Point(449, 15);
+            btnUsers.Margin = new Padding(3, 4, 3, 4);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(213, 121);
+            btnUsers.TabIndex = 7;
+            btnUsers.Text = "Users";
+            btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.Click += btnUsers_Click;
             // 
             // btnSubmissions
             // 
-            this.btnSubmissions.BackColor = System.Drawing.Color.Aqua;
-            this.btnSubmissions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmissions.Location = new System.Drawing.Point(230, 12);
-            this.btnSubmissions.Name = "btnSubmissions";
-            this.btnSubmissions.Size = new System.Drawing.Size(213, 97);
-            this.btnSubmissions.TabIndex = 6;
-            this.btnSubmissions.Text = "Submissions";
-            this.btnSubmissions.UseVisualStyleBackColor = false;
+            btnSubmissions.BackColor = Color.Aqua;
+            btnSubmissions.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSubmissions.Location = new Point(230, 15);
+            btnSubmissions.Margin = new Padding(3, 4, 3, 4);
+            btnSubmissions.Name = "btnSubmissions";
+            btnSubmissions.Size = new Size(213, 121);
+            btnSubmissions.TabIndex = 6;
+            btnSubmissions.Text = "Submissions";
+            btnSubmissions.UseVisualStyleBackColor = false;
+            btnSubmissions.Click += btnSubmissions_Click;
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(10, 12);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(213, 97);
-            this.btnBack.TabIndex = 5;
-            this.btnBack.Text = "Go back";
-            this.btnBack.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.DeepSkyBlue;
+            btnBack.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(10, 15);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(213, 121);
+            btnBack.TabIndex = 5;
+            btnBack.Text = "Go back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // lblGames
             // 
-            this.lblGames.AutoSize = true;
-            this.lblGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGames.Location = new System.Drawing.Point(443, 134);
-            this.lblGames.Name = "lblGames";
-            this.lblGames.Size = new System.Drawing.Size(148, 32);
-            this.lblGames.TabIndex = 10;
-            this.lblGames.Text = "Games list";
+            lblGames.AutoSize = true;
+            lblGames.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lblGames.Location = new Point(443, 168);
+            lblGames.Name = "lblGames";
+            lblGames.Size = new Size(148, 32);
+            lblGames.TabIndex = 10;
+            lblGames.Text = "Games list";
             // 
             // gbFilters
             // 
-            this.gbFilters.Controls.Add(this.tbDeveloper);
-            this.gbFilters.Controls.Add(this.tbGame);
-            this.gbFilters.Controls.Add(this.lblDeveloper);
-            this.gbFilters.Controls.Add(this.lblGame);
-            this.gbFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFilters.Location = new System.Drawing.Point(23, 163);
-            this.gbFilters.Name = "gbFilters";
-            this.gbFilters.Size = new System.Drawing.Size(200, 189);
-            this.gbFilters.TabIndex = 11;
-            this.gbFilters.TabStop = false;
-            this.gbFilters.Text = "Filters";
+            gbFilters.Controls.Add(tbDeveloper);
+            gbFilters.Controls.Add(tbGame);
+            gbFilters.Controls.Add(lblDeveloper);
+            gbFilters.Controls.Add(lblGame);
+            gbFilters.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbFilters.Location = new Point(23, 204);
+            gbFilters.Margin = new Padding(3, 4, 3, 4);
+            gbFilters.Name = "gbFilters";
+            gbFilters.Padding = new Padding(3, 4, 3, 4);
+            gbFilters.Size = new Size(200, 236);
+            gbFilters.TabIndex = 11;
+            gbFilters.TabStop = false;
+            gbFilters.Text = "Filters";
             // 
             // tbDeveloper
             // 
-            this.tbDeveloper.Location = new System.Drawing.Point(53, 130);
-            this.tbDeveloper.Name = "tbDeveloper";
-            this.tbDeveloper.Size = new System.Drawing.Size(100, 27);
-            this.tbDeveloper.TabIndex = 3;
+            tbDeveloper.Location = new Point(53, 162);
+            tbDeveloper.Margin = new Padding(3, 4, 3, 4);
+            tbDeveloper.Name = "tbDeveloper";
+            tbDeveloper.Size = new Size(100, 27);
+            tbDeveloper.TabIndex = 3;
             // 
             // tbGame
             // 
-            this.tbGame.Location = new System.Drawing.Point(53, 58);
-            this.tbGame.Name = "tbGame";
-            this.tbGame.Size = new System.Drawing.Size(100, 27);
-            this.tbGame.TabIndex = 2;
+            tbGame.Location = new Point(53, 72);
+            tbGame.Margin = new Padding(3, 4, 3, 4);
+            tbGame.Name = "tbGame";
+            tbGame.Size = new Size(100, 27);
+            tbGame.TabIndex = 2;
             // 
             // lblDeveloper
             // 
-            this.lblDeveloper.AutoSize = true;
-            this.lblDeveloper.Location = new System.Drawing.Point(55, 98);
-            this.lblDeveloper.Name = "lblDeveloper";
-            this.lblDeveloper.Size = new System.Drawing.Size(85, 20);
-            this.lblDeveloper.TabIndex = 1;
-            this.lblDeveloper.Text = "Developer";
+            lblDeveloper.AutoSize = true;
+            lblDeveloper.Location = new Point(55, 122);
+            lblDeveloper.Name = "lblDeveloper";
+            lblDeveloper.Size = new Size(85, 20);
+            lblDeveloper.TabIndex = 1;
+            lblDeveloper.Text = "Developer";
             // 
             // lblGame
             // 
-            this.lblGame.AutoSize = true;
-            this.lblGame.Location = new System.Drawing.Point(68, 23);
-            this.lblGame.Name = "lblGame";
-            this.lblGame.Size = new System.Drawing.Size(54, 20);
-            this.lblGame.TabIndex = 0;
-            this.lblGame.Text = "Game";
+            lblGame.AutoSize = true;
+            lblGame.Location = new Point(68, 29);
+            lblGame.Name = "lblGame";
+            lblGame.Size = new Size(54, 20);
+            lblGame.TabIndex = 0;
+            lblGame.Text = "Game";
             // 
             // btnDeleteGame
             // 
-            this.btnDeleteGame.BackColor = System.Drawing.Color.LightSalmon;
-            this.btnDeleteGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteGame.Location = new System.Drawing.Point(40, 462);
-            this.btnDeleteGame.Name = "btnDeleteGame";
-            this.btnDeleteGame.Size = new System.Drawing.Size(149, 46);
-            this.btnDeleteGame.TabIndex = 12;
-            this.btnDeleteGame.Text = "Delete selected game";
-            this.btnDeleteGame.UseVisualStyleBackColor = false;
+            btnDeleteGame.BackColor = Color.LightSalmon;
+            btnDeleteGame.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteGame.Location = new Point(40, 578);
+            btnDeleteGame.Margin = new Padding(3, 4, 3, 4);
+            btnDeleteGame.Name = "btnDeleteGame";
+            btnDeleteGame.Size = new Size(149, 58);
+            btnDeleteGame.TabIndex = 12;
+            btnDeleteGame.Text = "Delete selected game";
+            btnDeleteGame.UseVisualStyleBackColor = false;
             // 
             // btnAddGame
             // 
-            this.btnAddGame.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnAddGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddGame.Location = new System.Drawing.Point(40, 358);
-            this.btnAddGame.Name = "btnAddGame";
-            this.btnAddGame.Size = new System.Drawing.Size(149, 46);
-            this.btnAddGame.TabIndex = 13;
-            this.btnAddGame.Text = "Add new game";
-            this.btnAddGame.UseVisualStyleBackColor = false;
+            btnAddGame.BackColor = Color.Aquamarine;
+            btnAddGame.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddGame.Location = new Point(40, 448);
+            btnAddGame.Margin = new Padding(3, 4, 3, 4);
+            btnAddGame.Name = "btnAddGame";
+            btnAddGame.Size = new Size(149, 58);
+            btnAddGame.TabIndex = 13;
+            btnAddGame.Text = "Add new game";
+            btnAddGame.UseVisualStyleBackColor = false;
+            btnAddGame.Click += btnAddGame_Click;
             // 
             // btnUpdateGame
             // 
-            this.btnUpdateGame.BackColor = System.Drawing.Color.Khaki;
-            this.btnUpdateGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateGame.Location = new System.Drawing.Point(40, 410);
-            this.btnUpdateGame.Name = "btnUpdateGame";
-            this.btnUpdateGame.Size = new System.Drawing.Size(149, 46);
-            this.btnUpdateGame.TabIndex = 14;
-            this.btnUpdateGame.Text = "Update selected game";
-            this.btnUpdateGame.UseVisualStyleBackColor = false;
+            btnUpdateGame.BackColor = Color.Khaki;
+            btnUpdateGame.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateGame.Location = new Point(40, 512);
+            btnUpdateGame.Margin = new Padding(3, 4, 3, 4);
+            btnUpdateGame.Name = "btnUpdateGame";
+            btnUpdateGame.Size = new Size(149, 58);
+            btnUpdateGame.TabIndex = 14;
+            btnUpdateGame.Text = "Update selected game";
+            btnUpdateGame.UseVisualStyleBackColor = false;
+            btnUpdateGame.Click += btnUpdateGame_Click;
             // 
             // lvGames
             // 
-            this.lvGames.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderEmpty,
-            this.columnHeaderDeveloper,
-            this.columnHeaderGame});
-            this.lvGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvGames.FullRowSelect = true;
-            this.lvGames.GridLines = true;
-            this.lvGames.HideSelection = false;
-            this.lvGames.Location = new System.Drawing.Point(230, 183);
-            this.lvGames.Name = "lvGames";
-            this.lvGames.Size = new System.Drawing.Size(603, 325);
-            this.lvGames.TabIndex = 15;
-            this.lvGames.UseCompatibleStateImageBehavior = false;
-            this.lvGames.View = System.Windows.Forms.View.Details;
+            lvGames.Columns.AddRange(new ColumnHeader[] { columnHeaderEmpty, columnHeaderDeveloper, columnHeaderGame });
+            lvGames.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lvGames.FullRowSelect = true;
+            lvGames.GridLines = true;
+            lvGames.Location = new Point(230, 229);
+            lvGames.Margin = new Padding(3, 4, 3, 4);
+            lvGames.Name = "lvGames";
+            lvGames.Size = new Size(603, 405);
+            lvGames.TabIndex = 15;
+            lvGames.UseCompatibleStateImageBehavior = false;
+            lvGames.View = View.Details;
             // 
             // columnHeaderEmpty
             // 
-            this.columnHeaderEmpty.DisplayIndex = 2;
-            this.columnHeaderEmpty.Text = "";
-            this.columnHeaderEmpty.Width = 0;
+            columnHeaderEmpty.DisplayIndex = 2;
+            columnHeaderEmpty.Text = "";
+            columnHeaderEmpty.Width = 0;
             // 
             // columnHeaderDeveloper
             // 
-            this.columnHeaderDeveloper.DisplayIndex = 0;
-            this.columnHeaderDeveloper.Text = "Developer";
-            this.columnHeaderDeveloper.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderDeveloper.Width = 300;
+            columnHeaderDeveloper.DisplayIndex = 0;
+            columnHeaderDeveloper.Text = "Developer";
+            columnHeaderDeveloper.TextAlign = HorizontalAlignment.Center;
+            columnHeaderDeveloper.Width = 300;
             // 
             // columnHeaderGame
             // 
-            this.columnHeaderGame.DisplayIndex = 1;
-            this.columnHeaderGame.Text = "Game";
-            this.columnHeaderGame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderGame.Width = 300;
+            columnHeaderGame.DisplayIndex = 1;
+            columnHeaderGame.Text = "Game";
+            columnHeaderGame.TextAlign = HorizontalAlignment.Center;
+            columnHeaderGame.Width = 300;
             // 
             // GamesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 553);
-            this.Controls.Add(this.lvGames);
-            this.Controls.Add(this.btnUpdateGame);
-            this.Controls.Add(this.btnAddGame);
-            this.Controls.Add(this.btnDeleteGame);
-            this.Controls.Add(this.gbFilters);
-            this.Controls.Add(this.lblGames);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnBans);
-            this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.btnSubmissions);
-            this.Controls.Add(this.btnBack);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "GamesForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Games";
-            this.gbFilters.ResumeLayout(false);
-            this.gbFilters.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1032, 691);
+            Controls.Add(lvGames);
+            Controls.Add(btnUpdateGame);
+            Controls.Add(btnAddGame);
+            Controls.Add(btnDeleteGame);
+            Controls.Add(gbFilters);
+            Controls.Add(lblGames);
+            Controls.Add(btnLogout);
+            Controls.Add(btnBans);
+            Controls.Add(btnUsers);
+            Controls.Add(btnSubmissions);
+            Controls.Add(btnBack);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "GamesForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Games";
+            gbFilters.ResumeLayout(false);
+            gbFilters.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnBans;
-        private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.Button btnSubmissions;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label lblGames;
-        private System.Windows.Forms.GroupBox gbFilters;
-        private System.Windows.Forms.Button btnDeleteGame;
-        private System.Windows.Forms.Button btnAddGame;
-        private System.Windows.Forms.Button btnUpdateGame;
-        private System.Windows.Forms.ListView lvGames;
-        private System.Windows.Forms.ColumnHeader columnHeaderEmpty;
-        private System.Windows.Forms.ColumnHeader columnHeaderDeveloper;
-        private System.Windows.Forms.ColumnHeader columnHeaderGame;
-        private System.Windows.Forms.TextBox tbDeveloper;
-        private System.Windows.Forms.TextBox tbGame;
-        private System.Windows.Forms.Label lblDeveloper;
-        private System.Windows.Forms.Label lblGame;
+        private Button btnLogout;
+        private Button btnBans;
+        private Button btnUsers;
+        private Button btnSubmissions;
+        private Button btnBack;
+        private Label lblGames;
+        private GroupBox gbFilters;
+        private Button btnDeleteGame;
+        private Button btnAddGame;
+        private Button btnUpdateGame;
+        private ListView lvGames;
+        private ColumnHeader columnHeaderEmpty;
+        private ColumnHeader columnHeaderDeveloper;
+        private ColumnHeader columnHeaderGame;
+        private TextBox tbDeveloper;
+        private TextBox tbGame;
+        private Label lblDeveloper;
+        private Label lblGame;
     }
 }

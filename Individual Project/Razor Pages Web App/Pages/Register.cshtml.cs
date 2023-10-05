@@ -13,19 +13,19 @@ namespace Razor_Pages_Web_App.Pages
 	public class RegisterModel : PageModel
 	{
 		[BindProperty]
-		[StringLength(50, MinimumLength = 3, ErrorMessage = "Please supply an email with at least 3 characters!")]
+		[StringLength(50, MinimumLength = 3, ErrorMessage = "Your email address should have at least 3 characters.")]
 		[Required]
 		[RegularExpression(@"^[\w\.]+@([\w]+\.)+[\w]{2,4}$")]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
 		[BindProperty]
-		[StringLength(50, MinimumLength = 3, ErrorMessage = "Please supply a username with at least 3 characters!")]
+		[StringLength(50, MinimumLength = 3, ErrorMessage = "Your username should have at least 3 characters.")]
 		[Required]
 		public string Username { get; set; }
 
 		[BindProperty]
-		[MinLength(4, ErrorMessage = "Please supply a password with at least 4 characters!")]
+		[MinLength(5, ErrorMessage = "Your password should have at least 5 characters.")]
 		[Required]
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
@@ -53,7 +53,7 @@ namespace Razor_Pages_Web_App.Pages
 
 				await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
 
-				return RedirectToPage("Index");
+				return RedirectToPage("Login");
 			}
 			else
 				return Page();

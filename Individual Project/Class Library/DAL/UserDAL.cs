@@ -19,7 +19,7 @@ namespace Class_Library.DAL
             {
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
-                    string sql = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, UsernameColour, ProfilePicture, Bio, Banned, IsAdmin) VALUES (@username, @password, @salt, @email, @registrationDate, @usernameColour, @profilePicture, @bio, @banned, @isAdmin)";
+                    string sql = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, UsernameColor, ProfilePicture, Bio, Banned, IsAdmin) VALUES (@username, @password, @salt, @email, @registrationDate, @usernameColor, @profilePicture, @bio, @banned, @isAdmin)";
 
                     string salt = HashPassword.GenerateSalt();
                     user.Password = HashPassword.GenerateHashedPassword(user.Password, salt);
@@ -30,8 +30,8 @@ namespace Class_Library.DAL
                         cmd.Parameters.AddWithValue("@password", user.Password);
                         cmd.Parameters.AddWithValue("@salt", salt);
                         cmd.Parameters.AddWithValue("@email", user.Email);
-                        cmd.Parameters.AddWithValue("@registrationDate", user.RegistrationDate.ToDateTime(TimeOnly.MinValue));                        
-                        cmd.Parameters.AddWithValue("@usernameColour", user.UsernameColour);
+                        cmd.Parameters.AddWithValue("@registrationDate", user.RegistrationDate.ToDateTime(TimeOnly.MinValue));
+                        cmd.Parameters.AddWithValue("@usernameColor", user.UsernameColor);
                         cmd.Parameters.AddWithValue("@profilePicture", user.ProfilePicture);
                         cmd.Parameters.AddWithValue("@bio", user.Bio ?? (object)DBNull.Value);
                         cmd.Parameters.AddWithValue("@banned", user.Banned ?? (object)DBNull.Value);
@@ -51,7 +51,64 @@ namespace Class_Library.DAL
                 return false;
             }
         }
+        public bool Update(User user)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "UPDATE [User] SET Username = @username, Password = @password, Email = @email, UsernameColor = @usernameColor, ProfilePicture = @profilePicture, Bio = @bio, Banned = @banned WHERE Id = @id";
 
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", user.Id);
+                        cmd.Parameters.AddWithValue("@username", user.Username);
+                        cmd.Parameters.AddWithValue("@password", user.Password);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@usernameColor", user.UsernameColor);
+                        cmd.Parameters.AddWithValue("@profilePicture", user.ProfilePicture);
+                        cmd.Parameters.AddWithValue("@bio", user.Bio ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@banned", user.Banned);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(User user)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "DELETE FROM [User] WHERE Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", user.Id);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public User[] ReadAll()
         {
             try
@@ -172,67 +229,39 @@ namespace Class_Library.DAL
             {
                 return null;
             }
-        }
+        }       
 
-        public bool Update(User user)
+        public string? GetSalt(User user)
         {
             try
             {
+                string salt = string.Empty;
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
-                    string sql = "UPDATE [User] SET Username = @username, Password = @password, Email = @email, UsernameColour = @usernameColour, ProfilePicture = @profilePicture, Bio = @bio, Banned = @banned WHERE Id = @id";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", user.Id);
-                        cmd.Parameters.AddWithValue("@username", user.Username);
-                        cmd.Parameters.AddWithValue("@password", user.Password);
-                        cmd.Parameters.AddWithValue("@email", user.Email);
-                        //cmd.Parameters.AddWithValue("@country", user.Country ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@usernameColour", user.UsernameColour);
-                        cmd.Parameters.AddWithValue("@profilePicture", user.ProfilePicture);
-                        cmd.Parameters.AddWithValue("@bio", user.Bio ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@banned", user.Banned);
-
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-
-                        if (result < 0) return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public bool Delete(User user)
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "DELETE FROM [User] WHERE Id = @id";
+                    string sql = "SELECT Salt FROM [User] Where Id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", user.Id);
 
                         conn.Open();
-                        int result = cmd.ExecuteNonQuery();
+                        SqlDataReader dr = cmd.ExecuteReader();
 
-                        if (result < 0) return false;
+                        if (dr.Read())
+                        {
+                            salt = dr[0].ToString();
+                        }
                     }
+
                 }
-                return true;
+                return salt;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
+
         public User? GetUserFromUsername(string username)
         {
             try
@@ -288,36 +317,6 @@ namespace Class_Library.DAL
 
                 }
                 return user;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-        public string? GetSalt(User user)
-        {
-            try
-            {
-                string salt = string.Empty;
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "SELECT Salt FROM [User] Where Id = @id";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", user.Id);
-
-                        conn.Open();
-                        SqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.Read())
-                        {
-                            salt = dr[0].ToString();
-                        }
-                    }
-
-                }
-                return salt;
             }
             catch (Exception ex)
             {

@@ -55,6 +55,7 @@
             btnGames.TabIndex = 0;
             btnGames.Text = "Games";
             btnGames.UseVisualStyleBackColor = false;
+            btnGames.Click += btnGames_Click;
             // 
             // btnSubmissions
             // 
@@ -67,6 +68,7 @@
             btnSubmissions.TabIndex = 1;
             btnSubmissions.Text = "Submissions";
             btnSubmissions.UseVisualStyleBackColor = false;
+            btnSubmissions.Click += btnSubmissions_Click;
             // 
             // btnUsers
             // 
@@ -79,6 +81,7 @@
             btnUsers.TabIndex = 2;
             btnUsers.Text = "Users";
             btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.Click += btnUsers_Click;
             // 
             // btnBans
             // 
@@ -91,6 +94,7 @@
             btnBans.TabIndex = 3;
             btnBans.Text = "Bans";
             btnBans.UseVisualStyleBackColor = false;
+            btnBans.Click += btnBans_Click;
             // 
             // btnLogout
             // 

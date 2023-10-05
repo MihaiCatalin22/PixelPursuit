@@ -32,5 +32,37 @@ namespace Individual_Project
             loginForm.ShowDialog();
             this.Close();
         }
+
+        private void btnGames_Click(object sender, EventArgs e)
+        {
+            GamesForm gamesForm = new GamesForm(loggedInUser);
+            this.Hide();
+            gamesForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnSubmissions_Click(object sender, EventArgs e)
+        {
+            SubmissionForm submissionForm = new SubmissionForm(loggedInUser);
+            this.Hide();
+            submissionForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = new UsersForm(loggedInUser);
+            this.Hide();
+            usersForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnBans_Click(object sender, EventArgs e)
+        {
+            BansForm bansForm = new BansForm(loggedInUser);
+            this.Hide();
+            bansForm.ShowDialog();
+            this.Close();
+        }
     }
 }

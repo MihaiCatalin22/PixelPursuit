@@ -28,271 +28,284 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnBans = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnSubmissions = new System.Windows.Forms.Button();
-            this.btnGames = new System.Windows.Forms.Button();
-            this.btnBan = new System.Windows.Forms.Button();
-            this.btnDetails = new System.Windows.Forms.Button();
-            this.gbFilters = new System.Windows.Forms.GroupBox();
-            this.lvUsers = new System.Windows.Forms.ListView();
-            this.lblUsers = new System.Windows.Forms.Label();
-            this.lblKeyword = new System.Windows.Forms.Label();
-            this.rbBanned = new System.Windows.Forms.RadioButton();
-            this.lblBanned = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.columnHeaderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderRegDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderBanStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbFilters.SuspendLayout();
-            this.SuspendLayout();
+            btnLogout = new Button();
+            btnBans = new Button();
+            btnBack = new Button();
+            btnSubmissions = new Button();
+            btnGames = new Button();
+            btnBan = new Button();
+            btnDetails = new Button();
+            gbFilters = new GroupBox();
+            btnClear = new Button();
+            textBox1 = new TextBox();
+            lblBanned = new Label();
+            rbBanned = new RadioButton();
+            lblKeyword = new Label();
+            lvUsers = new ListView();
+            columnHeaderID = new ColumnHeader();
+            columnHeaderUsername = new ColumnHeader();
+            columnHeaderEmail = new ColumnHeader();
+            columnHeaderRegDate = new ColumnHeader();
+            columnHeaderBanStatus = new ColumnHeader();
+            lblUsers = new Label();
+            gbFilters.SuspendLayout();
+            SuspendLayout();
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.Tomato;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(885, 12);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(135, 97);
-            this.btnLogout.TabIndex = 9;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.Tomato;
+            btnLogout.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.Location = new Point(885, 15);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(135, 121);
+            btnLogout.TabIndex = 9;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnBans
             // 
-            this.btnBans.BackColor = System.Drawing.Color.DarkCyan;
-            this.btnBans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBans.Location = new System.Drawing.Point(670, 12);
-            this.btnBans.Name = "btnBans";
-            this.btnBans.Size = new System.Drawing.Size(213, 97);
-            this.btnBans.TabIndex = 8;
-            this.btnBans.Text = "Bans";
-            this.btnBans.UseVisualStyleBackColor = false;
+            btnBans.BackColor = Color.DarkCyan;
+            btnBans.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBans.Location = new Point(670, 15);
+            btnBans.Margin = new Padding(3, 4, 3, 4);
+            btnBans.Name = "btnBans";
+            btnBans.Size = new Size(213, 121);
+            btnBans.TabIndex = 8;
+            btnBans.Text = "Bans";
+            btnBans.UseVisualStyleBackColor = false;
+            btnBans.Click += btnBans_Click;
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.Turquoise;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(12, 12);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(213, 97);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Go back";
-            this.btnBack.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.Turquoise;
+            btnBack.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(12, 15);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(213, 121);
+            btnBack.TabIndex = 7;
+            btnBack.Text = "Go back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // btnSubmissions
             // 
-            this.btnSubmissions.BackColor = System.Drawing.Color.Aqua;
-            this.btnSubmissions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmissions.Location = new System.Drawing.Point(451, 12);
-            this.btnSubmissions.Name = "btnSubmissions";
-            this.btnSubmissions.Size = new System.Drawing.Size(213, 97);
-            this.btnSubmissions.TabIndex = 6;
-            this.btnSubmissions.Text = "Submissions";
-            this.btnSubmissions.UseVisualStyleBackColor = false;
+            btnSubmissions.BackColor = Color.Aqua;
+            btnSubmissions.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSubmissions.Location = new Point(451, 15);
+            btnSubmissions.Margin = new Padding(3, 4, 3, 4);
+            btnSubmissions.Name = "btnSubmissions";
+            btnSubmissions.Size = new Size(213, 121);
+            btnSubmissions.TabIndex = 6;
+            btnSubmissions.Text = "Submissions";
+            btnSubmissions.UseVisualStyleBackColor = false;
+            btnSubmissions.Click += btnSubmissions_Click;
             // 
             // btnGames
             // 
-            this.btnGames.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGames.Location = new System.Drawing.Point(231, 12);
-            this.btnGames.Name = "btnGames";
-            this.btnGames.Size = new System.Drawing.Size(213, 97);
-            this.btnGames.TabIndex = 5;
-            this.btnGames.Text = "Games";
-            this.btnGames.UseVisualStyleBackColor = false;
+            btnGames.BackColor = Color.DeepSkyBlue;
+            btnGames.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGames.Location = new Point(231, 15);
+            btnGames.Margin = new Padding(3, 4, 3, 4);
+            btnGames.Name = "btnGames";
+            btnGames.Size = new Size(213, 121);
+            btnGames.TabIndex = 5;
+            btnGames.Text = "Games";
+            btnGames.UseVisualStyleBackColor = false;
+            btnGames.Click += btnGames_Click;
             // 
             // btnBan
             // 
-            this.btnBan.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnBan.Location = new System.Drawing.Point(39, 444);
-            this.btnBan.Name = "btnBan";
-            this.btnBan.Size = new System.Drawing.Size(139, 52);
-            this.btnBan.TabIndex = 10;
-            this.btnBan.Text = "Ban selected user";
-            this.btnBan.UseVisualStyleBackColor = false;
+            btnBan.BackColor = Color.OrangeRed;
+            btnBan.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBan.Location = new Point(39, 555);
+            btnBan.Margin = new Padding(3, 4, 3, 4);
+            btnBan.Name = "btnBan";
+            btnBan.Size = new Size(139, 65);
+            btnBan.TabIndex = 10;
+            btnBan.Text = "Ban selected user";
+            btnBan.UseVisualStyleBackColor = false;
             // 
             // btnDetails
             // 
-            this.btnDetails.BackColor = System.Drawing.Color.Turquoise;
-            this.btnDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDetails.Location = new System.Drawing.Point(39, 386);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(139, 52);
-            this.btnDetails.TabIndex = 11;
-            this.btnDetails.Text = "View details of selected user";
-            this.btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.BackColor = Color.Turquoise;
+            btnDetails.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDetails.Location = new Point(39, 482);
+            btnDetails.Margin = new Padding(3, 4, 3, 4);
+            btnDetails.Name = "btnDetails";
+            btnDetails.Size = new Size(139, 65);
+            btnDetails.TabIndex = 11;
+            btnDetails.Text = "View details of selected user";
+            btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // gbFilters
             // 
-            this.gbFilters.Controls.Add(this.btnClear);
-            this.gbFilters.Controls.Add(this.textBox1);
-            this.gbFilters.Controls.Add(this.lblBanned);
-            this.gbFilters.Controls.Add(this.rbBanned);
-            this.gbFilters.Controls.Add(this.lblKeyword);
-            this.gbFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.gbFilters.Location = new System.Drawing.Point(12, 172);
-            this.gbFilters.Name = "gbFilters";
-            this.gbFilters.Size = new System.Drawing.Size(200, 208);
-            this.gbFilters.TabIndex = 12;
-            this.gbFilters.TabStop = false;
-            this.gbFilters.Text = "Filters";
-            // 
-            // lvUsers
-            // 
-            this.lvUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderID,
-            this.columnHeaderUsername,
-            this.columnHeaderEmail,
-            this.columnHeaderRegDate,
-            this.columnHeaderBanStatus});
-            this.lvUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lvUsers.FullRowSelect = true;
-            this.lvUsers.GridLines = true;
-            this.lvUsers.HideSelection = false;
-            this.lvUsers.Location = new System.Drawing.Point(231, 194);
-            this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(667, 283);
-            this.lvUsers.TabIndex = 13;
-            this.lvUsers.UseCompatibleStateImageBehavior = false;
-            this.lvUsers.View = System.Windows.Forms.View.Details;
-            // 
-            // lblUsers
-            // 
-            this.lblUsers.AutoSize = true;
-            this.lblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblUsers.Location = new System.Drawing.Point(463, 143);
-            this.lblUsers.Name = "lblUsers";
-            this.lblUsers.Size = new System.Drawing.Size(86, 31);
-            this.lblUsers.TabIndex = 14;
-            this.lblUsers.Text = "Users";
-            // 
-            // lblKeyword
-            // 
-            this.lblKeyword.AutoSize = true;
-            this.lblKeyword.Location = new System.Drawing.Point(23, 22);
-            this.lblKeyword.Name = "lblKeyword";
-            this.lblKeyword.Size = new System.Drawing.Size(159, 20);
-            this.lblKeyword.TabIndex = 0;
-            this.lblKeyword.Text = "Keyword for search:";
-            // 
-            // rbBanned
-            // 
-            this.rbBanned.AutoSize = true;
-            this.rbBanned.Location = new System.Drawing.Point(56, 109);
-            this.rbBanned.Name = "rbBanned";
-            this.rbBanned.Size = new System.Drawing.Size(87, 24);
-            this.rbBanned.TabIndex = 1;
-            this.rbBanned.TabStop = true;
-            this.rbBanned.Text = "Banned";
-            this.rbBanned.UseVisualStyleBackColor = true;
-            // 
-            // lblBanned
-            // 
-            this.lblBanned.AutoSize = true;
-            this.lblBanned.Location = new System.Drawing.Point(53, 86);
-            this.lblBanned.Name = "lblBanned";
-            this.lblBanned.Size = new System.Drawing.Size(90, 20);
-            this.lblBanned.TabIndex = 2;
-            this.lblBanned.Text = "Ban status";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(56, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 3;
+            gbFilters.Controls.Add(btnClear);
+            gbFilters.Controls.Add(textBox1);
+            gbFilters.Controls.Add(lblBanned);
+            gbFilters.Controls.Add(rbBanned);
+            gbFilters.Controls.Add(lblKeyword);
+            gbFilters.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            gbFilters.Location = new Point(12, 215);
+            gbFilters.Margin = new Padding(3, 4, 3, 4);
+            gbFilters.Name = "gbFilters";
+            gbFilters.Padding = new Padding(3, 4, 3, 4);
+            gbFilters.Size = new Size(200, 260);
+            gbFilters.TabIndex = 12;
+            gbFilters.TabStop = false;
+            gbFilters.Text = "Filters";
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.LightYellow;
-            this.btnClear.Location = new System.Drawing.Point(42, 149);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(114, 37);
-            this.btnClear.TabIndex = 4;
-            this.btnClear.Text = "Clear filters";
-            this.btnClear.UseVisualStyleBackColor = false;
+            btnClear.BackColor = Color.LightYellow;
+            btnClear.Location = new Point(42, 186);
+            btnClear.Margin = new Padding(3, 4, 3, 4);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(114, 46);
+            btnClear.TabIndex = 4;
+            btnClear.Text = "Clear filters";
+            btnClear.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(56, 56);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 26);
+            textBox1.TabIndex = 3;
+            // 
+            // lblBanned
+            // 
+            lblBanned.AutoSize = true;
+            lblBanned.Location = new Point(53, 108);
+            lblBanned.Name = "lblBanned";
+            lblBanned.Size = new Size(90, 20);
+            lblBanned.TabIndex = 2;
+            lblBanned.Text = "Ban status";
+            // 
+            // rbBanned
+            // 
+            rbBanned.AutoSize = true;
+            rbBanned.Location = new Point(56, 136);
+            rbBanned.Margin = new Padding(3, 4, 3, 4);
+            rbBanned.Name = "rbBanned";
+            rbBanned.Size = new Size(87, 24);
+            rbBanned.TabIndex = 1;
+            rbBanned.TabStop = true;
+            rbBanned.Text = "Banned";
+            rbBanned.UseVisualStyleBackColor = true;
+            // 
+            // lblKeyword
+            // 
+            lblKeyword.AutoSize = true;
+            lblKeyword.Location = new Point(23, 28);
+            lblKeyword.Name = "lblKeyword";
+            lblKeyword.Size = new Size(159, 20);
+            lblKeyword.TabIndex = 0;
+            lblKeyword.Text = "Keyword for search:";
+            // 
+            // lvUsers
+            // 
+            lvUsers.Columns.AddRange(new ColumnHeader[] { columnHeaderID, columnHeaderUsername, columnHeaderEmail, columnHeaderRegDate, columnHeaderBanStatus });
+            lvUsers.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lvUsers.FullRowSelect = true;
+            lvUsers.GridLines = true;
+            lvUsers.Location = new Point(231, 242);
+            lvUsers.Margin = new Padding(3, 4, 3, 4);
+            lvUsers.Name = "lvUsers";
+            lvUsers.Size = new Size(667, 353);
+            lvUsers.TabIndex = 13;
+            lvUsers.UseCompatibleStateImageBehavior = false;
+            lvUsers.View = View.Details;
             // 
             // columnHeaderID
             // 
-            this.columnHeaderID.Text = "";
-            this.columnHeaderID.Width = 0;
+            columnHeaderID.Text = "";
+            columnHeaderID.Width = 0;
             // 
             // columnHeaderUsername
             // 
-            this.columnHeaderUsername.Text = "Username";
-            this.columnHeaderUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderUsername.Width = 200;
+            columnHeaderUsername.Text = "Username";
+            columnHeaderUsername.TextAlign = HorizontalAlignment.Center;
+            columnHeaderUsername.Width = 200;
             // 
             // columnHeaderEmail
             // 
-            this.columnHeaderEmail.Text = "Email";
-            this.columnHeaderEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderEmail.Width = 125;
+            columnHeaderEmail.Text = "Email";
+            columnHeaderEmail.TextAlign = HorizontalAlignment.Center;
+            columnHeaderEmail.Width = 125;
             // 
             // columnHeaderRegDate
             // 
-            this.columnHeaderRegDate.Text = "Registration date";
-            this.columnHeaderRegDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderRegDate.Width = 165;
+            columnHeaderRegDate.Text = "Registration date";
+            columnHeaderRegDate.TextAlign = HorizontalAlignment.Center;
+            columnHeaderRegDate.Width = 165;
             // 
             // columnHeaderBanStatus
             // 
-            this.columnHeaderBanStatus.Text = "Current ban status";
-            this.columnHeaderBanStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderBanStatus.Width = 175;
+            columnHeaderBanStatus.Text = "Current ban status";
+            columnHeaderBanStatus.TextAlign = HorizontalAlignment.Center;
+            columnHeaderBanStatus.Width = 175;
+            // 
+            // lblUsers
+            // 
+            lblUsers.AutoSize = true;
+            lblUsers.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsers.Location = new Point(463, 179);
+            lblUsers.Name = "lblUsers";
+            lblUsers.Size = new Size(86, 31);
+            lblUsers.TabIndex = 14;
+            lblUsers.Text = "Users";
             // 
             // UsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 553);
-            this.Controls.Add(this.lblUsers);
-            this.Controls.Add(this.lvUsers);
-            this.Controls.Add(this.gbFilters);
-            this.Controls.Add(this.btnDetails);
-            this.Controls.Add(this.btnBan);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnBans);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnSubmissions);
-            this.Controls.Add(this.btnGames);
-            this.Name = "UsersForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UsersForm";
-            this.gbFilters.ResumeLayout(false);
-            this.gbFilters.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1032, 691);
+            Controls.Add(lblUsers);
+            Controls.Add(lvUsers);
+            Controls.Add(gbFilters);
+            Controls.Add(btnDetails);
+            Controls.Add(btnBan);
+            Controls.Add(btnLogout);
+            Controls.Add(btnBans);
+            Controls.Add(btnBack);
+            Controls.Add(btnSubmissions);
+            Controls.Add(btnGames);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "UsersForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "UsersForm";
+            gbFilters.ResumeLayout(false);
+            gbFilters.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnBans;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnSubmissions;
-        private System.Windows.Forms.Button btnGames;
-        private System.Windows.Forms.Button btnBan;
-        private System.Windows.Forms.Button btnDetails;
-        private System.Windows.Forms.GroupBox gbFilters;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblBanned;
-        private System.Windows.Forms.RadioButton rbBanned;
-        private System.Windows.Forms.Label lblKeyword;
-        private System.Windows.Forms.ListView lvUsers;
-        private System.Windows.Forms.Label lblUsers;
-        private System.Windows.Forms.ColumnHeader columnHeaderID;
-        private System.Windows.Forms.ColumnHeader columnHeaderUsername;
-        private System.Windows.Forms.ColumnHeader columnHeaderEmail;
-        private System.Windows.Forms.ColumnHeader columnHeaderRegDate;
-        private System.Windows.Forms.ColumnHeader columnHeaderBanStatus;
+        private Button btnLogout;
+        private Button btnBans;
+        private Button btnBack;
+        private Button btnSubmissions;
+        private Button btnGames;
+        private Button btnBan;
+        private Button btnDetails;
+        private GroupBox gbFilters;
+        private Button btnClear;
+        private TextBox textBox1;
+        private Label lblBanned;
+        private RadioButton rbBanned;
+        private Label lblKeyword;
+        private ListView lvUsers;
+        private Label lblUsers;
+        private ColumnHeader columnHeaderID;
+        private ColumnHeader columnHeaderUsername;
+        private ColumnHeader columnHeaderEmail;
+        private ColumnHeader columnHeaderRegDate;
+        private ColumnHeader columnHeaderBanStatus;
     }
 }

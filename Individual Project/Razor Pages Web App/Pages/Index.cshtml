@@ -1,10 +1,32 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    if (ViewData["Message"] != null)
+        {
+            ViewData["Title"] = "Logged in";
+        }
+        else
+        {
+            ViewData["Title"] = "Logged out";
+        }
+        Layout = "_Layout";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (ViewData["Message"] != null)
+    {
+        <h1 class="display-4">Welcome to ~~~, <span style="color: @Model.LoggedUser.UsernameColor; font-weight:500">@Model.LoggedUser.Username</span>!</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome to ~~~! </h1>
+    }
+    <br />
+    <br />
+    <br />
+    <br />
+    <h4 class="text-center display-10">~~~Content here~~~</h4>
+
 </div>
+
+

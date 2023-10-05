@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Class_Library.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,19 @@ namespace Individual_Project
 {
     public partial class UserDetailsForm : Form
     {
-        public UserDetailsForm()
+        private User loggedInUser;
+        public UserDetailsForm(User user)
         {
             InitializeComponent();
+            loggedInUser = user;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            UsersForm usersForm = new UsersForm(loggedInUser);
+            this.Hide();
+            usersForm.ShowDialog();
+            this.Close();
         }
     }
 }

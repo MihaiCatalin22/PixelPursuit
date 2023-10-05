@@ -16,7 +16,7 @@
 				<label asp-for="Email">Email:*</label>
 			</div>
 			<div class="col col-lg-2">
-				<input type="email" asp-for="Email" class="form-control" />
+				<input type="email" autocomplete="off" asp-for="Email" class="form-control" />
 			</div>
 			<span class="text-danger" asp-validation-for="Email"></span>
 		</div>
@@ -27,7 +27,7 @@
 				<label asp-for="Username">Username:*</label>
 			</div>
 			<div class="col col-lg-2">
-				<input type="text" asp-for="Username" class="form-control" />
+				<input type="text" autocomplete="off" asp-for="Username" class="form-control" />
 			</div>
 			<span class="text-danger" asp-validation-for="Username"></span>
 		</div>

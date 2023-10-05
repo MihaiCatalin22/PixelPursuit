@@ -20,8 +20,7 @@ namespace Class_Library.Classes
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public DateOnly RegistrationDate { get; private set; }
-        //public string? Country { get; set; }
-        public string UsernameColour { get; set; }
+        public string UsernameColor { get; set; }
         public string ProfilePicture { get; set; }
         public string? Bio { get; set; }
         public bool? Banned { get; set; }
@@ -33,15 +32,14 @@ namespace Class_Library.Classes
         }
 
 
-        public User(int id, string username, string password, string email, DateOnly registrationDate, string usernameColour, string profilePicture, string bio, bool banned, bool isAdmin)
+        public User(int id, string username, string password, string email, DateOnly registrationDate, string usernameColor, string profilePicture, string bio, bool banned, bool isAdmin)
         {
             Id = id;
             Username = username;
             Password = password;
             Email = email;
             RegistrationDate = registrationDate;
-            //Country = country;
-            UsernameColour = usernameColour;
+            UsernameColor = usernameColor;
             ProfilePicture = profilePicture;
             Bio = bio;
             Banned = banned;
@@ -53,9 +51,8 @@ namespace Class_Library.Classes
             Username = username;
             Password = password;
             Email = email;
-            RegistrationDate = DateOnly.FromDateTime(DateTime.Now);
-            //Country = null;
-            UsernameColour = "#000000";
+            RegistrationDate = DateOnly.FromDateTime(DateTime.Now);           
+            UsernameColor = "#E8BCB3";
             ProfilePicture = "Default_pfp.png";
             Bio = null;
             Banned = false;
