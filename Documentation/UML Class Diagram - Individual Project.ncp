@@ -177,14 +177,14 @@
       <Entity type="Class">
         <Name>Game</Name>
         <Access>Public</Access>
-        <Location left="543" top="816" />
-        <Size width="730" height="332" />
+        <Location left="509" top="818" />
+        <Size width="780" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Game(int id, string name, string company, DateOnly releaseDate, string trailerLink, int noOfRuns, int noOfPlayers, TimeSpan bestTime, TimeSpan totalTime, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
         <Member type="Constructor">public Game(string name, string company, DateOnly releaseDate, string trailerLink, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
         <Member type="Property">public int ID { get; set; }</Member>
         <Member type="Property">public string Name { get; set; }</Member>
-        <Member type="Property">publicstring Company { get; set; }</Member>
+        <Member type="Property">public string Company { get; set; }</Member>
         <Member type="Property">public DateOnly ReleaseDate { get; set; }</Member>
         <Member type="Property">public string Genres { get; set; }</Member>
         <Member type="Property">public string Platforms { get; set; }</Member>

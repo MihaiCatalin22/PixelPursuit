@@ -9,8 +9,8 @@ namespace Class_Library.Interfaces
 {
     public interface IBanManagement
     {
-        //public bool Create(Ban ban);
-        //public Ban[] ReadAll();
-        //public Ban[] ReadAllSearch(string search);
+        public bool Create(Ban ban);
+        public Ban[] ReadAll();
+        public Ban[] ReadAllSearch(string search);
     }
 }

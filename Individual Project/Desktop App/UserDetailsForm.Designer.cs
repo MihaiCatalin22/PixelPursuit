@@ -136,6 +136,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "UserDetailsForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "User Details";
             ResumeLayout(false);
             PerformLayout();

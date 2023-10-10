@@ -1,7 +1,5 @@
 using Class_Library.Controllers;
-using Class_Library.DAL;
 using Class_Library.Classes;
-using Class_Library.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -17,17 +15,20 @@ namespace Razor_Pages_Web_App.Pages
     {
         [BindProperty]
         [Required]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "Your username or email should have at least 4 characters.")]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "Please supply a username or an email with at least 4 characters!")]
         public string LoginInfo { get; set; }
+
         [BindProperty]
         [Required]
-        [MinLength(5)]
+        [MinLength(4)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
         [BindProperty]
         public bool RememberMe { get; set; }
 
         private LoginController loginController = new();
+
         public void OnGet()
         {
         }
@@ -35,17 +36,18 @@ namespace Razor_Pages_Web_App.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             User loggedInUser = null;
-            
+
             if (LoginInfo.Contains("@"))
             {
                 loggedInUser = loginController.LoginEmail(LoginInfo, Password);
-                if(loggedInUser != null)
+                if (loggedInUser != null)
                 {
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, loggedInUser.Username),
                         new Claim(ClaimTypes.Role, "LoggedIn"),
                     };
+
                     var authProperties = new AuthenticationProperties
                     {
                         IsPersistent = RememberMe,
@@ -82,6 +84,7 @@ namespace Razor_Pages_Web_App.Pages
                     await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
 
                     return RedirectToPage("Index");
+
                 }
                 ModelState.AddModelError(string.Empty, "Wrong username or password.");
                 return Page();

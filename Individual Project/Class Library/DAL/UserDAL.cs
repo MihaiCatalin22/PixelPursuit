@@ -10,9 +10,8 @@ using Microsoft.Identity.Client;
 
 namespace Class_Library.DAL
 {
-    public class UserDAL : IUserManagement
+    public class UserDAL : BaseDAL, IUserManagement
     {
-        public string CONNECTION_STRING = "Server = mssqlstud.fhict.local; Database = dbi500157_dbind2; User Id = dbi500157_dbind2; Password = individual2023;";
         public bool Create(User user)
         {
             try
@@ -48,6 +47,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -80,6 +80,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -106,6 +107,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -134,6 +136,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -165,6 +168,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -196,6 +200,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -227,6 +232,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }       
@@ -258,6 +264,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -289,6 +296,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -320,6 +328,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
