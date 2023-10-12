@@ -31,6 +31,7 @@ namespace Razor_Pages_Web_App.Pages
 
         public void OnGet()
         {
+            
         }
 
         public async Task<IActionResult> OnPostAsync()

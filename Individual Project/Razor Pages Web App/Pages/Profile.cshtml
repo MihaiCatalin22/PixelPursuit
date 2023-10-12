@@ -1,0 +1,113 @@
+﻿@page
+@model Razor_Pages_Web_App.Pages.ProfileModel
+@{
+}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3">
+
+            <img src="~/uploads/@Model.LoggedUser.ProfilePicture" style="width: 250px; height: 250px;" class="border mb-1" />
+            <br />
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" asp-for="@Model.Image" class="form-control mb-1" accept="image/png, image/jpg, image/jpeg, image/bmp, image/gif" />
+                <input type="submit" asp-page-handler="Image" class="btn btn-success" value="Change profile picture"></input>
+            </form>
+        </div>
+
+
+        <div class="col-9">
+            <h1>My profile</h1>
+            <br />
+
+            <form method="post">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.LoggedUser.Username">Username:</label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label asp-for="@Model.LoggedUser.Username" class="form-control" disabled style="color: @Model.LoggedUser.UsernameColor; font-weight:500">@Model.LoggedUser.Username</label>
+                            <input type="color" asp-for="@Model.UsernameColor" class="form-control-color" value="@Model.LoggedUser.UsernameColor" id="colourPicker" onclick="getColour();" />
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.Email">Email:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="email" asp-for="@Model.Email" class="form-control" value="@Model.LoggedUser.Email" />
+                    </div>
+                    <span class="text-danger" asp-validation-for="@Model.Email"></span>
+                </div>
+                <br />
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.Bio">Bio:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" asp-for="@Model.Bio" class="form-control" value="@Model.LoggedUser.Bio" />
+                    </div>
+                </div>
+                <br />
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.LoggedUser.RegistrationDate">Registration date:</label>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="@Model.LoggedUser.RegistrationDate" class="form-control" disabled>@Model.LoggedUser.RegistrationDate</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="text-center mt-2">
+                        <div class="w3-show-inline-block">
+                            <input type="submit" asp-page-handler="OnPost" class="btn btn-primary" value="Save changes" />
+                            <input type="submit" asp-page-handler="Delete" class="btn btn-danger" value="Delete account" onclick="return confirmPost();" />
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@{
+    if (Model.ViewData["Error"] != null)
+    {
+        <div class="container">
+            <div class="fixed-bottom alert alert-danger alert-dismissible fade show" role="alert">
+                @Model.ViewData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+}
+
+@section Scripts {
+    <script>
+
+        function confirmPost() {
+            return confirm("Are you sure you want to delete your account? This action is permanent!");
+        }
+    </script>
+
+    <script>
+        function getColour() {
+            var colorPicker = document.getElementById("colorPicker");
+            var selectedColor = colorPicker.value;
+
+        @Model.UsernameColor = selectedColor;
+        }
+    </script>
+}
