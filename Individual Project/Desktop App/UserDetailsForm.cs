@@ -14,10 +14,21 @@ namespace Individual_Project
     public partial class UserDetailsForm : Form
     {
         private User loggedInUser;
-        public UserDetailsForm(User user)
+        private User user1;
+        public UserDetailsForm(User user, User admin)
         {
             InitializeComponent();
-            loggedInUser = user;
+            loggedInUser = admin;
+            user1 = user;
+
+            lblUsername.Text = "Username: " + user.Username;
+            lblEmail.Text = "Email: " + user.Email;
+            lblRegDate.Text = "Registration date: " + user.RegistrationDate;
+            if (user.Banned == true)
+                lblBanned.Text = "Banned";
+            else
+                lblBanned.Text = "Not banned";
+            lblBio.Text = "Bio: " + user.Bio;
         }
 
         private void btnBack_Click(object sender, EventArgs e)

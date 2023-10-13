@@ -37,9 +37,8 @@
             btnDetails = new Button();
             gbFilters = new GroupBox();
             btnClear = new Button();
-            textBox1 = new TextBox();
+            tbUsername = new TextBox();
             lblBanned = new Label();
-            rbBanned = new RadioButton();
             lblKeyword = new Label();
             lvUsers = new ListView();
             columnHeaderID = new ColumnHeader();
@@ -48,6 +47,7 @@
             columnHeaderRegDate = new ColumnHeader();
             columnHeaderBanStatus = new ColumnHeader();
             lblUsers = new Label();
+            cbBanned = new CheckBox();
             gbFilters.SuspendLayout();
             SuspendLayout();
             // 
@@ -143,10 +143,10 @@
             // 
             // gbFilters
             // 
+            gbFilters.Controls.Add(cbBanned);
             gbFilters.Controls.Add(btnClear);
-            gbFilters.Controls.Add(textBox1);
+            gbFilters.Controls.Add(tbUsername);
             gbFilters.Controls.Add(lblBanned);
-            gbFilters.Controls.Add(rbBanned);
             gbFilters.Controls.Add(lblKeyword);
             gbFilters.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             gbFilters.Location = new Point(12, 215);
@@ -168,14 +168,15 @@
             btnClear.TabIndex = 4;
             btnClear.Text = "Clear filters";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
-            // textBox1
+            // tbUsername
             // 
-            textBox1.Location = new Point(56, 56);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 26);
-            textBox1.TabIndex = 3;
+            tbUsername.Location = new Point(56, 56);
+            tbUsername.Margin = new Padding(3, 4, 3, 4);
+            tbUsername.Name = "tbUsername";
+            tbUsername.Size = new Size(100, 26);
+            tbUsername.TabIndex = 3;
             // 
             // lblBanned
             // 
@@ -185,18 +186,6 @@
             lblBanned.Size = new Size(90, 20);
             lblBanned.TabIndex = 2;
             lblBanned.Text = "Ban status";
-            // 
-            // rbBanned
-            // 
-            rbBanned.AutoSize = true;
-            rbBanned.Location = new Point(56, 136);
-            rbBanned.Margin = new Padding(3, 4, 3, 4);
-            rbBanned.Name = "rbBanned";
-            rbBanned.Size = new Size(87, 24);
-            rbBanned.TabIndex = 1;
-            rbBanned.TabStop = true;
-            rbBanned.Text = "Banned";
-            rbBanned.UseVisualStyleBackColor = true;
             // 
             // lblKeyword
             // 
@@ -260,6 +249,16 @@
             lblUsers.TabIndex = 14;
             lblUsers.Text = "Users";
             // 
+            // cbBanned
+            // 
+            cbBanned.AutoSize = true;
+            cbBanned.Location = new Point(53, 141);
+            cbBanned.Name = "cbBanned";
+            cbBanned.Size = new Size(88, 24);
+            cbBanned.TabIndex = 5;
+            cbBanned.Text = "Banned";
+            cbBanned.UseVisualStyleBackColor = true;
+            // 
             // UsersForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -296,9 +295,8 @@
         private Button btnDetails;
         private GroupBox gbFilters;
         private Button btnClear;
-        private TextBox textBox1;
+        private TextBox tbUsername;
         private Label lblBanned;
-        private RadioButton rbBanned;
         private Label lblKeyword;
         private ListView lvUsers;
         private Label lblUsers;
@@ -307,5 +305,6 @@
         private ColumnHeader columnHeaderEmail;
         private ColumnHeader columnHeaderRegDate;
         private ColumnHeader columnHeaderBanStatus;
+        private CheckBox cbBanned;
     }
 }

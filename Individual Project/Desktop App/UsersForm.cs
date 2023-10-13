@@ -1,4 +1,6 @@
 ﻿using Class_Library.Classes;
+using Class_Library.Controllers;
+using Class_Library.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,18 +17,50 @@ namespace Individual_Project
     public partial class UsersForm : Form
     {
         private User loggedInUser;
-        public UsersForm(User user)
+        private UserController userController = new(new UserDAL());
+        private List<User> users = new List<User>();
+        public UsersForm(User admin)
         {
             InitializeComponent();
-            loggedInUser = user;
-        }
+            loggedInUser = admin;
 
+            foreach (User user in userController.ReadAllUsers())
+            {
+                LoadUser(user);
+            }
+        }
+        private void LoadUser(User user)
+        {
+            ListViewItem item = new ListViewItem(user.Id.ToString());
+            item.SubItems.Add(user.Username);
+            item.SubItems.Add(user.Email);
+            item.SubItems.Add(user.RegistrationDate.ToString());
+            if (user.Banned == true)
+            {
+                item.SubItems.Add("Banned.");
+            }
+            else
+            {
+                item.SubItems.Add("Not banned.");
+            }
+            lvUsers.Items.Add(item);
+        }
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            UserDetailsForm userDetailsForm = new UserDetailsForm(loggedInUser);
-            this.Hide();
-            userDetailsForm.ShowDialog();
-            this.Close();
+            if (lvUsers.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No user has been selected.");
+            }
+            else
+            {
+                string username = lvUsers.SelectedItems[0].SubItems[1].Text;
+                User user = userController.GetUserFromUsername(username);
+                UserDetailsForm userDetailsForm = new UserDetailsForm(user, loggedInUser);
+                this.Hide();
+                userDetailsForm.ShowDialog();
+                this.Close();
+            }
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -67,6 +101,48 @@ namespace Individual_Project
             this.Hide();
             loginForm.ShowDialog();
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            lvUsers.Items.Clear();
+            if (tbUsername.Text != string.Empty || cbBanned.Checked)
+            {
+                tbUsername.Clear();
+                cbBanned.Checked = false;
+            }
+            else
+            {
+                foreach (User user in userController.ReadAllUsers())
+                {
+                    LoadUser(user);
+                }
+            }
+        }
+        private void Search()
+        {
+            lvUsers.Items.Clear();
+            string search = tbUsername.Text;
+            bool banned = cbBanned.Checked;
+
+            users = userController.ReadAllUsersSearch(search).ToList();
+            foreach(User user in users)
+            {
+                if (search != string.Empty)
+                {
+                    if (user.Banned == banned)
+                    {
+                        LoadUser(user);
+                    }
+                }
+                else
+                {
+                    if (banned == false)
+                    {
+                        LoadUser(user);
+                    }
+                }
+            }
         }
     }
 }

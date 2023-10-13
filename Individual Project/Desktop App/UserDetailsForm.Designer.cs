@@ -92,7 +92,7 @@
             // 
             lblBanned.AutoSize = true;
             lblBanned.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblBanned.Location = new Point(297, 325);
+            lblBanned.Location = new Point(268, 296);
             lblBanned.Name = "lblBanned";
             lblBanned.Size = new Size(0, 25);
             lblBanned.TabIndex = 5;
@@ -100,7 +100,7 @@
             // btnBan
             // 
             btnBan.BackColor = Color.OrangeRed;
-            btnBan.Location = new Point(347, 311);
+            btnBan.Location = new Point(358, 339);
             btnBan.Margin = new Padding(3, 4, 3, 4);
             btnBan.Name = "btnBan";
             btnBan.Size = new Size(109, 66);
@@ -111,7 +111,7 @@
             // btnBack
             // 
             btnBack.BackColor = Color.Turquoise;
-            btnBack.Location = new Point(185, 311);
+            btnBack.Location = new Point(151, 339);
             btnBack.Margin = new Padding(3, 4, 3, 4);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(109, 66);
