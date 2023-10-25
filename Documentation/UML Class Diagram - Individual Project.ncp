@@ -8,8 +8,18 @@
         <Name>User</Name>
         <Access>Public</Access>
         <Location left="1260" top="295" />
-        <Size width="774" height="298" />
+        <Size width="774" height="468" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">int Id</Member>
+        <Member type="Field">string Username</Member>
+        <Member type="Field">string Password</Member>
+        <Member type="Field">string Email</Member>
+        <Member type="Field">DateOnly RegistrationDate</Member>
+        <Member type="Field">string UsernameColor</Member>
+        <Member type="Field">string ProfilePicture</Member>
+        <Member type="Field">string? Bio</Member>
+        <Member type="Field">bool? Banned</Member>
+        <Member type="Field">bool IsAdmin</Member>
         <Member type="Constructor">public User()</Member>
         <Member type="Constructor">public User(string username, string password, string email, bool isAdmin)</Member>
         <Member type="Constructor">public User(int id, string username, string password, string email, DateOnly registrationDate, string profilePicture, string bio, bool banned, bool isAdmin)</Member>
@@ -18,6 +28,7 @@
         <Member type="Property">public string Password { get; set; }</Member>
         <Member type="Property">public string Email { get; set; }</Member>
         <Member type="Property">public DateOnly RegistrationDate { get; set; }</Member>
+        <Member type="Property">public string UsernameColor { get; set; }</Member>
         <Member type="Property">public string ProfilePicture { get; set; }</Member>
         <Member type="Property">public string Bio { get; set; }</Member>
         <Member type="Property">public bool Banned { get; set; }</Member>
@@ -47,8 +58,14 @@
         <Name>Ban</Name>
         <Access>Public</Access>
         <Location left="2248" top="322" />
-        <Size width="496" height="216" />
+        <Size width="496" height="315" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">int Id</Member>
+        <Member type="Field">DateOnly StartDate</Member>
+        <Member type="Field">DateOnly EndDate</Member>
+        <Member type="Field">string Reason</Member>
+        <Member type="Field">User User</Member>
+        <Member type="Field">Admin User</Member>
         <Member type="Constructor">public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
         <Member type="Constructor">public Ban(int id, DateOnly startDate, DateOnly endDate, string reason, User user, User admin)</Member>
         <Member type="Property">public int Id { get; set; }</Member>
@@ -62,7 +79,7 @@
       <Entity type="Class">
         <Name>BanController</Name>
         <Access>Public</Access>
-        <Location left="2857" top="310" />
+        <Location left="2861" top="440" />
         <Size width="252" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">IBanManagement banManager</Member>
@@ -75,9 +92,15 @@
       <Entity type="Class">
         <Name>Submission</Name>
         <Access>Public</Access>
-        <Location left="1395" top="738" />
-        <Size width="535" height="230" />
+        <Location left="1481" top="922" />
+        <Size width="535" height="332" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">int Id</Member>
+        <Member type="Field">User User</Member>
+        <Member type="Field">Game Game</Member>
+        <Member type="Field">DateOnly Date</Member>
+        <Member type="Field">TimeSpan TotalTime</Member>
+        <Member type="Field">EnumPlatform Platform</Member>
         <Member type="Constructor">public Submission()</Member>
         <Member type="Constructor">public Submission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform)</Member>
         <Member type="Constructor">public Submission(int id, User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform)</Member>
@@ -92,7 +115,7 @@
       <Entity type="Class">
         <Name>SubmissionController</Name>
         <Access>Public</Access>
-        <Location left="1340" top="1116" />
+        <Location left="2190" top="922" />
         <Size width="685" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public bool Create(RankedSubmission submission)</Member>
@@ -114,7 +137,7 @@
       <Entity type="Enum">
         <Name>EnumPlatform</Name>
         <Access>Public</Access>
-        <Location left="1395" top="1024" />
+        <Location left="1359" top="818" />
         <Size width="162" height="520" />
         <Collapsed>True</Collapsed>
         <Value>PC</Value>
@@ -148,9 +171,13 @@
       <Entity type="Class">
         <Name>RankedSubmission</Name>
         <Access>Public</Access>
-        <Location left="509" top="1181" />
-        <Size width="761" height="196" />
+        <Location left="1337" top="1587" />
+        <Size width="761" height="264" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">bool Approved</Member>
+        <Member type="Field">bool Pending</Member>
+        <Member type="Field">string Link</Member>
+        <Member type="Field">int Rank</Member>
         <Member type="Constructor">public RankedSubmission()</Member>
         <Member type="Constructor">public RankedSubmission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, string link, int rank)</Member>
         <Member type="Constructor">public RankedSubmission(int id, User user, DateOnly date, TimeSpan time, EnumPlatform platform, bool approved, bool pending, string link, int rank)</Member>
@@ -163,9 +190,12 @@
       <Entity type="Class">
         <Name>UnrankedSubmission</Name>
         <Access>Public</Access>
-        <Location left="2116" top="1162" />
-        <Size width="802" height="179" />
+        <Location left="2254" top="1604" />
+        <Size width="802" height="230" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">bool TAS</Member>
+        <Member type="Field">bool Glitchless</Member>
+        <Member type="Field">bool AnyPercent</Member>
         <Member type="Constructor">public UnrankedSubmission()</Member>
         <Member type="Constructor">public UnrankedSubmission(int id, User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, bool TAS, bool glitchless, bool anypercent)</Member>
         <Member type="Constructor">public UnrankedSubmission(User user, Game game, DateOnly date, TimeSpan time, EnumPlatform platform, bool TAS, bool glitchless, bool anypercent)</Member>
@@ -178,8 +208,21 @@
         <Name>Game</Name>
         <Access>Public</Access>
         <Location left="509" top="818" />
-        <Size width="780" height="332" />
+        <Size width="780" height="553" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">int ID</Member>
+        <Member type="Field">string Name</Member>
+        <Member type="Field">string Company</Member>
+        <Member type="Field">DateOnly ReleaseDate</Member>
+        <Member type="Field">string Genres</Member>
+        <Member type="Field">string Platforms</Member>
+        <Member type="Field">string TrailerLink</Member>
+        <Member type="Field">int NumberOfRuns</Member>
+        <Member type="Field">int NumberOfPlayers</Member>
+        <Member type="Field">TimeSpan BestTime</Member>
+        <Member type="Field">TimeSpan TotalTime</Member>
+        <Member type="Field">string PictureLink</Member>
+        <Member type="Field">string BackgroundPictureLink</Member>
         <Member type="Constructor">public Game(int id, string name, string company, DateOnly releaseDate, string trailerLink, int noOfRuns, int noOfPlayers, TimeSpan bestTime, TimeSpan totalTime, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
         <Member type="Constructor">public Game(string name, string company, DateOnly releaseDate, string trailerLink, string genres, string platforms, string pictureLink, string backgroundPictureLink)</Member>
         <Member type="Property">public int ID { get; set; }</Member>
@@ -235,7 +278,7 @@
       <Entity type="Class">
         <Name>GameController</Name>
         <Access>Public</Access>
-        <Location left="105" top="937" />
+        <Location left="140" top="939" />
         <Size width="304" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">iGameManagement gameManager</Member>
@@ -271,7 +314,7 @@
       <Entity type="Interface">
         <Name>IUserManagement</Name>
         <Access>Public</Access>
-        <Location left="403" top="347" />
+        <Location left="401" top="337" />
         <Size width="275" height="231" />
         <Collapsed>False</Collapsed>
         <Member type="Method">bool Create(user User)</Member>
@@ -288,7 +331,7 @@
       <Entity type="Interface">
         <Name>IBanManagement</Name>
         <Access>Public</Access>
-        <Location left="3159" top="347" />
+        <Location left="2878" top="228" />
         <Size width="215" height="113" />
         <Collapsed>False</Collapsed>
         <Member type="Method">bool Create(Ban ban)</Member>
@@ -298,7 +341,7 @@
       <Entity type="Interface">
         <Name>ISubmissionManagement</Name>
         <Access>Public</Access>
-        <Location left="1340" top="1522" />
+        <Location left="3059" top="922" />
         <Size width="690" height="282" />
         <Collapsed>False</Collapsed>
         <Member type="Method">bool Create(RankedSubmission submission)</Member>
@@ -341,7 +384,7 @@
       <Entity type="Class">
         <Name>BanDAL</Name>
         <Access>Public</Access>
-        <Location left="3522" top="347" />
+        <Location left="3182" top="425" />
         <Size width="213" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public bool Create(Ban ban)</Member>
@@ -367,11 +410,64 @@
         <Member type="Method">public User? GetUserFromId(int id)</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Class">
+        <Name>BaseDAL</Name>
+        <Access>Public</Access>
+        <Location left="3547" top="56" />
+        <Size width="318" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected const string CONNECTION_STRING = "Server = mssqlstud.fhict.local; Database = dbi500157_ind2; User Id = dbi500157_ind2; Password = individual2023;"</Member>
+        <Member type="Constructor">protected BaseDAL()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameDAL</Name>
+        <Access>Public</Access>
+        <Location left="66" top="1422" />
+        <Size width="307" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool Create(Game game)</Member>
+        <Member type="Method">public bool Update(Game game)</Member>
+        <Member type="Method">public bool Delete(Game game)</Member>
+        <Member type="Method">public Game? ReadById(int id)</Member>
+        <Member type="Method">public Game[] ReadAll()</Member>
+        <Member type="Method">public Game[] ReadOnePageByName(int page, string name)</Member>
+        <Member type="Method">public Game[] ReadAllByName(string name)</Member>
+        <Member type="Method">public Game[] ReadAllSearch(string name, string company)</Member>
+        <Member type="Method">public int GetTotalPages(int count)</Member>
+        <Member type="Method">public bool UserPlayedBefore(User user, Game game)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SubmissionDAL</Name>
+        <Access>Public</Access>
+        <Location left="2688" top="1978" />
+        <Size width="685" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public bool Create(RankedSubmission submission)</Member>
+        <Member type="Method">public bool Create(UnrankedSubmission submission)</Member>
+        <Member type="Method">public bool UpdateRanked(RankedSubmission submission)</Member>
+        <Member type="Method">public bool Delete(RankedSubmission submission)</Member>
+        <Member type="Method">public Submission[] ReadRecent(string username)</Member>
+        <Member type="Method">public Submission[] ReadRecent(int userId)</Member>
+        <Member type="Method">public UnrankedSubmission[] ReadByGame(int gameId, string username)</Member>
+        <Member type="Method">public UnrankedSubmission[] ReadByUser(int userId)</Member>
+        <Member type="Method">public RankedSubmission ReadRanked(int id)</Member>
+        <Member type="Method">public RankedSubmission[] ReadPendingAdmin(int pendingSearch, string usernameSerach, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">public RankedSubmission[] ReadApprovedAdmin(int approvedSearch, string usernameSearch, string gameSearch, string platformSearch)</Member>
+        <Member type="Method">public RankedSubmission[] ReadRankedByGame(int gameId, string username)</Member>
+        <Member type="Method">public RankedSubmission[] ReadRankedByUser(int userId)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="0">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1235</X>
+          <Y>525</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -380,6 +476,10 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2223</X>
+          <Y>485</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -388,6 +488,10 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2836</X>
+          <Y>485</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -400,51 +504,51 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="4">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1671</X>
-          <Y>1089</Y>
+          <X>2155</X>
+          <Y>967</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1671</X>
-          <Y>993</Y>
+          <X>2050</X>
+          <Y>967</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Generalization" first="7" second="5">
-        <StartOrientation>Horizontal</StartOrientation>
+        <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1295</X>
-          <Y>1268</Y>
+          <X>2035</X>
+          <Y>1517</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="8" second="5">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>2053</X>
-          <Y>1295</Y>
+          <X>2622</X>
+          <Y>1565</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>2050</X>
-          <Y>1295</Y>
+          <X>2622</X>
+          <Y>1287</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="6" second="4">
         <Label>
         </Label>
-        <StartOrientation>Vertical</StartOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1478</X>
-          <Y>994</Y>
+          <X>1546</X>
+          <Y>841</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1478</X>
-          <Y>994</Y>
+          <X>1546</X>
+          <Y>897</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="9" second="6">
@@ -452,6 +556,14 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1314</X>
+          <Y>862</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1334</X>
+          <Y>844</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="9" second="10">
         <Label>
@@ -468,6 +580,10 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>472</X>
+          <Y>1017</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -477,12 +593,12 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>375</X>
-          <Y>912</Y>
+          <X>410</X>
+          <Y>914</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>368</X>
-          <Y>766</Y>
+          <Y>702</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -490,8 +606,16 @@
       <Relationship type="Association" first="5" second="15">
         <Label>
         </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2900</X>
+          <Y>967</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3034</X>
+          <Y>967</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -501,12 +625,12 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>709</X>
-          <Y>465</Y>
+          <X>710</X>
+          <Y>401</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>703</X>
-          <Y>465</Y>
+          <X>701</X>
+          <Y>401</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -516,6 +640,10 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1455</X>
+          <Y>967</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -524,6 +652,14 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1600</X>
+          <Y>121</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>921</X>
+          <Y>95</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
@@ -546,22 +682,34 @@
       <Relationship type="Association" first="3" second="14">
         <Label>
         </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2997</X>
+          <Y>414</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2997</X>
+          <Y>378</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Realization" first="18" second="14">
-        <StartOrientation>Horizontal</StartOrientation>
+        <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>3481</X>
-          <Y>417</Y>
+          <X>3199</X>
+          <Y>399</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="19" second="13">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>376</X>
+          <Y>388</Y>
+        </BendPoint>
       </Relationship>
       <Relationship type="Association" first="19" second="16">
         <Label>
@@ -569,11 +717,79 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>501</X>
-          <Y>148</Y>
+          <X>518</X>
+          <Y>95</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="18" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3522</X>
+          <Y>134</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="19" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>96</X>
+          <Y>301</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3576</X>
+          <Y>10</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="21" second="12">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>94</X>
+          <Y>1397</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>92</X>
+          <Y>927</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="21" second="20">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>416</X>
+          <Y>1483</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3844</X>
+          <Y>192</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="22" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3411</X>
+          <Y>2022</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3499</X>
+          <Y>1377</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="22" second="20">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3617</X>
+          <Y>2039</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3906</X>
+          <Y>134</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>
