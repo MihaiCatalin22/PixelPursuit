@@ -1,4 +1,6 @@
 ﻿using Class_Library.Classes;
+using Class_Library.Controllers;
+using Class_Library.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +16,25 @@ namespace Individual_Project
     public partial class GamesForm : Form
     {
         private User loggedInUser;
+        private GameController gameController = new(new GameDAL());
+        private List<Game> games = new List<Game>();
         public GamesForm(User user)
         {
             InitializeComponent();
             loggedInUser = user;
-        }
 
+            foreach (Game game in gameController.ReadAll())
+            {
+                LoadGame(game);
+            }
+        }
+        private void LoadGame(Game game)
+        {
+            ListViewItem item = new ListViewItem(game.ID.ToString());
+            item.SubItems.Add(game.Name);
+            item.SubItems.Add(game.Company);
+            lvGames.Items.Add(item);
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
             LandingForm landingForm = new LandingForm(loggedInUser);
@@ -63,17 +78,85 @@ namespace Individual_Project
         private void btnAddGame_Click(object sender, EventArgs e)
         {
             AddGameForm addGameForm = new AddGameForm(loggedInUser);
-            this.Hide(); 
-            addGameForm.ShowDialog(); 
+            this.Hide();
+            addGameForm.ShowDialog();
             this.Close();
         }
 
         private void btnUpdateGame_Click(object sender, EventArgs e)
         {
-            UpdateGameForm updateGameForm = new UpdateGameForm(loggedInUser);
-            this.Hide();
-            updateGameForm.ShowDialog();
-            this.Close();
+            if (lvGames.SelectedIndices.Count > 0)
+            {
+                int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
+                Game game = gameController.ReadByID(index);
+
+                UpdateGameForm updateGameForm = new UpdateGameForm(loggedInUser, game);
+                this.Hide();
+                updateGameForm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No game has been selected.");
+            }
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            lvGames.Items.Clear();
+            if (tbGame.Text != string.Empty || tbDeveloper.Text != string.Empty)
+            {
+                tbGame.Clear();
+                tbDeveloper.Clear();
+            }
+            else
+            {
+                foreach (Game game in gameController.ReadAll())
+                {
+                    LoadGame(game);
+                }
+            }
+        }
+        private void Search()
+        {
+            lvGames.Items.Clear();
+            string game = tbGame.Text;
+            string company = tbDeveloper.Text;
+
+            games = gameController.ReadAllSearch(game, company).ToList();
+
+            foreach (Game g in games)
+            {
+                LoadGame(g);
+            }
+        }
+        private void tbGame_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void tbDeveloper_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void btnDeleteGame_Click(object sender, EventArgs e)
+        {
+            if (lvGames.SelectedIndices.Count > 0)
+            {
+                int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
+                gameController.Delete(gameController.ReadByID(index));
+                lvGames.Items.Clear();
+                foreach (Game game in gameController.ReadAll())
+                {
+                    LoadGame(game);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No game has been selected.");
+            }
         }
     }
 }

@@ -55,23 +55,25 @@
             // 
             // btnShowPlatformList
             // 
-            btnShowPlatformList.Location = new Point(466, 356);
+            btnShowPlatformList.Location = new Point(456, 356);
             btnShowPlatformList.Margin = new Padding(3, 4, 3, 4);
             btnShowPlatformList.Name = "btnShowPlatformList";
-            btnShowPlatformList.Size = new Size(30, 29);
+            btnShowPlatformList.Size = new Size(40, 29);
             btnShowPlatformList.TabIndex = 46;
             btnShowPlatformList.Text = "(..)";
             btnShowPlatformList.UseVisualStyleBackColor = true;
+            btnShowPlatformList.Click += btnShowPlatformList_Click;
             // 
             // btnShowGenreList
             // 
-            btnShowGenreList.Location = new Point(466, 318);
+            btnShowGenreList.Location = new Point(456, 318);
             btnShowGenreList.Margin = new Padding(3, 4, 3, 4);
             btnShowGenreList.Name = "btnShowGenreList";
-            btnShowGenreList.Size = new Size(30, 29);
+            btnShowGenreList.Size = new Size(40, 29);
             btnShowGenreList.TabIndex = 45;
             btnShowGenreList.Text = "(..)";
             btnShowGenreList.UseVisualStyleBackColor = true;
+            btnShowGenreList.Click += btnShowGenreList_Click;
             // 
             // tbPlatform
             // 
@@ -80,6 +82,7 @@
             tbPlatform.Name = "tbPlatform";
             tbPlatform.Size = new Size(231, 27);
             tbPlatform.TabIndex = 42;
+            tbPlatform.TextChanged += tbPlatform_TextChanged;
             // 
             // tbGenre
             // 
@@ -88,6 +91,7 @@
             tbGenre.Name = "tbGenre";
             tbGenre.Size = new Size(231, 27);
             tbGenre.TabIndex = 41;
+            tbGenre.TextChanged += tbGenre_TextChanged;
             // 
             // tbBKGCoverLink
             // 
@@ -96,6 +100,7 @@
             tbBKGCoverLink.Name = "tbBKGCoverLink";
             tbBKGCoverLink.Size = new Size(231, 27);
             tbBKGCoverLink.TabIndex = 40;
+            tbBKGCoverLink.TextChanged += tbBKGCoverLink_TextChanged;
             // 
             // tbCoverLink
             // 
@@ -104,6 +109,7 @@
             tbCoverLink.Name = "tbCoverLink";
             tbCoverLink.Size = new Size(231, 27);
             tbCoverLink.TabIndex = 39;
+            tbCoverLink.TextChanged += tbCoverLink_TextChanged;
             // 
             // tbTrailerLink
             // 
@@ -112,6 +118,7 @@
             tbTrailerLink.Name = "tbTrailerLink";
             tbTrailerLink.Size = new Size(231, 27);
             tbTrailerLink.TabIndex = 38;
+            tbTrailerLink.TextChanged += tbTrailerLink_TextChanged;
             // 
             // tbDeveloper
             // 
@@ -120,6 +127,7 @@
             tbDeveloper.Name = "tbDeveloper";
             tbDeveloper.Size = new Size(231, 27);
             tbDeveloper.TabIndex = 37;
+            tbDeveloper.TextChanged += tbDeveloper_TextChanged;
             // 
             // tbTitle
             // 
@@ -128,6 +136,7 @@
             tbTitle.Name = "tbTitle";
             tbTitle.Size = new Size(231, 27);
             tbTitle.TabIndex = 36;
+            tbTitle.TextChanged += tbTitle_TextChanged;
             // 
             // dtpReleaseDate
             // 
@@ -136,22 +145,24 @@
             dtpReleaseDate.Name = "dtpReleaseDate";
             dtpReleaseDate.Size = new Size(231, 27);
             dtpReleaseDate.TabIndex = 35;
+            dtpReleaseDate.ValueChanged += dtpReleaseDate_ValueChanged;
             // 
             // btnUpdateGame
             // 
             btnUpdateGame.BackColor = Color.Thistle;
-            btnUpdateGame.Location = new Point(393, 405);
+            btnUpdateGame.Location = new Point(115, 405);
             btnUpdateGame.Margin = new Padding(3, 4, 3, 4);
             btnUpdateGame.Name = "btnUpdateGame";
             btnUpdateGame.Size = new Size(103, 74);
             btnUpdateGame.TabIndex = 34;
-            btnUpdateGame.Text = "Add game";
+            btnUpdateGame.Text = "Update game";
             btnUpdateGame.UseVisualStyleBackColor = false;
+            btnUpdateGame.Click += btnUpdateGame_Click;
             // 
             // btnBack
             // 
             btnBack.BackColor = Color.DeepSkyBlue;
-            btnBack.Location = new Point(265, 405);
+            btnBack.Location = new Point(115, 405);
             btnBack.Margin = new Padding(3, 4, 3, 4);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(103, 74);
@@ -258,6 +269,7 @@
             clbGenre.Name = "clbGenre";
             clbGenre.Size = new Size(231, 92);
             clbGenre.TabIndex = 43;
+            clbGenre.SelectedIndexChanged += clbGenre_SelectedIndexChanged;
             // 
             // clbPlatform
             // 
@@ -267,6 +279,7 @@
             clbPlatform.Name = "clbPlatform";
             clbPlatform.Size = new Size(231, 92);
             clbPlatform.TabIndex = 44;
+            clbPlatform.SelectedIndexChanged += clbPlatform_SelectedIndexChanged;
             // 
             // UpdateGameForm
             // 
@@ -301,6 +314,7 @@
             Name = "UpdateGameForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Update a game";
+            Load += UpdateGameForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -35,6 +35,7 @@
             btnBack = new Button();
             lblGames = new Label();
             gbFilters = new GroupBox();
+            btnReset = new Button();
             tbDeveloper = new TextBox();
             tbGame = new TextBox();
             lblDeveloper = new Label();
@@ -126,6 +127,7 @@
             // 
             // gbFilters
             // 
+            gbFilters.Controls.Add(btnReset);
             gbFilters.Controls.Add(tbDeveloper);
             gbFilters.Controls.Add(tbGame);
             gbFilters.Controls.Add(lblDeveloper);
@@ -140,26 +142,39 @@
             gbFilters.TabStop = false;
             gbFilters.Text = "Filters";
             // 
+            // btnReset
+            // 
+            btnReset.BackColor = Color.LightYellow;
+            btnReset.Location = new Point(53, 166);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(100, 50);
+            btnReset.TabIndex = 4;
+            btnReset.Text = "Reset filters";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
+            // 
             // tbDeveloper
             // 
-            tbDeveloper.Location = new Point(53, 162);
+            tbDeveloper.Location = new Point(53, 120);
             tbDeveloper.Margin = new Padding(3, 4, 3, 4);
             tbDeveloper.Name = "tbDeveloper";
             tbDeveloper.Size = new Size(100, 27);
             tbDeveloper.TabIndex = 3;
+            tbDeveloper.TextChanged += tbDeveloper_TextChanged;
             // 
             // tbGame
             // 
-            tbGame.Location = new Point(53, 72);
+            tbGame.Location = new Point(53, 53);
             tbGame.Margin = new Padding(3, 4, 3, 4);
             tbGame.Name = "tbGame";
             tbGame.Size = new Size(100, 27);
             tbGame.TabIndex = 2;
+            tbGame.TextChanged += tbGame_TextChanged;
             // 
             // lblDeveloper
             // 
             lblDeveloper.AutoSize = true;
-            lblDeveloper.Location = new Point(55, 122);
+            lblDeveloper.Location = new Point(53, 96);
             lblDeveloper.Name = "lblDeveloper";
             lblDeveloper.Size = new Size(85, 20);
             lblDeveloper.TabIndex = 1;
@@ -185,6 +200,7 @@
             btnDeleteGame.TabIndex = 12;
             btnDeleteGame.Text = "Delete selected game";
             btnDeleteGame.UseVisualStyleBackColor = false;
+            btnDeleteGame.Click += btnDeleteGame_Click;
             // 
             // btnAddGame
             // 
@@ -293,5 +309,6 @@
         private TextBox tbGame;
         private Label lblDeveloper;
         private Label lblGame;
+        private Button btnReset;
     }
 }

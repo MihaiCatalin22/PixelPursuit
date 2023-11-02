@@ -53,29 +53,6 @@ namespace Class_Library.DAL
                 return false;
             }
         }
-        public bool Delete(Game game)
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "DELETE FROM Game WHERE Id = @id";
-                    using (SqlCommand cmd = new SqlCommand(sql,conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", game.ID);
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-                        if (result < 0) return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
         public bool Update(Game game)
         {
             try
@@ -103,6 +80,33 @@ namespace Class_Library.DAL
                         cmd.Parameters.AddWithValue("@platforms", game.Platforms);
                         cmd.Parameters.AddWithValue("@pictureLink", game.PictureLink);
                         cmd.Parameters.AddWithValue("@backgroundPictureLink", game.BackgroundPictureLink);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool Delete(Game game)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "DELETE FROM Game WHERE Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", game.ID);
 
                         conn.Open();
                         int result = cmd.ExecuteNonQuery();

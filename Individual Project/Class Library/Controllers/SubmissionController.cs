@@ -92,6 +92,11 @@ namespace Class_Library.Controllers
             }
             return false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="submission"></param>
+        /// <returns></returns>
         public int CalculateRank(RankedSubmission submission)
         {
             if (submission != null)

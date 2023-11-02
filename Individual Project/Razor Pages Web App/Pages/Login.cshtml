@@ -16,7 +16,7 @@
                 <label asp-for="LoginInfo" style="display: inline-block; margin-right: 5px;">Enter your username or email:*</label>
             </div>
             <div class="col col-lg-2">
-                <input type="text" autocomplete="off" asp-for="LoginInfo" class="form-control" />
+                <input type="text" autocomplete="off" asp-for="LoginInfo" class="form-control" required />
             </div>
             <span class="text-danger" asp-validation-for="LoginInfo"></span>
         </div>
@@ -27,7 +27,7 @@
                 <label asp-for="Password" style="display:inline-block; margin-right: 5px;">Enter your password:*</label>
             </div>
             <div class="col col-lg-2">
-                <input type="password" asp-for="Password" class="form-control" />
+                <input type="password" asp-for="Password" class="form-control" required/>
             </div>
             <span class="text-danger" asp-validation-for="Password"></span>
         </div>
