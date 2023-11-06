@@ -1,0 +1,202 @@
+﻿@page
+@using Class_Library.Classes;
+@model Razor_Pages_Web_App.Pages.GameDetailsModel
+@{
+	ViewData["Title"] = @Model.Game.Name;
+	Layout = "_Layout";
+}
+
+@if (TempData["Message"] != null)
+{
+	<div class="alert alert-danger centertext">
+		@TempData["Message"]
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+}
+
+<body style="background-image: url(@Model.Game.BackgroundPictureLink);">
+
+	<div class="grid-container">
+		<div class="item-head">
+			<h3>@Model.Game.Name (@Model.Game.ReleaseDate.Year)</h3>
+			<h6>By @Model.Game.Company</h6>
+			<h6>Platforms: @Model.Game.Platforms</h6>
+			<h6>Genres: @Model.Game.Genres</h6>
+			<h6><a href="@Model.Game.TrailerLink" class="link">Trailer link</a></h6>
+		</div>
+		<div class="item-stats">
+			<h3>Stats</h3>
+			<h6>Number of runs: @Model.Game.NumberOfRuns</h6>
+			<h6>Number of players: @Model.Game.NumberOfPlayers</h6>
+			<h6>Best time: @Model.Game.BestTime.ToString()</h6>
+			<h6>Total time: @Model.Game.TotalTime.ToString()</h6>
+		</div>
+		<div class="item-filter">
+			<h4>Filter</h4>
+			<form method="post">
+
+				<label asp-for="@Model.Type">Speedrun type:</label>
+				<select asp-for="@Model.Type" class="form-control mt-2">
+					<option value="1">Ranked</option>
+					<option value="2">Unranked</option>
+				</select>
+
+				<label asp-for="@Model.Query">Username:</label>
+				<input type="text" asp-for="@Model.Query" value="@Model.Query" class="form-control mt-2" />
+
+				<input type="submit" asp-page-handler="OnPost" asp-route-id="@Model.Game.ID" asp-route-type="@Model.Type" asp-route-query="@Model.Query" class="btn btn-light mt-2" value="Search" />
+				<input type="submit" asp-page-handler="Clear" asp-route-id="@Model.Game.ID" class="btn btn-dark" value="Clear" />
+			</form>
+		</div>
+		<div class="item-runs">
+
+			@{
+				if (Model.Type == 1)
+				{
+					if (Model.rankedSubmissions.Length > 0)
+					{
+						<div style="overflow-x:auto">
+							<table class="leaderboard">
+								<thead>
+									<tr>
+										<th>Rank</th>
+										<th>Username</th>
+										<th>Time</th>
+										<th>Date</th>
+										<th>Platform</th>
+										<th>Link</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (RankedSubmission submission in Model.rankedSubmissions)
+									{
+										<tr>
+											<td>@submission.Rank</td>
+											<td><a class="profile" href="/UserProfile?id=@submission.User.Id"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span></a></td>
+											<td>@submission.TotalTime.ToString()</td>
+											<td>@submission.Date</td>
+											<td>@submission.Platform.ToString()</td>
+											<td><a href="@submission.Link" class="link">Link</a></td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					}
+
+				}
+				else
+				{
+					if (Model.unrankedSubmissions.Length > 0)
+					{
+						<div style="overflow-x:auto">
+							<table class="leaderboard">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Time</th>
+										<th>Date</th>
+										<th>Platform</th>
+										<th>TAS</th>
+										<th>Glitchless</th>
+										<th>Any%</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (UnrankedSubmission submission in Model.unrankedSubmissions)
+									{
+										<tr>
+											<td><a class="profile" href="/UserProfile?id=@submission.User.Id"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span></a></td>
+											<td>@submission.TotalTime.ToString()</td>
+											<td>@submission.Date</td>
+											<td>@submission.Platform.ToString()</td>
+											@{
+												string tas;
+												string glitch;
+												string any;
+												if (submission.TAS)
+												{
+													tas = "True";
+												}
+												else
+												{
+													tas = "False";
+												}
+												if (submission.Glitchless)
+												{
+													glitch = "True";
+												}
+												else
+												{
+													glitch = "False";
+												}
+												if (submission.AnyPercent)
+												{
+													any = "True";
+												}
+												else
+												{
+													any = "False";
+												}
+											}
+											<td>@tas</td>
+											<td>@glitch</td>
+											<td>@any</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					}
+				}
+			}
+		</div>
+	</div>
+	@if (Model.Banned == false)
+	{
+		<div class="text-bottom-right">
+			<h3><span class="badge" style="background-color: #009578">Create Submission</span></h3>
+		</div>
+
+		<button class="rounded-button bottom-right" type="button" id="showOverlayBtn">
+			<ion-icon name="add-outline" size="large" style="color:white"></ion-icon>
+		</button>
+
+		<div class="overlay" id="overlay">
+			<div class="flex-parent jc-center">
+				<form method="post">
+					<a type="submit" asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="1" class="btn ranked">
+						<br />
+						<br />
+						Create Ranked Submission
+						<br />
+						<br />
+						<img src="~/uploads/trophy.png" width="60" height="60" class="mb-1 mt-1" />
+					</a>
+					<a type="submit" asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="0" class="btn unranked">
+						<br />
+						<br />
+						Create Unranked Submission
+						<br />
+						<br />
+						<img src="~/uploads/heart.png" width="60" height="60" class="mb-1 mt-1" />
+					</a>
+				</form>
+			</div>
+		</div>
+	}
+</body>
+
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+			$('#showOverlayBtn').click(function () {
+				$('#overlay').fadeIn();
+			});
+
+			$('.overlay').click(function () {
+				$(this).fadeOut();
+			});
+		});
+	</script>
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WjX8sVpovr8J9L64hOjau7V5DLQ0piySNnMM0H0FUsM=",
+  "Hash": "PXUORYe2aXRt4JfBNxorBpXIRhy0CkwUIl7z4DF12kY=",
   "Source": "Razor Pages Web App",
   "BasePath": "_content/Razor Pages Web App",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\SpeedrunHavenWebApp.styles.css",
+      "SourceId": "Razor Pages Web App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\",
+      "BasePath": "_content/Razor Pages Web App",
+      "RelativePath": "SpeedrunHavenWebApp.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\SpeedrunHavenWebApp.styles.css"
+    },
+    {
       "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\uploads\\Default_pfp.png",
       "SourceId": "Razor Pages Web App",
       "SourceType": "Discovered",
@@ -1120,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Default_pfp_96cb.png"
+    },
+    {
+      "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\uploads\\heart.png",
+      "SourceId": "Razor Pages Web App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\",
+      "BasePath": "_content/Razor Pages Web App",
+      "RelativePath": "uploads/heart.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\heart.png"
     },
     {
       "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\uploads\\pfp.png",
@@ -1171,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\pfp_6b80.png"
+    },
+    {
+      "Identity": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\uploads\\trophy.png",
+      "SourceId": "Razor Pages Web App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\uni\\s2\\project\\individual\\individual-assigment-semester-2\\Individual Project\\Razor Pages Web App\\wwwroot\\",
+      "BasePath": "_content/Razor Pages Web App",
+      "RelativePath": "uploads/trophy.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\trophy.png"
     }
   ]
 }

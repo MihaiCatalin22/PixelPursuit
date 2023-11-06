@@ -6,8 +6,8 @@
     <title>@ViewData["Title"] - Individual Assignment Web App</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RazorPagesWebApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/SpeedrunHavenWebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" style="color: white" asp-area="" asp-page="/Index">Main page</a>
+                            <a class="nav-link" style="color: lightskyblue" asp-area="" asp-page="/Index">Main page</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Games" asp-route-id="0">Games</a>
@@ -29,7 +29,7 @@
                         @if (ViewData["Message"] == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/Login">Login</a>
+                                <a class="nav-link" style="color: lightgreen" asp-area="" asp-page="/Login">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Register">Create Account</a>
