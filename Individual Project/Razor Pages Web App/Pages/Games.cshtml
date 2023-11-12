@@ -11,7 +11,7 @@
 	<form method="post">
 		<div class="input-group">
 			<input type="text" asp-for="@Model.SearchQuery" class="form-control" placeholder ="Search games...">
-			<input type="submit" asp-page-handler="OnPost" asp-route-id="0" class="btn btn-primary" value="Search"/>
+			<input type="submit" asp-page-handler="OnPost" asp-route-id="0" class="btn btn-success" value="Search"/>
 			<input type="submit" asp-page-handler="Clear" class="btn btn-outline-secondary" value="Clear" />
 		</div>
 	</form>
@@ -29,7 +29,7 @@
 							<h5 class="card-title">@game.Name</h5>
 						</div>
 						<div class="card-footer" style="background-color:white; border:none">
-							<a class="btn btn-primary mb-3" asp-page="./GameDetails" asp-route-id="@game.ID">More details...</a>
+							<a class="btn btn-secondary mb-3" asp-page="./GameDetails" asp-route-id="@game.ID">More details...</a>
 						</div>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 			int a = Model.ID - 1;
 			if (a == -1)
 			{
-						<li class="page-item"><a class="btn btn-dark disabled">Previous</a></li>
+						<li class="page-item"><a class="btn btn-info disabled">Previous</a></li>
 			}
 			else
 			{
@@ -69,7 +69,7 @@
 
 			if (b == Model.TotalPages)
 			{
-						<li class="page-item"><a class="btn btn-dark disabled">Next</a></li>
+						<li class="page-item"><a class="btn btn-info disabled">Next</a></li>
 			}
 			else
 			{
