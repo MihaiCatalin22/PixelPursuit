@@ -15,12 +15,12 @@ namespace UnitTest
     {
         public bool Create(Ban ban)
         {
-            try 
+            try
             {
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "INSERT INTO Ban (StartDate, EndDate, Reason, BannedUserID, AdminID) VALUES (@startDate, @endDate, @reason, @bannedUserId, @adminId)";
-                    
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@startDate", ban.StartDate.ToDateTime(TimeOnly.MinValue));
@@ -29,19 +29,22 @@ namespace UnitTest
                         cmd.Parameters.AddWithValue("@bannedUserId", ban.User.Id);
                         cmd.Parameters.AddWithValue("@adminId", ban.Admin.Id);
 
+
                         conn.Open();
                         int result = cmd.ExecuteNonQuery();
+
                         if (result < 0) return false;
                     }
+
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
                 return false;
             }
         }
+
         public Ban[] ReadAll()
         {
             try
@@ -51,44 +54,12 @@ namespace UnitTest
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
                     string sql = "SELECT * FROM Ban";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         conn.Open();
                         SqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read()) 
-                        {
-                            int userId = Convert.ToInt32(dr[4]);
-                            int adminId = Convert.ToInt32(dr[5]);
 
-                            User user = userController.GetUserFromId(userId);
-                            User admin = userController.GetUserFromId(adminId);
-
-                            bans.Add(new Ban(Convert.ToInt32(dr[0]), DateOnly.FromDateTime(Convert.ToDateTime(dr[1])), DateOnly.FromDateTime(Convert.ToDateTime(dr[2])), dr[3].ToString(), user, admin));
-                        }
-                    }
-                }
-                return bans.ToArray();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
-        }
-        public Ban[] ReadAllSearch(string search)
-        {
-            try
-            {
-                UserController userController = new UserController(new UserDAL());
-                List<Ban> bans = new();
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "SELECT * FROM Ban AS b INNER JOIN [User] AS u ON b.BannedUserId = u.Id WHERE u.Username LIKE @search";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@search", "%" + search + "%");
-                        conn.Open();
-                        SqlDataReader dr = cmd.ExecuteReader();
                         while (dr.Read())
                         {
                             int userId = Convert.ToInt32(dr[4]);
@@ -100,12 +71,49 @@ namespace UnitTest
                             bans.Add(new Ban(Convert.ToInt32(dr[0]), DateOnly.FromDateTime(Convert.ToDateTime(dr[1])), DateOnly.FromDateTime(Convert.ToDateTime(dr[2])), dr[3].ToString(), user, admin));
                         }
                     }
+
                 }
                 return bans.ToArray();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public Ban[] ReadAllSearch(string search)
+        {
+            try
+            {
+                UserController userController = new UserController(new UserDAL());
+                List<Ban> bans = new();
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "SELECT * FROM Ban AS b INNER JOIN [User] AS u ON b.BannedUserId = u.Id WHERE u.Username LIKE @search";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+                        conn.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        while (dr.Read())
+                        {
+                            int userId = Convert.ToInt32(dr[4]);
+                            int adminId = Convert.ToInt32(dr[5]);
+
+                            User user = userController.GetUserFromId(userId);
+                            User admin = userController.GetUserFromId(adminId);
+
+                            bans.Add(new Ban(Convert.ToInt32(dr[0]), DateOnly.FromDateTime(Convert.ToDateTime(dr[1])), DateOnly.FromDateTime(Convert.ToDateTime(dr[2])), dr[3].ToString(), user, admin));
+                        }
+                    }
+
+                }
+                return bans.ToArray();
+            }
+            catch (Exception ex)
+            {
                 return null;
             }
         }

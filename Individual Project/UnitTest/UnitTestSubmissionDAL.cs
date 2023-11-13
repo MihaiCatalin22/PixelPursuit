@@ -14,6 +14,7 @@ namespace UnitTest
 {
     public class UnitTestSubmissionDAL : UnitTestBaseDAL, ISubmissionManagement
     {
+        #region Create
         public bool Create(RankedSubmission submission)
         {
             try
@@ -50,7 +51,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -91,66 +91,14 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
-        public bool UpdateRanked(RankedSubmission submission)
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "UPDATE Submission SET ApprovedState = @approvedState, PendingState = @pendingState, Rank = @rank WHERE Id = @id";
 
+        #endregion
 
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", submission.Id);
-                        cmd.Parameters.AddWithValue("@approvedState", submission.Approved);
-                        cmd.Parameters.AddWithValue("@pendingState", submission.Pending);
-                        cmd.Parameters.AddWithValue("@rank", submission.Rank);
+        #region Read
 
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-
-                        if (result < 0) return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
-        public bool Delete(RankedSubmission submission)
-        {
-            try
-            {
-                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
-                {
-                    string sql = "DELETE FROM Submission WHERE Id = @id ";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", submission.Id);
-
-                        conn.Open();
-                        int result = cmd.ExecuteNonQuery();
-
-                        if (result < 0) return false;
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
         public Submission[] ReadRecent(string username)
         {
             try
@@ -194,7 +142,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new Submission[0];
             }
         }
@@ -241,7 +188,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new Submission[0];
             }
         }
@@ -292,7 +238,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new UnrankedSubmission[0];
             }
         }
@@ -342,7 +287,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new UnrankedSubmission[0];
             }
         }
@@ -393,7 +337,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -448,7 +391,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -503,7 +445,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -555,7 +496,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -607,9 +547,73 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new RankedSubmission[0];
             }
         }
+
+        #endregion
+
+        #region Update
+
+        public bool UpdateRanked(RankedSubmission submission)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "UPDATE Submission SET ApprovedState = @approvedState, PendingState = @pendingState, Rank = @rank WHERE Id = @id";
+
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", submission.Id);
+                        cmd.Parameters.AddWithValue("@approvedState", submission.Approved);
+                        cmd.Parameters.AddWithValue("@pendingState", submission.Pending);
+                        cmd.Parameters.AddWithValue("@rank", submission.Rank);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Delete
+
+        public bool Delete(RankedSubmission submission)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "DELETE FROM Submission WHERE Id = @id ";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", submission.Id);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        if (result < 0) return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

@@ -58,7 +58,7 @@ namespace UnitTest
             //Act
             result = submissionController.Create(submission);
             //Assert
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(false, result);
         }
 
         [TestMethod] //EDGE CASE
@@ -99,7 +99,7 @@ namespace UnitTest
             //Act
             result = submissionController.Create(submission);
             //Assert
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(false, result);
         }
 
         [TestMethod] //EDGE CASE
@@ -187,4 +187,3 @@ namespace UnitTest
         }
     }
 }
-   

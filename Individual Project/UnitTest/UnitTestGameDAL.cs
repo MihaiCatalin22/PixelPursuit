@@ -48,7 +48,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -90,7 +89,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -132,7 +130,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -176,7 +173,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -220,7 +216,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -265,7 +260,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return null;
             }
         }
@@ -308,7 +302,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -335,7 +328,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -361,7 +353,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return 0;
             }
         }
@@ -372,12 +363,12 @@ namespace UnitTest
             {
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
-                    string sql = "SELECT s.* FROM Game AS g INNER JOIN Submission AS s ON g.Id = s.GameID INNER JOIN [User] AS u ON s.MemberID = u.Id WHERE s.GameID = @gameId AND s.MemberID = @memberId";
+                    string sql = "SELECT s.* FROM Game AS g INNER JOIN Submission AS s ON g.Id = s.GameID INNER JOIN [User] AS u ON s.UserID = u.Id WHERE s.GameID = @gameId AND s.UserID = @userId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@gameId", game.ID);
-                        cmd.Parameters.AddWithValue("@memberId", user.Id);
+                        cmd.Parameters.AddWithValue("@userId", user.Id);
 
                         conn.Open();
                         int result = Convert.ToInt32(cmd.ExecuteScalar());
@@ -390,7 +381,6 @@ namespace UnitTest
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
         }

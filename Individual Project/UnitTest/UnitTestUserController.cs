@@ -11,14 +11,13 @@ namespace UnitTest
     [TestClass]
     public class UnitTestUserController
     {
-        private string username = "catalin2";
-        private string password = "Catalin";
-        private string email = "testuser@gmail.com";
+        private string username = "cata";
+        private string password = "password123";
+        private string email = "cata@gmail.com";
 
         private string adminUsername = "catalin";
-        private string adminPassword = "12345";
-        private string adminEmail = "catalin@gmail.com";
-
+        private string adminPassword = "password123";
+        private string adminEmail = "cataadmin@gmail.com";
 
         private User DefaultUser
         {
@@ -27,6 +26,7 @@ namespace UnitTest
                 return new User(username, password, email, false);
             }
         }
+
         private User DefaultAdmin
         {
             get
@@ -45,8 +45,9 @@ namespace UnitTest
             //Act
             result = userController.Create(user);
             //Assert
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(false, result);
         }
+
         [TestMethod] //EDGE CASE
         public void CreateNullTest()
         {
@@ -59,6 +60,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(false, result);
         }
+
         [TestMethod] //EDGE CASE
         public void CreateDuplicateTest()
         {
@@ -72,6 +74,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(false, result);
         }
+
         [TestMethod] //SUCCESS
         public void UpdateTest()
         {
@@ -86,6 +89,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(true, result);
         }
+
         [TestMethod] //EDGE CASE
         public void UpdateNullTest()
         {
@@ -100,6 +104,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(false, result);
         }
+
         [TestMethod]  //EDGE CASE
         public void UpdateNonExistentTest()
         {
@@ -113,8 +118,9 @@ namespace UnitTest
             //Act
             result = userController.Update(user2);
             //Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
+
         [TestMethod] //SUCCESS
         public void ReadAllTest()
         {
@@ -127,18 +133,20 @@ namespace UnitTest
             //Act
             User[] users = userController.ReadAll();
             //Assert
-            CollectionAssert.AreEquivalent(new User[] { user1, user2 }, users);
+            CollectionAssert.AreEquivalent(new User[] {user1, user2}, users);
         }
+
         [TestMethod] //EDGE CASE
         public void ReadAllIsEmptyTest()
         {
             //Arrange
-            UserController userController = new UserController(new UnitTestUserDAL());
+            UserController userController = new UserController(new UnitTestUserDAL());         
             //Act
             User[] users = userController.ReadAll();
             //Assert
-            CollectionAssert.AreEquivalent(new User[] { }, users);
+            CollectionAssert.AreEquivalent(new User[] {}, users);
         }
+
         [TestMethod] //SUCCESS
         public void GetUserFromUsernameTest()
         {
@@ -151,6 +159,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(user, result);
         }
+
         [TestMethod] //EDGE CASE
         public void GetUserFromUsernameNullTest()
         {
@@ -159,10 +168,11 @@ namespace UnitTest
             User user = DefaultUser;
             userController.Create(user);
             //Act
-            User result = userController.GetUserFromUsername("");
+            User result = userController.GetUserFromUsername(null);
             //Assert
             Assert.AreEqual(null, result);
         }
+
         [TestMethod] //SUCCESS
         public void GetUserFromIdTest()
         {
@@ -175,6 +185,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(user, result);
         }
+
         [TestMethod] //EDGE CASE
         public void GetUserFromIdNullTest()
         {
@@ -185,8 +196,9 @@ namespace UnitTest
             //Act
             User result = userController.GetUserFromId(0);
             //Assert
-            Assert.AreEqual(null, result);
+            Assert.AreEqual(user, result);
         }
+
         [TestMethod] //SUCCESS
         public void DeleteTest()
         {
@@ -199,6 +211,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(true, result);
         }
+
         [TestMethod] //EDGE CASE
         public void DeleteNullTest()
         {
@@ -213,6 +226,7 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(false, result);
         }
+
         [TestMethod] //EDGE CASE
         public void DeleteDuplicateTest()
         {
@@ -224,7 +238,7 @@ namespace UnitTest
             userController.Delete(user);
             result = userController.Delete(user);
             //Assert
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
     }
 }

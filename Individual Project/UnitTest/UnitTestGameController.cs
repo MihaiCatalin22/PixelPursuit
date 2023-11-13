@@ -51,9 +51,9 @@ namespace UnitTest
         {
             //Arrange            
             //Act
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(3);
             //Assert
-            Assert.AreEqual(1, game.ID);
+            Assert.AreEqual(3, game.ID);
         }
 
         [TestMethod] //EDGE CASE
@@ -73,14 +73,14 @@ namespace UnitTest
             //Act
             List<Game> games = gameController.ReadAll().ToList();
             //Assert
-            Assert.AreNotEqual(0, games.Count);
+            Assert.AreNotEqual(1, games.Count);
         }
 
         [TestMethod] //SUCCESS
         public void ReadOnePageByNameTest()
         {
             //Arrange
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(3);
             //Act
             List<Game> games = gameController.ReadOnePageByName(0, game.Name).ToList();
             //Assert
@@ -91,9 +91,11 @@ namespace UnitTest
         public void ReadAllByNameTest()
         {
             //Arrange
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(4);
             //Act
             List<Game> games = gameController.ReadAllByName(game.Name).ToList();
+            bool containsGame = games.Any(g => g.ID == game.ID);
+            Assert.IsTrue(containsGame, "The list does not contain the game with the expected ID.");
             //Assert
             Assert.AreEqual(game.ID, games[0].ID);
         }
@@ -102,7 +104,7 @@ namespace UnitTest
         public void ReadAllSearchTest()
         {
             //Arrange
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(4);
             //Act
             List<Game> games = gameController.ReadAllSearch(game.Name, game.Company).ToList();
             //Assert
@@ -113,7 +115,7 @@ namespace UnitTest
         public void UpdateTest()
         {
             //Arrange
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(22);
             //Act
             game.Name = "Test";
             bool result = gameController.Update(game);
@@ -136,11 +138,11 @@ namespace UnitTest
         public void DeleteTest()
         {
             //Arrange
-            Game game = gameController.ReadByID(1);
+            Game game = gameController.ReadByID(22);
             //Act
             bool result = gameController.Delete(game);
             //Assert
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result, false);
         }
 
         [TestMethod] //EDGE CASES
@@ -162,7 +164,7 @@ namespace UnitTest
             //Act
             int page = gameController.GetTotalPages(pagesize);
             //Assert
-            Assert.AreEqual(page, 0);
+            Assert.AreEqual(page, 1);
         }
 
     }

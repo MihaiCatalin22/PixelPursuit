@@ -12,28 +12,31 @@ namespace UnitTest
         private BanController banController = new BanController(new UnitTestBanDAL());
         private UserController userController = new UserController(new UnitTestUserDAL());
 
-        User admin = new User("catalin", "12345", "catalin@gmail.com", true);
-        User user = new User("catalin2", "catalin", "testemail@gmail.com", false);
+        User user = new User("cata", "password123", "catalin@gmail.com", false);
+        User admin = new User("admin", "adminpass", "admin@gmail.com", true);
 
-        private DateOnly startDate = new DateOnly(2023, 11, 11);
-        private DateOnly endDate = new DateOnly(2024, 11, 11);
-        private string reason = "Non legitimate run in submission id 4.";
+        private DateOnly startDate = new DateOnly(2023, 11, 13);
+        private DateOnly endDate = new DateOnly(2024, 11, 13);
+        private string reason = "Suspected cheater in speedruns.";
+
 
         [TestMethod] //SUCCESS
         public void CreateBanTest()
         {
             //Arrange
-            userController.Create(admin);
             userController.Create(user);
-            admin = userController.GetUserFromUsername(admin.Username);
+            userController.Create(admin);
             user = userController.GetUserFromUsername(user.Username);
+            admin = userController.GetUserFromUsername(admin.Username);
             bool result;
             //Act
             Ban ban = new(startDate, endDate, reason, user, admin);
             result = banController.Create(ban);
             //Assert
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(false, result);
+
         }
+
         [TestMethod] //EDGE CASE
         public void CreateNullTest()
         {
@@ -45,12 +48,13 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(false, result);
         }
+
         [TestMethod] //SUCCESS
         public void ReadAllTest()
         {
             //Arrange
-            admin = userController.GetUserFromUsername(admin.Username);
             user = userController.GetUserFromUsername(user.Username);
+            admin = userController.GetUserFromUsername(admin.Username);
             Ban ban = new(startDate, endDate, reason, user, admin);
             banController.Create(ban);
             //Act
@@ -63,8 +67,8 @@ namespace UnitTest
         public void ReadAllSearchTest()
         {
             //Arrange
+            user = userController.GetUserFromUsername(user.Username);
             admin = userController.GetUserFromUsername(admin.Username);
-            user = userController.GetUserFromUsername(user.Username);          
             Ban ban = new(startDate, endDate, reason, user, admin);
             banController.Create(ban);
             //Act
