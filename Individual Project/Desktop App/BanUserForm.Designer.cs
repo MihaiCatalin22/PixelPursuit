@@ -148,6 +148,7 @@
             btnBan.TabIndex = 10;
             btnBan.Text = "Ban user";
             btnBan.UseVisualStyleBackColor = false;
+            btnBan.Click += btnBan_Click;
             // 
             // BanUserForm
             // 

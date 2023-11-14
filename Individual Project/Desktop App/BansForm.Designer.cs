@@ -34,18 +34,18 @@
             btnSubmissions = new Button();
             btnGames = new Button();
             label1 = new Label();
-            listView1 = new ListView();
+            lvBans = new ListView();
             columnHeaderID = new ColumnHeader();
             columnHeaderUsername = new ColumnHeader();
             columnHeaderReason = new ColumnHeader();
             columnHeaderSD = new ColumnHeader();
             columnHeaderED = new ColumnHeader();
             gbFilters = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePickerDate = new DateTimePicker();
             rbEndDate = new RadioButton();
             rbStartDate = new RadioButton();
             rbNoDate = new RadioButton();
-            textBox1 = new TextBox();
+            tbUsername = new TextBox();
             lblDate = new Label();
             lblUsername = new Label();
             btnClear = new Button();
@@ -129,19 +129,19 @@
             label1.TabIndex = 10;
             label1.Text = "Bans list";
             // 
-            // listView1
+            // lvBans
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeaderID, columnHeaderUsername, columnHeaderReason, columnHeaderSD, columnHeaderED });
-            listView1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listView1.FullRowSelect = true;
-            listView1.GridLines = true;
-            listView1.Location = new Point(342, 200);
-            listView1.Margin = new Padding(3, 4, 3, 4);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(563, 450);
-            listView1.TabIndex = 11;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            lvBans.Columns.AddRange(new ColumnHeader[] { columnHeaderID, columnHeaderUsername, columnHeaderSD, columnHeaderED, columnHeaderReason });
+            lvBans.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lvBans.FullRowSelect = true;
+            lvBans.GridLines = true;
+            lvBans.Location = new Point(342, 200);
+            lvBans.Margin = new Padding(3, 4, 3, 4);
+            lvBans.Name = "lvBans";
+            lvBans.Size = new Size(563, 450);
+            lvBans.TabIndex = 11;
+            lvBans.UseCompatibleStateImageBehavior = false;
+            lvBans.View = View.Details;
             // 
             // columnHeaderID
             // 
@@ -156,29 +156,32 @@
             // 
             // columnHeaderReason
             // 
+            columnHeaderReason.DisplayIndex = 2;
             columnHeaderReason.Text = "Reason";
             columnHeaderReason.TextAlign = HorizontalAlignment.Center;
             columnHeaderReason.Width = 150;
             // 
             // columnHeaderSD
             // 
+            columnHeaderSD.DisplayIndex = 3;
             columnHeaderSD.Text = "Start Date";
             columnHeaderSD.TextAlign = HorizontalAlignment.Center;
             columnHeaderSD.Width = 120;
             // 
             // columnHeaderED
             // 
+            columnHeaderED.DisplayIndex = 4;
             columnHeaderED.Text = "End Date";
             columnHeaderED.TextAlign = HorizontalAlignment.Center;
             columnHeaderED.Width = 120;
             // 
             // gbFilters
             // 
-            gbFilters.Controls.Add(dateTimePicker1);
+            gbFilters.Controls.Add(dateTimePickerDate);
             gbFilters.Controls.Add(rbEndDate);
             gbFilters.Controls.Add(rbStartDate);
             gbFilters.Controls.Add(rbNoDate);
-            gbFilters.Controls.Add(textBox1);
+            gbFilters.Controls.Add(tbUsername);
             gbFilters.Controls.Add(lblDate);
             gbFilters.Controls.Add(lblUsername);
             gbFilters.Controls.Add(btnClear);
@@ -191,14 +194,15 @@
             gbFilters.TabStop = false;
             gbFilters.Text = "Filters";
             // 
-            // dateTimePicker1
+            // dateTimePickerDate
             // 
-            dateTimePicker1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(78, 98);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(226, 26);
-            dateTimePicker1.TabIndex = 8;
+            dateTimePickerDate.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerDate.Location = new Point(78, 98);
+            dateTimePickerDate.Margin = new Padding(3, 4, 3, 4);
+            dateTimePickerDate.Name = "dateTimePickerDate";
+            dateTimePickerDate.Size = new Size(226, 26);
+            dateTimePickerDate.TabIndex = 8;
+            dateTimePickerDate.ValueChanged += dateTimePickerDate_ValueChanged;
             // 
             // rbEndDate
             // 
@@ -239,14 +243,15 @@
             rbNoDate.Text = "No date";
             rbNoDate.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbUsername
             // 
-            textBox1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(112, 52);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 26);
-            textBox1.TabIndex = 3;
+            tbUsername.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tbUsername.Location = new Point(112, 52);
+            tbUsername.Margin = new Padding(3, 4, 3, 4);
+            tbUsername.Name = "tbUsername";
+            tbUsername.Size = new Size(100, 26);
+            tbUsername.TabIndex = 3;
+            tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // lblDate
             // 
@@ -279,6 +284,7 @@
             btnClear.TabIndex = 0;
             btnClear.Text = "Clear filters";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnUnban
             // 
@@ -291,6 +297,7 @@
             btnUnban.TabIndex = 13;
             btnUnban.Text = "Unban selected member";
             btnUnban.UseVisualStyleBackColor = false;
+            btnUnban.Click += btnUnban_Click;
             // 
             // btnBan
             // 
@@ -313,7 +320,7 @@
             Controls.Add(btnBan);
             Controls.Add(btnUnban);
             Controls.Add(gbFilters);
-            Controls.Add(listView1);
+            Controls.Add(lvBans);
             Controls.Add(label1);
             Controls.Add(btnLogout);
             Controls.Add(btnBack);
@@ -339,13 +346,13 @@
         private Button btnSubmissions;
         private Button btnGames;
         private Label label1;
-        private ListView listView1;
+        private ListView lvBans;
         private GroupBox gbFilters;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerDate;
         private RadioButton rbEndDate;
         private RadioButton rbStartDate;
         private RadioButton rbNoDate;
-        private TextBox textBox1;
+        private TextBox tbUsername;
         private Label lblDate;
         private Label lblUsername;
         private Button btnClear;

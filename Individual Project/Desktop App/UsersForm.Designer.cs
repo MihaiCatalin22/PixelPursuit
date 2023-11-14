@@ -36,6 +36,7 @@
             btnBan = new Button();
             btnDetails = new Button();
             gbFilters = new GroupBox();
+            cbBanned = new CheckBox();
             btnClear = new Button();
             tbUsername = new TextBox();
             lblBanned = new Label();
@@ -47,7 +48,6 @@
             columnHeaderRegDate = new ColumnHeader();
             columnHeaderBanStatus = new ColumnHeader();
             lblUsers = new Label();
-            cbBanned = new CheckBox();
             gbFilters.SuspendLayout();
             SuspendLayout();
             // 
@@ -127,6 +127,7 @@
             btnBan.TabIndex = 10;
             btnBan.Text = "Ban selected user";
             btnBan.UseVisualStyleBackColor = false;
+            btnBan.Click += btnBan_Click;
             // 
             // btnDetails
             // 
@@ -158,6 +159,17 @@
             gbFilters.TabStop = false;
             gbFilters.Text = "Filters";
             // 
+            // cbBanned
+            // 
+            cbBanned.AutoSize = true;
+            cbBanned.Location = new Point(53, 141);
+            cbBanned.Name = "cbBanned";
+            cbBanned.Size = new Size(88, 24);
+            cbBanned.TabIndex = 5;
+            cbBanned.Text = "Banned";
+            cbBanned.UseVisualStyleBackColor = true;
+            cbBanned.CheckedChanged += cbBanned_CheckedChanged;
+            // 
             // btnClear
             // 
             btnClear.BackColor = Color.LightYellow;
@@ -177,6 +189,7 @@
             tbUsername.Name = "tbUsername";
             tbUsername.Size = new Size(100, 26);
             tbUsername.TabIndex = 3;
+            tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // lblBanned
             // 
@@ -248,16 +261,6 @@
             lblUsers.Size = new Size(86, 31);
             lblUsers.TabIndex = 14;
             lblUsers.Text = "Users";
-            // 
-            // cbBanned
-            // 
-            cbBanned.AutoSize = true;
-            cbBanned.Location = new Point(53, 141);
-            cbBanned.Name = "cbBanned";
-            cbBanned.Size = new Size(88, 24);
-            cbBanned.TabIndex = 5;
-            cbBanned.Text = "Banned";
-            cbBanned.UseVisualStyleBackColor = true;
             // 
             // UsersForm
             // 

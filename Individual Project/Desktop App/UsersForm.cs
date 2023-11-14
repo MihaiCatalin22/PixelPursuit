@@ -126,7 +126,7 @@ namespace Individual_Project
             bool banned = cbBanned.Checked;
 
             users = userController.ReadAllUsersSearch(search).ToList();
-            foreach(User user in users)
+            foreach (User user in users)
             {
                 if (search != string.Empty)
                 {
@@ -142,6 +142,34 @@ namespace Individual_Project
                         LoadUser(user);
                     }
                 }
+            }
+        }
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void cbBanned_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void btnBan_Click(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No user has been selected.");
+            }
+            else
+            {
+                string username = lvUsers.SelectedItems[0].SubItems[1].Text;
+                User user = userController.GetUserFromUsername(username);
+
+                BanUserForm form = new BanUserForm(user, loggedInUser);
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
             }
         }
     }

@@ -140,7 +140,6 @@
             lblSubmAnnouncement.Name = "lblSubmAnnouncement";
             lblSubmAnnouncement.Size = new Size(317, 76);
             lblSubmAnnouncement.TabIndex = 1;
-            lblSubmAnnouncement.Text = "Currently, there are \"\" submissions. Review them now!";
             lblSubmAnnouncement.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnSubmAnnouncement
@@ -154,6 +153,7 @@
             btnSubmAnnouncement.TabIndex = 0;
             btnSubmAnnouncement.Text = "View new submissions";
             btnSubmAnnouncement.UseVisualStyleBackColor = false;
+            btnSubmAnnouncement.Click += btnSubmAnnouncement_Click;
             // 
             // gbBans
             // 
@@ -164,7 +164,7 @@
             gbBans.Margin = new Padding(3, 4, 3, 4);
             gbBans.Name = "gbBans";
             gbBans.Padding = new Padding(3, 4, 3, 4);
-            gbBans.Size = new Size(351, 200);
+            gbBans.Size = new Size(396, 200);
             gbBans.TabIndex = 7;
             gbBans.TabStop = false;
             gbBans.Text = "Ban Information";
@@ -173,23 +173,23 @@
             // 
             lblUsersBanned.AutoSize = true;
             lblUsersBanned.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUsersBanned.Location = new Point(21, 36);
+            lblUsersBanned.Location = new Point(20, 36);
             lblUsersBanned.Name = "lblUsersBanned";
-            lblUsersBanned.Size = new Size(324, 25);
+            lblUsersBanned.Size = new Size(0, 25);
             lblUsersBanned.TabIndex = 1;
-            lblUsersBanned.Text = "At the moment, \"\" users are banned.";
             // 
             // btnInfoBans
             // 
             btnInfoBans.BackColor = Color.DarkCyan;
             btnInfoBans.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInfoBans.Location = new Point(70, 128);
+            btnInfoBans.Location = new Point(106, 127);
             btnInfoBans.Margin = new Padding(3, 4, 3, 4);
             btnInfoBans.Name = "btnInfoBans";
             btnInfoBans.Size = new Size(212, 65);
             btnInfoBans.TabIndex = 0;
             btnInfoBans.Text = "Bans";
             btnInfoBans.UseVisualStyleBackColor = false;
+            btnInfoBans.Click += btnInfoBans_Click;
             // 
             // LandingForm
             // 

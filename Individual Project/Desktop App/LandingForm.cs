@@ -16,6 +16,8 @@ namespace Individual_Project
 {
     public partial class LandingForm : Form
     {
+        private SubmissionController submissionController = new(new SubmissionDAL());
+        private BanController banController = new(new BanDAL());
         private User loggedInUser;
         public LandingForm(User admin)
         {
@@ -23,6 +25,32 @@ namespace Individual_Project
             loggedInUser = admin;
             lblWelcome.Text = $"Welcome, {loggedInUser.Username}!";
 
+            if (submissionController.ReadPendingAdmin(1, "", "", "").Count() > 0)
+            {
+                int numberPending = submissionController.ReadPendingAdmin(1, "", "", "").Count();
+                lblSubmAnnouncement.Text = $"There are {numberPending} pending submissions! \nReview them now.";
+            }
+            else
+            {
+                lblSubmAnnouncement.Text = "There are no pending submissions at the moment.";
+            }
+
+
+            int bans = banController.ReadAll().Count();
+            if (banController.ReadAll().Count() > 0)
+            {
+                int bansActive = 0;
+                foreach (Ban ban in banController.ReadAll())
+                {
+                    if (ban.EndDate > DateOnly.FromDateTime(DateTime.Now))
+                        bansActive++;
+                }
+                lblUsersBanned.Text = $"Currently, there are {bansActive} active bans.\nThere have been {bans} bans in total until now.";
+            }
+            else
+            {
+                lblUsersBanned.Text = $"Currently, there are no active bans.\nThere have been {bans} bans in total until now.";
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -62,6 +90,22 @@ namespace Individual_Project
             BansForm bansForm = new BansForm(loggedInUser);
             this.Hide();
             bansForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnInfoBans_Click(object sender, EventArgs e)
+        {
+            BansForm bansForm = new BansForm(loggedInUser);
+            this.Hide();
+            bansForm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnSubmAnnouncement_Click(object sender, EventArgs e)
+        {
+            SubmissionForm submissionForm = new SubmissionForm(loggedInUser);
+            this.Hide();
+            submissionForm.ShowDialog();
             this.Close();
         }
     }
