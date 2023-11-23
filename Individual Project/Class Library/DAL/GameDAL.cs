@@ -80,7 +80,7 @@ namespace Class_Library.DAL
                         cmd.Parameters.AddWithValue("@platforms", game.Platforms);
                         cmd.Parameters.AddWithValue("@pictureLink", game.PictureLink);
                         cmd.Parameters.AddWithValue("@backgroundPictureLink", game.BackgroundPictureLink);
-                        Console.WriteLine($"Updating Game BestTime: Hours={game.BestTime.Hours}, Minutes={game.BestTime.Minutes}, Seconds={game.BestTime.Seconds}");
+
                         conn.Open();
                         int result = cmd.ExecuteNonQuery();
 

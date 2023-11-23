@@ -34,16 +34,13 @@ namespace Class_Library.Controllers
                 var game = new GameController(new GameDAL()).ReadByID(submission.Game.ID);
                 if (game != null)
                 {
-                    // Update TotalTime
                     game.TotalTime = game.TotalTime.Add(submission.TotalTime);
 
-                    // Check and Update BestTime
                     if (game.BestTime == TimeSpan.MaxValue || submission.TotalTime < game.BestTime)
                     {
                         game.BestTime = submission.TotalTime;
                     }
 
-                    // Update the game
                     new GameController(new GameDAL()).Update(game);
                     return true;
                 }

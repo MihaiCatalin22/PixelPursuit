@@ -13,6 +13,7 @@ namespace Class_Library.Controllers
     {
         private UserController userController = new UserController(new UserDAL());
         private BanController banController = new BanController(new BanDAL());
+    
         public User? LoginUsername(string username, string password)
         {
             foreach (User user in userController.ReadAllUsers())
