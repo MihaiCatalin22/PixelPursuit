@@ -152,39 +152,18 @@
 			}
 		</div>
 	</div>
-	@* @if (Model.Banned == false)
+	@if (Model.Banned == false)
 	{
-		<div class="text-bottom-right">
-			<h3><span class="badge" style="background-color: #009578">Create Submission</span></h3>
-		</div>
+        <div class="bottom-right">
+			<a asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="1" class="btn btn-submission btn-ranked">
+				Create Ranked Submission
+			</a>
 
-		<button class="rounded-button bottom-right" type="button" id="showOverlayBtn">
-			<ion-icon name="add-outline" size="large" style="color:white"></ion-icon>
-		</button>
-
-		<div class="overlay" id="overlay">
-			<div class="flex-parent jc-center">
-				<form method="post">
-					<a type="submit" asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="1" class="btn ranked">
-						<br />
-						<br />
-						Create Ranked Submission
-						<br />
-						<br />
-						<img src="~/uploads/trophy.png" width="60" height="60" class="mb-1 mt-1" />
-					</a>
-					<a type="submit" asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="0" class="btn unranked">
-						<br />
-						<br />
-						Create Unranked Submission
-						<br />
-						<br />
-						<img src="~/uploads/heart.png" width="60" height="60" class="mb-1 mt-1" />
-					</a>
-				</form>
-			</div>
+			<a asp-page="/CreateSubmission" asp-route-id="@Model.Game.ID" asp-route-type="0" class="btn btn-submission btn-unranked">
+				Create Unranked Submission
+			</a>
 		</div>
-	} *@
+	}
 </body>
 
 @section Scripts {

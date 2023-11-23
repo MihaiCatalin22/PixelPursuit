@@ -21,7 +21,6 @@ namespace Class_Library.Classes
         public TimeSpan TotalTime { get; set; }
         public string PictureLink { get; set; }
         public string BackgroundPictureLink { get; set; }
-
         public Game()
         {
 

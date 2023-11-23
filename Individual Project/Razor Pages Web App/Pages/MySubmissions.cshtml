@@ -1,0 +1,82 @@
+﻿@page
+@using Class_Library.Classes;
+@model Razor_Pages_Web_App.Pages.MySubmissionsModel
+@{
+}
+<h1>Submissions</h1>
+
+<div class="container">
+    <div class="row mb-3">
+        <form method="post">
+            <div class="input-group">
+
+                <label asp-for="@Model.Type">Submission type:</label>
+                <select asp-for="@Model.Type" class="form-control">
+                    <option value="0" selected>All</option>
+                    <option value="1">Ranked</option>
+                    <option value="2">Unranked</option>
+                </select>
+                <input type="submit" asp-page-handler="OnPost" asp-route-type="@Model.Type" class="btn btn-primary" value="Search" />
+                <input type="submit" asp-page-handler="Clear" class="btn btn-danger" value="Clear" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <table class="table table-striped table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Platform</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>More details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model.submissions)
+                {
+                    <tr>
+                        <td>@item.Game.Name</td>
+                        <td>@item.Platform</td>
+                        <td>@item.Date.ToShortDateString()</td>
+                        <td>@item.TotalTime.ToString()</td>
+                        @{
+                            if (Model.subCont.ReadRanked(item.Id) != null)
+                            {
+                                RankedSubmission r = Model.subCont.ReadRanked(item.Id);
+                                <td>
+                                    <p>Rank: @r.Rank</p>
+                                    <p><a href="@r.Link">Link</a></p>
+                                    @{
+                                        string status;
+                                        if (@r.Approved == true)
+                                        {
+                                            status = "Approved";
+                                        }
+                                        else if (@r.Pending == true)
+                                        {
+                                            status = "Pending";
+                                        }
+                                        else
+                                        {
+                                            status = "Rejected";
+                                        }
+                                        <p>@status</p>
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                <td>N/A</td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>

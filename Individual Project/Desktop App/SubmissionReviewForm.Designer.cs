@@ -145,6 +145,7 @@
             btnApprove.TabIndex = 9;
             btnApprove.Text = "Approve this submission";
             btnApprove.UseVisualStyleBackColor = false;
+            btnApprove.Click += btnApprove_Click;
             // 
             // btnDeny
             // 
@@ -157,6 +158,7 @@
             btnDeny.TabIndex = 10;
             btnDeny.Text = "Deny this submission";
             btnDeny.UseVisualStyleBackColor = false;
+            btnDeny.Click += btnDeny_Click;
             // 
             // SubmissionReviewForm
             // 

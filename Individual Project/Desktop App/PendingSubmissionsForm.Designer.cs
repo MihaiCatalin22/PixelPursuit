@@ -84,6 +84,7 @@
             tbPlatform.Name = "tbPlatform";
             tbPlatform.Size = new Size(123, 26);
             tbPlatform.TabIndex = 8;
+            tbPlatform.TextChanged += tbPlatform_TextChanged;
             // 
             // lblPlatform
             // 
@@ -104,6 +105,7 @@
             btnClear.TabIndex = 6;
             btnClear.Text = "Clear filters";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // tbGenre
             // 
@@ -112,6 +114,7 @@
             tbGenre.Name = "tbGenre";
             tbGenre.Size = new Size(123, 26);
             tbGenre.TabIndex = 5;
+            tbGenre.TextChanged += tbGenre_TextChanged;
             // 
             // tbGame
             // 
@@ -120,6 +123,7 @@
             tbGame.Name = "tbGame";
             tbGame.Size = new Size(123, 26);
             tbGame.TabIndex = 4;
+            tbGame.TextChanged += tbGame_TextChanged;
             // 
             // tbUsername
             // 
@@ -128,6 +132,7 @@
             tbUsername.Name = "tbUsername";
             tbUsername.Size = new Size(123, 26);
             tbUsername.TabIndex = 3;
+            tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // lblGenre
             // 
@@ -216,6 +221,7 @@
             btnReviewSubmission.TabIndex = 27;
             btnReviewSubmission.Text = "Review selected submission";
             btnReviewSubmission.UseVisualStyleBackColor = false;
+            btnReviewSubmission.Click += btnReviewSubmission_Click;
             // 
             // btnAllSubmissions
             // 

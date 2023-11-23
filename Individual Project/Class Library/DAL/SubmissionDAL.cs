@@ -42,6 +42,24 @@ namespace Class_Library.DAL
                         int result = cmd.ExecuteNonQuery();
 
                         if (result < 0) return false;
+
+                        if (result > 0)
+                        {
+                            GameDAL gameDAL = new GameDAL();
+                            Game game = gameDAL.ReadById(submission.Game.ID);
+                            if (game != null)
+                            {
+                                game.TotalTime = game.TotalTime.Add(submission.TotalTime);
+                                if (game.BestTime > submission.TotalTime || game.BestTime == TimeSpan.Zero)
+                                {
+                                    game.BestTime = submission.TotalTime;
+                                }
+
+                                game.NumberOfRuns++;
+
+                                gameDAL.Update(game);
+                            }
+                        }
                     }
 
                 }
@@ -83,6 +101,24 @@ namespace Class_Library.DAL
                         int result = cmd.ExecuteNonQuery();
 
                         if (result < 0) return false;
+
+                        if (result > 0)
+                        {
+                            GameDAL gameDAL = new GameDAL();
+                            Game game = gameDAL.ReadById(submission.Game.ID);
+                            if (game != null)
+                            {
+                                game.TotalTime = game.TotalTime.Add(submission.TotalTime);
+                                if (game.BestTime > submission.TotalTime || game.BestTime == TimeSpan.Zero)
+                                {
+                                    game.BestTime = submission.TotalTime;
+                                }
+
+                                game.NumberOfRuns++;
+
+                                gameDAL.Update(game);
+                            }
+                        }
                     }
 
                 }

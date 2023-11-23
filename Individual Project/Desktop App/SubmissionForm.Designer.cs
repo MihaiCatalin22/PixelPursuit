@@ -48,10 +48,8 @@
             tbPlatform = new TextBox();
             lblPlatform = new Label();
             btnClear = new Button();
-            tbGenre = new TextBox();
             tbGame = new TextBox();
             tbUsername = new TextBox();
-            lblGenre = new Label();
             lblGame = new Label();
             lblUsername = new Label();
             gbFilters.SuspendLayout();
@@ -156,17 +154,18 @@
             btnDelSubmission.TabIndex = 17;
             btnDelSubmission.Text = "Delete selected submission";
             btnDelSubmission.UseVisualStyleBackColor = false;
+            btnDelSubmission.Click += btnDelSubmission_Click;
             // 
             // lvSubmissions
             // 
-            lvSubmissions.Columns.AddRange(new ColumnHeader[] { columnHeaderID, columnHeaderUsername, columnHeaderGame, columnHeaderPlatform, columnHeaderDate, columnHeaderTime, columnHeaderRank });
+            lvSubmissions.Columns.AddRange(new ColumnHeader[] { columnHeaderID, columnHeaderRank, columnHeaderUsername, columnHeaderGame, columnHeaderPlatform, columnHeaderDate, columnHeaderTime });
             lvSubmissions.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lvSubmissions.FullRowSelect = true;
             lvSubmissions.GridLines = true;
             lvSubmissions.Location = new Point(232, 228);
             lvSubmissions.Margin = new Padding(3, 4, 3, 4);
             lvSubmissions.Name = "lvSubmissions";
-            lvSubmissions.Size = new Size(678, 372);
+            lvSubmissions.Size = new Size(679, 372);
             lvSubmissions.TabIndex = 18;
             lvSubmissions.UseCompatibleStateImageBehavior = false;
             lvSubmissions.View = View.Details;
@@ -178,36 +177,42 @@
             // 
             // columnHeaderUsername
             // 
+            columnHeaderUsername.DisplayIndex = 1;
             columnHeaderUsername.Text = "Username";
             columnHeaderUsername.TextAlign = HorizontalAlignment.Center;
             columnHeaderUsername.Width = 130;
             // 
             // columnHeaderGame
             // 
+            columnHeaderGame.DisplayIndex = 2;
             columnHeaderGame.Text = "Game";
             columnHeaderGame.TextAlign = HorizontalAlignment.Center;
             columnHeaderGame.Width = 150;
             // 
             // columnHeaderPlatform
             // 
+            columnHeaderPlatform.DisplayIndex = 3;
             columnHeaderPlatform.Text = "Platform";
             columnHeaderPlatform.TextAlign = HorizontalAlignment.Center;
             columnHeaderPlatform.Width = 100;
             // 
             // columnHeaderDate
             // 
+            columnHeaderDate.DisplayIndex = 4;
             columnHeaderDate.Text = "Date";
             columnHeaderDate.TextAlign = HorizontalAlignment.Center;
             columnHeaderDate.Width = 100;
             // 
             // columnHeaderTime
             // 
+            columnHeaderTime.DisplayIndex = 5;
             columnHeaderTime.Text = "Total Time";
             columnHeaderTime.TextAlign = HorizontalAlignment.Center;
             columnHeaderTime.Width = 120;
             // 
             // columnHeaderRank
             // 
+            columnHeaderRank.DisplayIndex = 6;
             columnHeaderRank.Text = "Rank";
             columnHeaderRank.TextAlign = HorizontalAlignment.Center;
             columnHeaderRank.Width = 75;
@@ -217,34 +222,33 @@
             gbFilters.Controls.Add(tbPlatform);
             gbFilters.Controls.Add(lblPlatform);
             gbFilters.Controls.Add(btnClear);
-            gbFilters.Controls.Add(tbGenre);
             gbFilters.Controls.Add(tbGame);
             gbFilters.Controls.Add(tbUsername);
-            gbFilters.Controls.Add(lblGenre);
             gbFilters.Controls.Add(lblGame);
             gbFilters.Controls.Add(lblUsername);
             gbFilters.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            gbFilters.Location = new Point(26, 170);
+            gbFilters.Location = new Point(26, 228);
             gbFilters.Margin = new Padding(3, 4, 3, 4);
             gbFilters.Name = "gbFilters";
             gbFilters.Padding = new Padding(3, 4, 3, 4);
-            gbFilters.Size = new Size(200, 375);
+            gbFilters.Size = new Size(200, 322);
             gbFilters.TabIndex = 19;
             gbFilters.TabStop = false;
             gbFilters.Text = "Filters";
             // 
             // tbPlatform
             // 
-            tbPlatform.Location = new Point(37, 269);
+            tbPlatform.Location = new Point(37, 205);
             tbPlatform.Margin = new Padding(3, 4, 3, 4);
             tbPlatform.Name = "tbPlatform";
             tbPlatform.Size = new Size(123, 26);
             tbPlatform.TabIndex = 8;
+            tbPlatform.TextChanged += tbPlatform_TextChanged;
             // 
             // lblPlatform
             // 
             lblPlatform.AutoSize = true;
-            lblPlatform.Location = new Point(33, 240);
+            lblPlatform.Location = new Point(37, 181);
             lblPlatform.Name = "lblPlatform";
             lblPlatform.Size = new Size(77, 20);
             lblPlatform.TabIndex = 7;
@@ -253,21 +257,14 @@
             // btnClear
             // 
             btnClear.BackColor = Color.LightYellow;
-            btnClear.Location = new Point(37, 312);
+            btnClear.Location = new Point(37, 262);
             btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(123, 42);
             btnClear.TabIndex = 6;
             btnClear.Text = "Clear filters";
             btnClear.UseVisualStyleBackColor = false;
-            // 
-            // tbGenre
-            // 
-            tbGenre.Location = new Point(37, 204);
-            tbGenre.Margin = new Padding(3, 4, 3, 4);
-            tbGenre.Name = "tbGenre";
-            tbGenre.Size = new Size(123, 26);
-            tbGenre.TabIndex = 5;
+            btnClear.Click += btnClear_Click;
             // 
             // tbGame
             // 
@@ -276,6 +273,7 @@
             tbGame.Name = "tbGame";
             tbGame.Size = new Size(123, 26);
             tbGame.TabIndex = 4;
+            tbGame.TextChanged += tbGame_TextChanged;
             // 
             // tbUsername
             // 
@@ -284,15 +282,7 @@
             tbUsername.Name = "tbUsername";
             tbUsername.Size = new Size(123, 26);
             tbUsername.TabIndex = 3;
-            // 
-            // lblGenre
-            // 
-            lblGenre.AutoSize = true;
-            lblGenre.Location = new Point(33, 175);
-            lblGenre.Name = "lblGenre";
-            lblGenre.Size = new Size(60, 20);
-            lblGenre.TabIndex = 2;
-            lblGenre.Text = "Genre:";
+            tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // lblGame
             // 
@@ -353,12 +343,10 @@
         private Button btnClear;
         private TextBox tbGame;
         private TextBox tbUsername;
-        private Label lblGenre;
         private Label lblGame;
         private Label lblUsername;
         private TextBox tbPlatform;
         private Label lblPlatform;
-        private TextBox tbGenre;
         private ColumnHeader columnHeaderID;
         private ColumnHeader columnHeaderUsername;
         private ColumnHeader columnHeaderGame;

@@ -1,4 +1,5 @@
 ﻿using Class_Library.Classes;
+using Class_Library.DAL;
 using Class_Library.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,25 @@ namespace Class_Library.Controllers
         }
         public bool Create(UnrankedSubmission submission)
         {
-            if (submission != null)
-                return submissionManager.Create(submission);
+            if (submission != null && submissionManager.Create(submission))
+            {
+                var game = new GameController(new GameDAL()).ReadByID(submission.Game.ID);
+                if (game != null)
+                {
+                    // Update TotalTime
+                    game.TotalTime = game.TotalTime.Add(submission.TotalTime);
+
+                    // Check and Update BestTime
+                    if (game.BestTime == TimeSpan.MaxValue || submission.TotalTime < game.BestTime)
+                    {
+                        game.BestTime = submission.TotalTime;
+                    }
+
+                    // Update the game
+                    new GameController(new GameDAL()).Update(game);
+                    return true;
+                }
+            }
             return false;
         }
         public Submission[] ReadRecent(string username)
