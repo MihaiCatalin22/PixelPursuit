@@ -34,22 +34,20 @@ namespace Individual_Project
             {
                 lblSubmAnnouncement.Text = "There are no pending submissions at the moment.";
             }
+          
+            var allBans = banController.ReadAll();
 
+            int totalBans = allBans.Length;
 
-            int bans = banController.ReadAll().Count();
-            if (banController.ReadAll().Count() > 0)
+            int activeBans = allBans.Count(ban => ban.IsActive && ban.EndDate > DateOnly.FromDateTime(DateTime.Now));
+
+            if (activeBans > 0)
             {
-                int bansActive = 0;
-                foreach (Ban ban in banController.ReadAll())
-                {
-                    if (ban.EndDate > DateOnly.FromDateTime(DateTime.Now))
-                        bansActive++;
-                }
-                lblUsersBanned.Text = $"Currently, there are {bansActive} active bans.\nThere have been {bans} bans in total until now.";
+                lblUsersBanned.Text = $"Currently, there are {activeBans} active bans.\nThere have been {totalBans} bans in total until now.";
             }
             else
             {
-                lblUsersBanned.Text = $"Currently, there are no active bans.\nThere have been {bans} bans in total until now.";
+                lblUsersBanned.Text = $"Currently, there are no active bans.\nThere have been {totalBans} bans in total until now.";
             }
         }
 

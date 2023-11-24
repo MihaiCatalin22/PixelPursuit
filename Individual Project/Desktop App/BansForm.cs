@@ -109,7 +109,7 @@ namespace Individual_Project
                 startDate = false;
             }
             lvBans.Items.Clear();
-
+            bans.Clear();
             foreach (Ban ban in banController.ReadAllSearch(search))
             {
                 if (noDate)
@@ -168,21 +168,25 @@ namespace Individual_Project
             if (lvBans.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select a banned user.");
+                return;
+            }
+
+            string username = lvBans.SelectedItems[0].SubItems[1].Text;
+            User user = userController.GetUserFromUsername(username);
+
+            if (banController.UnbanUser(user))
+            {
+                MessageBox.Show("User has been unbanned successfully.");
+
+                lvBans.Items.Clear();
+                foreach (Ban ban in banController.ReadAll())
+                {
+                    LoadBan(ban);
+                }
             }
             else
             {
-                string username = lvBans.SelectedItems[0].SubItems[1].Text;
-                User user = userController.GetUserFromUsername(username);
-                user.Banned = false;
-                if (userController.Update(user))
-                {
-                    MessageBox.Show("User has been unbanned succesfully.");
-                    lvBans.Items.Clear();
-                    foreach (Ban ban in banController.ReadAll())
-                    {
-                        LoadBan(ban);
-                    }
-                }
+                MessageBox.Show("Unable to unban the user. Please check if the user is currently banned or try again later.");
             }
         }
     }

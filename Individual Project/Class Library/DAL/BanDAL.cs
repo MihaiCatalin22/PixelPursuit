@@ -20,18 +20,18 @@ namespace Class_Library.DAL
 			{
 				using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
 				{
-					string sql = "INSERT INTO Ban (StartDate, EndDate, Reason, BannedUserID, AdminID) VALUES (@startDate, @endDate, @reason, @bannedUserId, @adminId)";
+                    string sql = "INSERT INTO Ban (StartDate, EndDate, Reason, BannedUserID, AdminID, IsActive) VALUES (@startDate, @endDate, @reason, @bannedUserId, @adminId, @isActive)";
 
-					using (SqlCommand cmd = new SqlCommand(sql, conn))
-					{
-						cmd.Parameters.AddWithValue("@startDate", ban.StartDate.ToDateTime(TimeOnly.MinValue));
-						cmd.Parameters.AddWithValue("@endDate", ban.EndDate.ToDateTime(TimeOnly.MinValue));
-						cmd.Parameters.AddWithValue("@reason", ban.Reason);
-						cmd.Parameters.AddWithValue("@bannedUserId", ban.User.Id);
-						cmd.Parameters.AddWithValue("@adminId", ban.Admin.Id);
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@startDate", ban.StartDate.ToDateTime(TimeOnly.MinValue));
+                        cmd.Parameters.AddWithValue("@endDate", ban.EndDate.ToDateTime(TimeOnly.MinValue));
+                        cmd.Parameters.AddWithValue("@reason", ban.Reason);
+                        cmd.Parameters.AddWithValue("@bannedUserId", ban.User.Id);
+                        cmd.Parameters.AddWithValue("@adminId", ban.Admin.Id);
+                        cmd.Parameters.AddWithValue("@isActive", true);
 
-
-						conn.Open();
+                        conn.Open();
 						int result = cmd.ExecuteNonQuery();
 
 						if (result < 0) return false;
@@ -63,14 +63,19 @@ namespace Class_Library.DAL
 
 						while (dr.Read())
 						{
-							int userId = Convert.ToInt32(dr[4]);
-							int adminId = Convert.ToInt32(dr[5]);
+                            int id = dr.GetInt32(0);
+                            DateOnly startDate = DateOnly.FromDateTime(dr.GetDateTime(1));
+                            DateOnly endDate = DateOnly.FromDateTime(dr.GetDateTime(2));
+                            string reason = dr.GetString(3);
+                            int userId = dr.GetInt32(4);
+                            int adminId = dr.GetInt32(5);
+                            bool isActive = dr.GetBoolean(6);
 
-							User user = userController.GetUserFromId(userId);
-							User admin = userController.GetUserFromId(adminId);
+                            User user = userController.GetUserFromId(userId);
+                            User admin = userController.GetUserFromId(adminId);
 
-							bans.Add(new Ban(Convert.ToInt32(dr[0]), DateOnly.FromDateTime(Convert.ToDateTime(dr[1])), DateOnly.FromDateTime(Convert.ToDateTime(dr[2])), dr[3].ToString(), user, admin));
-						}
+                            bans.Add(new Ban(id, startDate, endDate, reason, user, admin, isActive));
+                        }
 					}
 
 				}
@@ -100,14 +105,19 @@ namespace Class_Library.DAL
 
 						while (dr.Read())
 						{
-							int userId = Convert.ToInt32(dr[4]);
-							int adminId = Convert.ToInt32(dr[5]);
+                            int id = dr.GetInt32(0);
+                            DateOnly startDate = DateOnly.FromDateTime(dr.GetDateTime(1));
+                            DateOnly endDate = DateOnly.FromDateTime(dr.GetDateTime(2));
+                            string reason = dr.GetString(3);
+                            int userId = dr.GetInt32(4);
+                            int adminId = dr.GetInt32(5);
+                            bool isActive = dr.GetBoolean(6);
 
-							User user = userController.GetUserFromId(userId);
-							User admin = userController.GetUserFromId(adminId);
+                            User user = userController.GetUserFromId(userId);
+                            User admin = userController.GetUserFromId(adminId);
 
-							bans.Add(new Ban(Convert.ToInt32(dr[0]), DateOnly.FromDateTime(Convert.ToDateTime(dr[1])), DateOnly.FromDateTime(Convert.ToDateTime(dr[2])), dr[3].ToString(), user, admin));
-						}
+                            bans.Add(new Ban(id, startDate, endDate, reason, user, admin, isActive));
+                        }
 					}
 
 				}
@@ -116,6 +126,57 @@ namespace Class_Library.DAL
 			catch (Exception ex)
 			{
 				return null;
+			}
+		}
+		public bool Update(Ban ban)
+		{
+			try
+			{
+				using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+				{
+					string sql = "UPDATE Ban SET IsActive = @isActive WHERE Id = @banId";
+
+					using (SqlCommand cmd = new SqlCommand(sql, conn))
+					{
+						cmd.Parameters.AddWithValue("@isActive", ban.IsActive);
+						cmd.Parameters.AddWithValue("@banId", ban.Id);
+
+						conn.Open();
+						int result = cmd.ExecuteNonQuery();
+                        Console.WriteLine("Updated rows: " + result);
+                        return result > 0;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+                Console.WriteLine("Exception in UpdateBan: " + ex.Message);
+                return false;
+			}
+		}
+		public bool Delete(Ban ban)
+		{
+			try
+			{
+				using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+				{
+					string sql = "DELETE FROM Ban WHERE Id = @banId";
+
+					using (SqlCommand cmd = new SqlCommand(sql, conn))
+					{
+						cmd.Parameters.AddWithValue("@banId", ban.Id);
+
+						conn.Open();
+						int result = cmd.ExecuteNonQuery();
+
+						return result > 0;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				return false;
 			}
 		}
 	}

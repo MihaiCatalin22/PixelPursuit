@@ -12,5 +12,7 @@ namespace Class_Library.Interfaces
         public bool Create(Ban ban);
         public Ban[] ReadAll();
         public Ban[] ReadAllSearch(string search);
+        public bool Update(Ban ban);
+        public bool Delete(Ban ban);
     }
 }

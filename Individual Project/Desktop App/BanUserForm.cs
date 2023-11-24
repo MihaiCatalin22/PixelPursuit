@@ -59,16 +59,19 @@ namespace Individual_Project
 
         private void btnBan_Click(object sender, EventArgs e)
         {
-            if (cbUsers.SelectedIndex != -1 && dtpSD.Value >= DateTime.Now && dtpED.Value > DateTime.Now && tbReason.Text != string.Empty)
+            if (cbUsers.SelectedIndex != -1 &&
+                dtpSD.Value.Date >= DateTime.Today && 
+                dtpED.Value.Date > DateTime.Today &&
+               !string.IsNullOrEmpty(tbReason.Text))
             {
                 User userToBan = userController.GetUserFromUsername(cbUsers.SelectedItem.ToString());
                 DateOnly startDate = DateOnly.FromDateTime(dtpSD.Value);
                 DateOnly endDate = DateOnly.FromDateTime(dtpED.Value);
                 string reason = tbReason.Text;
-                Ban ban = new(startDate, endDate, reason, userToBan, loggedInUser);
+                Ban ban = new Ban(startDate, endDate, reason, userToBan, loggedInUser, true);
                 if (banController.Create(ban))
                 {
-                    MessageBox.Show("User was succesfully banned.");
+                    MessageBox.Show("User was successfully banned.");
                     btnBack_Click(sender, e);
                 }
                 else

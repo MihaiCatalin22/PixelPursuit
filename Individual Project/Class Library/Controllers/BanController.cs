@@ -44,14 +44,23 @@ namespace Class_Library.Controllers
 
         public bool UnbanUser(User user)
         {
-            foreach (Ban ban in ReadAllSearch(user.Username))
+            var activeBan = ReadAllSearch(user.Username).FirstOrDefault(b => b.User.Id == user.Id && b.IsActive);
+
+            if (activeBan != null)
             {
-                if (ban.User == user && ban.EndDate < DateOnly.FromDateTime(DateTime.Now))
-                {
-                    return true;
-                }
+                activeBan.IsActive = false;
+                bool updateResult = banManager.Update(activeBan);
+
+                // Log the result for debugging
+                Console.WriteLine("Unban operation result: " + updateResult);
+
+                return updateResult;
             }
-            return false;
+            else
+            {
+                Console.WriteLine("No active ban found for user: " + user.Username);
+                return false;
+            }
         }
     }
 }

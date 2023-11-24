@@ -137,7 +137,8 @@ namespace Individual_Project
             string username = tbUsername.Text;
             string platform = tbPlatform.Text;
             string game = tbGame.Text;
-
+            lvSubmissions.Items.Clear();
+            submissions.Clear();
             submissions = submissionController.ReadApprovedAdmin(1, username, game, platform).ToList();
 
             foreach (RankedSubmission submission in submissions)

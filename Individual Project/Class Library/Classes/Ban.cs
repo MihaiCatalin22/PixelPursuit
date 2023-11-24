@@ -14,17 +14,18 @@ namespace Class_Library.Classes
 		public string Reason { get; set; }
 		public User User { get; private set; }
 		public User Admin { get; private set; }
-
-		public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin)
+        public bool IsActive { get; set; }
+        public Ban(DateOnly startDate, DateOnly endDate, string reason, User user, User admin, bool isActive)
 		{
 			StartDate = startDate;
 			EndDate = endDate;
 			Reason = reason;
 			User = user;
 			Admin = admin;
+			IsActive = isActive;
 		}
 
-		public Ban(int id, DateOnly startDate, DateOnly endDate, string reason, User user, User admin)
+		public Ban(int id, DateOnly startDate, DateOnly endDate, string reason, User user, User admin, bool isActive)
 		{
 			Id = id;
 			StartDate = startDate;
@@ -32,6 +33,7 @@ namespace Class_Library.Classes
 			Reason = reason;
 			User = user;
 			Admin = admin;
+			IsActive = isActive;
 		}
 	}
 }

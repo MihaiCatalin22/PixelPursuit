@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Razor_Pages_Web_App.Pages
-{
+{	
 	public class IndexModel : PageModel
 	{
 		private UserController userController = new(new UserDAL());
@@ -13,6 +13,9 @@ namespace Razor_Pages_Web_App.Pages
 
 		[BindProperty]
 		public User LoggedUser { get; private set; }
+		private SubmissionController submissionController = new(new SubmissionDAL());
+		[BindProperty]
+		public Submission[] submissions { get; set; }
 		public IndexModel(ILogger<IndexModel> logger)
 		{
 			_logger = logger;
@@ -26,6 +29,8 @@ namespace Razor_Pages_Web_App.Pages
 
 			LoggedUser = userController.GetUserFromUsername(username);
 
-		}
+			var allSubmissions = submissionController.ReadRecent("");
+            submissions = allSubmissions.OrderByDescending(s => s.Date).Take(8).ToArray();
+        }
 	}
 }

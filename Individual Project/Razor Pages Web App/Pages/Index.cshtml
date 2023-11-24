@@ -1,4 +1,5 @@
 ﻿@page
+@using Class_Library.Classes;
 @model IndexModel
 @{
     if (ViewData["Message"] != null)
@@ -19,14 +20,26 @@
     }
     else
     {
-        <h1 class="display-4">Welcome to Pixel Pursuit! </h1>
+        <h1 class="display-4">Welcome to Pixel Pursuit! </h1>       
     }
-    <br />
-    <br />
-    <br />
-    <br />
-    <h4 class="text-center display-10">~~~Content here~~~</h4>
+    <h2 class="text-center display-4">Latest runs</h2>
+    
 
 </div>
-
+<div class="row">
+    @{
+        foreach (Submission submission in Model.submissions)
+        {
+            <div class="col mt-3">
+                <div class="card centertext" style="width:300px; height:350px">
+                    <div class="card-body">
+                        <img src="@submission.Game.PictureLink" style="width:200px; height:250px">
+                        <h4 class="card-title"><a class="profile" href="/UserProfile?id=@submission.User.Id"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span></a> - @submission.Game.Name</h4>
+                        <p class="card-text"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span> has finished @submission.Game.Name in @submission.TotalTime.ToString().</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
 
