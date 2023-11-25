@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Razor Pages Web App
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/uni/s2/project/individual/individual-assigment-semester-2/Individual Project/Razor Pages Web App/Pages/CreateSubmission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlU3VibWlzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/uni/s2/project/individual/individual-assigment-semester-2/Individual Project/Razor Pages Web App/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/uni/s2/project/individual/individual-assigment-semester-2/Individual Project/Razor Pages Web App/Pages/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/uni/s2/project/individual/individual-assigment-semester-2/Individual Project/Razor Pages Web App/Pages/MySubmissions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlTdWJtaXNzaW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/uni/s2/project/individual/individual-assigment-semester-2/Individual Project/Razor Pages Web App/Pages/Privacy.cshtml]

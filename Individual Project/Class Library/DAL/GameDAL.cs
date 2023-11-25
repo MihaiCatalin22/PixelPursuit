@@ -49,7 +49,7 @@ namespace Class_Library.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+				Console.WriteLine("Error creating game: " + ex.Message);
                 return false;
             }
         }
