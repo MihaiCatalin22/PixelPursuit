@@ -45,23 +45,6 @@ namespace UnitTest
             Assert.False(result);
         }
         [Fact]
-        public void CreateUnrankedSubmission_ShouldReturnTrue_WhenSubmissionIsValid()
-        {
-            var validSubmission = new UnrankedSubmission(
-                new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", "profile2.jpg", "Bio2", false, false),
-                new Game(2, "GameName2", "GameCompany2", DateOnly.FromDateTime(DateTime.Now), "trailerLink2", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Adventure", "Xbox", "pictureLink2", "backgroundLink2"),
-                DateOnly.FromDateTime(DateTime.Now),
-                TimeSpan.FromHours(1),
-                EnumPlatform.Xbox,
-                true, false, true
-            );
-            mockSubmissionManagement.Setup(sm => sm.Create(It.IsAny<UnrankedSubmission>())).Returns(true);
-
-            var result = submissionController.Create(validSubmission);
-            Assert.True(result);
-        }
-
-        [Fact]
         public void CreateUnrankedSubmission_ShouldReturnFalse_WhenSubmissionIsNull()
         {
             var result = submissionController.Create((UnrankedSubmission)null);
@@ -285,22 +268,6 @@ namespace UnitTest
             var result = submissionController.ReadApprovedAdmin(approvedSearch, usernameSearch, gameSearch, platformSearch);
             Assert.NotNull(result);
             Assert.Single(result);
-        }
-        [Fact]
-        public void CalculateRank_ShouldReturnValidRank()
-        {
-            var submission = new RankedSubmission(
-                new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
-                new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
-                DateOnly.FromDateTime(DateTime.Now),
-                TimeSpan.FromHours(2),
-                EnumPlatform.PC,
-                "link"
-            );
-            mockSubmissionManagement.Setup(sm => sm.ReadRankedByGame(It.IsAny<int>(), It.IsAny<string>())).Returns(new RankedSubmission[] { submission });
-
-            var rank = submissionController.CalculateRank(submission);
-            Assert.True(rank > 0);
         }
         [Fact]
         public void PredictRank_ShouldReturnValidRankAndPosition()

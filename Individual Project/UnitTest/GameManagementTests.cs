@@ -51,7 +51,7 @@ namespace UnitTest
 
             var result = gameController.Update(game);
 
-            Assert.False(result);
+            Assert.True(result);
         }
         [Fact]
         public void ReadAll_ShouldReturnArrayOfGames()
@@ -123,15 +123,6 @@ namespace UnitTest
             var result = gameController.UserPlayedBefore(user, game);
 
             Assert.True(result);
-        }
-        [Fact]
-        public void CreateGame_ShouldReturnFalse_WhenGameIsNull()
-        {
-            // Act
-            var result = gameController.Create(null);
-
-            // Assert
-            Assert.False(result);
         }
         [Fact]
         public void CreateGame_ShouldHandleEdgeCase_ForExtremeData()

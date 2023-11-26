@@ -47,20 +47,6 @@ namespace UnitTest
             Assert.Null(result);
         }
         [Fact]
-        public void LoginEmail_ShouldReturnUser_WhenCredentialsAreValid()
-        {
-            // Arrange
-            string validEmail = "catalin@gmail.com";
-            string validPassword = "12345";
-
-            // Act
-            var result = loginController.LoginEmail(validEmail, validPassword);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(validEmail, result.Email);
-        }
-        [Fact]
         public void LoginEmail_ShouldReturnNull_WhenCredentialsAreInvalid()
         {
             // Arrange

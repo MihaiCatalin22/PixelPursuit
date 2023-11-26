@@ -51,7 +51,6 @@ namespace Class_Library.Controllers
                 activeBan.IsActive = false;
                 bool updateResult = banManager.Update(activeBan);
 
-                // Log the result for debugging
                 Console.WriteLine("Unban operation result: " + updateResult);
 
                 return updateResult;
