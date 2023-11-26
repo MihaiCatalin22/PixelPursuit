@@ -101,9 +101,9 @@ namespace Individual_Project
 
         private void btnSubmAnnouncement_Click(object sender, EventArgs e)
         {
-            SubmissionForm submissionForm = new SubmissionForm(loggedInUser);
+            PendingSubmissionsForm PsubmissionForm = new PendingSubmissionsForm(loggedInUser);
             this.Hide();
-            submissionForm.ShowDialog();
+            PsubmissionForm.ShowDialog();
             this.Close();
         }
     }

@@ -16,8 +16,8 @@ namespace Razor_Pages_Web_App.Pages
         public User User { get; set; }
         [BindProperty]
         public Game Game { get; set; }
-        [BindProperty]
-        public DateOnly Date {  get; set; }
+		[BindProperty]
+		public string DateInput { get; set; }
         [BindProperty]
         public int Hours {  get; set; }
         [BindProperty]
@@ -38,7 +38,18 @@ namespace Razor_Pages_Web_App.Pages
         private GameController gameController = new(new GameDAL());
         private UserController userController = new(new UserDAL());
         private SubmissionController submissionController = new(new SubmissionDAL());
-        public IActionResult OnGet(int id, int type)
+		public DateOnly Date
+		{
+			get
+			{
+				if (DateTime.TryParse(DateInput, out var dateTime))
+				{
+					return DateOnly.FromDateTime(dateTime);
+				}
+				return DateOnly.MinValue;
+			}
+		}
+		public IActionResult OnGet(int id, int type)
         {
             Id = id;
             Type = type;
@@ -70,12 +81,12 @@ namespace Razor_Pages_Web_App.Pages
             User = userController.GetUserFromUsername(username);
             Game = gameController.ReadByID(id);
 
-            if (Date > DateOnly.FromDateTime(DateTime.Now))
-            {
-                TempData["Message"] = "Please select a date that is not in the future.";
-                return Page();
-            }
-            if (Type == 1)
+			if (DateTime.Parse(DateInput) > DateTime.Now)
+			{
+				TempData["Message"] = "Please select a date that is not in the future.";
+				return Page();
+			}
+			if (Type == 1)
             {
                 TimeSpan time = new TimeSpan(Hours, Minutes, Seconds);
                 EnumPlatform platform = (EnumPlatform)Platform;
