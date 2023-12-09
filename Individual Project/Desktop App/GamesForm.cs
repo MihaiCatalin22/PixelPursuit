@@ -23,12 +23,23 @@ namespace Individual_Project
             InitializeComponent();
             loggedInUser = user;
 
-            foreach (Game game in gameController.ReadAll())
+            try
             {
-                LoadGame(game);
+                LoadGames();
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("Error loading games: " + ex.Message);
             }
         }
-        private void LoadGame(Game game)
+		private void LoadGames()
+		{
+			foreach (Game game in gameController.ReadAll())
+			{
+				LoadGame(game);
+			}
+		}
+		private void LoadGame(Game game)
         {
             ListViewItem item = new ListViewItem(game.ID.ToString());
             item.SubItems.Add(game.Name);
@@ -85,22 +96,26 @@ namespace Individual_Project
 
         private void btnUpdateGame_Click(object sender, EventArgs e)
         {
-            if (lvGames.SelectedIndices.Count > 0)
-            {
-                int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
-                Game game = gameController.ReadByID(index);
+			if (lvGames.SelectedItems.Count == 0)
+			{
+				MessageBox.Show("Please select a game to update.");
+				return;
+			}
 
-                UpdateGameForm updateGameForm = new UpdateGameForm(loggedInUser, game);
-                this.Hide();
-                updateGameForm.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("No game has been selected.");
-            }
+			int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
+			Game gameToUpdate = gameController.ReadByID(index);
 
-        }
+			if (gameToUpdate == null)
+			{
+				MessageBox.Show("Selected game not found.");
+				return;
+			}
+
+			UpdateGameForm updateGameForm = new UpdateGameForm(loggedInUser, gameToUpdate);
+			this.Hide();
+			updateGameForm.ShowDialog();
+			this.Close();
+		}
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -120,17 +135,23 @@ namespace Individual_Project
         }
         private void Search()
         {
-            lvGames.Items.Clear();
-            string game = tbGame.Text;
-            string company = tbDeveloper.Text;
+			lvGames.Items.Clear();
+			string gameName = tbGame.Text;
+			string company = tbDeveloper.Text;
 
-            games = gameController.ReadAllSearch(game, company).ToList();
+			var searchedGames = gameController.ReadAllSearch(gameName, company).ToList();
 
-            foreach (Game g in games)
-            {
-                LoadGame(g);
-            }
-        }
+			if (searchedGames.Count == 0)
+			{
+				MessageBox.Show("No games found with the specified criteria.");
+				return;
+			}
+
+			foreach (Game game in searchedGames)
+			{
+				LoadGame(game);
+			}
+		}
         private void tbGame_TextChanged(object sender, EventArgs e)
         {
             Search();
@@ -143,20 +164,45 @@ namespace Individual_Project
 
         private void btnDeleteGame_Click(object sender, EventArgs e)
         {
-            if (lvGames.SelectedIndices.Count > 0)
-            {
-                int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
-                gameController.Delete(gameController.ReadByID(index));
-                lvGames.Items.Clear();
-                foreach (Game game in gameController.ReadAll())
-                {
-                    LoadGame(game);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No game has been selected.");
-            }
-        }
-    }
+			if (lvGames.SelectedItems.Count == 0)
+			{
+				MessageBox.Show("Please select a game to delete.");
+				return;
+			}
+			var confirmResult = MessageBox.Show("Are you sure you want to delete this game?",
+										 "Confirm Delete",
+										 MessageBoxButtons.YesNo);
+			if (confirmResult != DialogResult.Yes)
+			{
+				return;
+			}
+			int index = Convert.ToInt32(lvGames.SelectedItems[0].SubItems[0].Text);
+			Game gameToDelete = gameController.ReadByID(index);
+
+			if (gameToDelete == null)
+			{
+				MessageBox.Show("Selected game not found.");
+				return;
+			}
+
+			bool isDeleted = gameController.Delete(gameToDelete);
+			if (!isDeleted)
+			{
+				MessageBox.Show("Failed to delete the game.");
+			}
+			else
+			{
+				MessageBox.Show("Game deleted successfully.");
+				UpdateGameList();
+			}
+		}
+		private void UpdateGameList()
+		{
+			lvGames.Items.Clear();
+			foreach (Game game in gameController.ReadAll())
+			{
+				LoadGame(game);
+			}
+		}
+	}
 }

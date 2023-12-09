@@ -24,27 +24,33 @@ namespace Individual_Project
             InitializeComponent();
             loggedInUser = admin;
 
-            foreach (User user in userController.ReadAllUsers())
-            {
-                LoadUser(user);
-            }
-        }
-        private void LoadUser(User user)
+			LoadAllUsers();
+		}
+		private void LoadAllUsers()
+		{
+			try
+			{
+				lvUsers.Items.Clear();
+				foreach (User user in userController.ReadAllUsers())
+				{
+					LoadUser(user);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error loading users: {ex.Message}");
+			}
+		}
+		private void LoadUser(User user)
         {
-            ListViewItem item = new ListViewItem(user.Id.ToString());
-            item.SubItems.Add(user.Username);
-            item.SubItems.Add(user.Email);
-            item.SubItems.Add(user.RegistrationDate.ToString());
-            if (user.Banned == true)
-            {
-                item.SubItems.Add("Banned.");
-            }
-            else
-            {
-                item.SubItems.Add("Not banned.");
-            }
-            lvUsers.Items.Add(item);
-        }
+			ListViewItem item = new ListViewItem(user.Id.ToString());
+			item.SubItems.Add(user.Username);
+			item.SubItems.Add(user.Email);
+			item.SubItems.Add(user.RegistrationDate.ToString());
+			string bannedStatus = user.Banned.HasValue ? (user.Banned.Value ? "Banned." : "Not banned.") : "Unknown";
+			item.SubItems.Add(bannedStatus);
+			lvUsers.Items.Add(item);
+		}
         private void btnDetails_Click(object sender, EventArgs e)
         {
             if (lvUsers.SelectedItems.Count == 0)
@@ -105,45 +111,33 @@ namespace Individual_Project
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            lvUsers.Items.Clear();
-            if (tbUsername.Text != string.Empty || cbBanned.Checked)
-            {
-                tbUsername.Clear();
-                cbBanned.Checked = false;
-            }
-            else
-            {
-                foreach (User user in userController.ReadAllUsers())
-                {
-                    LoadUser(user);
-                }
-            }
-        }
+			tbUsername.Clear();
+			cbBanned.Checked = false;
+			LoadAllUsers();
+		}
         private void Search()
         {
-            lvUsers.Items.Clear();
-            string search = tbUsername.Text;
-            bool banned = cbBanned.Checked;
+			try
+			{
+				lvUsers.Items.Clear();
+				string search = tbUsername.Text.Trim();
+				bool banned = cbBanned.Checked;
 
-            users = userController.ReadAllUsersSearch(search).ToList();
-            foreach (User user in users)
-            {
-                if (search != string.Empty)
-                {
-                    if (user.Banned == banned)
-                    {
-                        LoadUser(user);
-                    }
-                }
-                else
-                {
-                    if (banned == false)
-                    {
-                        LoadUser(user);
-                    }
-                }
-            }
-        }
+				var users = userController.ReadAllUsersSearch(search).ToList();
+
+				foreach (User user in users)
+				{
+					if (user.Banned == banned || string.IsNullOrWhiteSpace(search))
+					{
+						LoadUser(user);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error searching for users: {ex.Message}");
+			}
+		}
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
@@ -157,20 +151,25 @@ namespace Individual_Project
 
         private void btnBan_Click(object sender, EventArgs e)
         {
-            if (lvUsers.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("No user has been selected.");
-            }
-            else
-            {
-                string username = lvUsers.SelectedItems[0].SubItems[1].Text;
-                User user = userController.GetUserFromUsername(username);
+			if (lvUsers.SelectedItems.Count == 0)
+			{
+				MessageBox.Show("No user has been selected.");
+				return;
+			}
 
-                BanUserForm form = new BanUserForm(user, loggedInUser);
-                this.Hide();
-                form.ShowDialog();
-                this.Close();
-            }
-        }
+			string username = lvUsers.SelectedItems[0].SubItems[1].Text;
+			User user = userController.GetUserFromUsername(username);
+
+			if (user.Banned.HasValue && user.Banned.Value)
+			{
+				MessageBox.Show("This user is already banned.");
+				return;
+			}
+
+			BanUserForm form = new BanUserForm(user, loggedInUser);
+			this.Hide();
+			form.ShowDialog();
+			this.Close();
+		}
     }
 }

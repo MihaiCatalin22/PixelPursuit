@@ -46,8 +46,6 @@ namespace Individual_Project
             {
                 clbPlatform.SetItemCheckState(i, CheckState.Unchecked);
             }
-            btnAddGame.Visible = false;
-            btnBack.Visible = true;
             clbGenre.Visible = false;
             clbPlatform.Visible = false;
         }
@@ -117,48 +115,59 @@ namespace Individual_Project
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            Game game = new Game(tbTitle.Text, tbDeveloper.Text, DateOnly.FromDateTime(dtpReleaseDate.Value), tbTrailerLink.Text, tbGenre.Text, tbPlatform.Text, tbCoverLink.Text, tbBKGCoverLink.Text);
-            if (gameController.Create(game))
-            {
-                MessageBox.Show("Game added succesfully.");
-            }
-            else
-            {
-                MessageBox.Show("Error adding game. Try again.");
-            }
-            ClearPage();
-        }
+			try
+			{
+				ValidateInput();
+				Game game = new Game(tbTitle.Text, tbDeveloper.Text, DateOnly.FromDateTime(dtpReleaseDate.Value), tbTrailerLink.Text, tbGenre.Text, tbPlatform.Text, tbCoverLink.Text, tbBKGCoverLink.Text);
 
-        private void tbTitle_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
+				if (gameController.Create(game))
+				{
+					MessageBox.Show("Game added successfully.");
+                    ClearPage();
+				}
+				else
+				{
+					MessageBox.Show("Error adding game. Game might already exist.");
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
+		private void ValidateInput()
+		{
+			if (string.IsNullOrWhiteSpace(tbTitle.Text))
+				throw new InvalidOperationException("Title cannot be empty.");
+            if (string.IsNullOrWhiteSpace(tbDeveloper.Text))
+                throw new InvalidOperationException("Game company cannot be empty.");
+			if (!IsValidUrl(tbTrailerLink.Text))
+				throw new InvalidOperationException("Invalid trailer link URL.");
+			if (!IsValidUrl(tbCoverLink.Text))
+				throw new InvalidOperationException("Invalid game cover link URL.");
+			if (!IsValidUrl(tbBKGCoverLink.Text))
+				throw new InvalidOperationException("Invalid game background cover link URL.");
+			if (string.IsNullOrWhiteSpace(tbGenre.Text))
+                throw new InvalidOperationException("Game genres cannot be empty.");
+            if (string.IsNullOrWhiteSpace(tbPlatform.Text))
+                throw new InvalidOperationException("Game platforms cannot be empty.");
+			if (dtpReleaseDate.Value.Date > DateTime.Now.Date)
+				throw new InvalidOperationException("Release date cannot be in the future.");
+		}
+		private bool IsValidUrl(string url)
+		{
+			if (string.IsNullOrWhiteSpace(url))
+				return false;
 
-        private void tbDeveloper_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-
-        private void dtpReleaseDate_ValueChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-
-        private void tbTrailerLink_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-
-        private void tbCoverLink_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-
-        private void tbBKGCoverLink_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-        private void CloseLists(object sender, EventArgs e)
+			if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+				!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+			{
+				url = "http://" + url;
+			}
+			return Uri.TryCreate(url, UriKind.Absolute, out var uriResult)
+				   && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+		}
+		private void CloseLists(object sender, EventArgs e)
         {
             if (clbGenre.Visible)
                 btnShowGenreList_Click(sender, e);
@@ -167,26 +176,31 @@ namespace Individual_Project
         }
         private void CheckValidState(object sender, EventArgs e)
         {
-            if (tbTitle.Text.Length > 0 && tbDeveloper.Text.Length > 0 && dtpReleaseDate.Value.ToString().Length > 0 && tbTrailerLink.Text.Length > 0 && tbGenre.Text.Length > 0 && tbPlatform.Text.Length > 0 && tbCoverLink.Text.Length > 0 && tbBKGCoverLink.Text.Length > 0)
-            {
-                btnAddGame.Visible = true;
-                btnBack.Visible = false;
-            }
-            else
-            {
-                btnAddGame.Visible = false;
-                btnBack.Visible = true;
-            }
-        }
+			btnAddGame.Visible = !string.IsNullOrWhiteSpace(tbTitle.Text) &&
+						 !string.IsNullOrWhiteSpace(tbDeveloper.Text) &&
+						 dtpReleaseDate.Value != null &&
+						 !string.IsNullOrWhiteSpace(tbTrailerLink.Text) &&
+						 !string.IsNullOrWhiteSpace(tbGenre.Text) &&
+						 !string.IsNullOrWhiteSpace(tbPlatform.Text) &&
+						 !string.IsNullOrWhiteSpace(tbCoverLink.Text) &&
+						 !string.IsNullOrWhiteSpace(tbBKGCoverLink.Text);
 
-        private void tbGenre_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
+			btnBack.Visible = !btnAddGame.Visible;
+		}
 
-        private void tbPlatform_TextChanged(object sender, EventArgs e)
-        {
-            CheckValidState(sender, e);
-        }
-    }
+		private void cbGenre_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCheckedListBoxText(clbGenre, tbGenre);
+		}
+
+		private void cbPlatform_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCheckedListBoxText(clbPlatform, tbPlatform);
+		}
+
+		private void UpdateCheckedListBoxText(CheckedListBox clb, TextBox tb)
+		{
+			tb.Text = string.Join(", ", clb.CheckedItems.Cast<object>());
+		}
+	}
 }

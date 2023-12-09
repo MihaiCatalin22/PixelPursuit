@@ -23,7 +23,7 @@ namespace UnitTest
                 Email = "catalin@example.com"
             };
 
-            // Initialize admin user
+
             adminUser = new User
             {
                 Username = "admin",

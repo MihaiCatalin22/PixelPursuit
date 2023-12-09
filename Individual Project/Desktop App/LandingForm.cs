@@ -22,36 +22,50 @@ namespace Individual_Project
         public LandingForm(User admin)
         {
             InitializeComponent();
-            loggedInUser = admin;
+			if (admin == null)
+			{
+				throw new ArgumentNullException(nameof(admin), "Admin user cannot be null.");
+			}
+
+			loggedInUser = admin;
             lblWelcome.Text = $"Welcome, {loggedInUser.Username}!";
 
-            if (submissionController.ReadPendingAdmin(1, "", "", "").Count() > 0)
-            {
-                int numberPending = submissionController.ReadPendingAdmin(1, "", "", "").Count();
-                lblSubmAnnouncement.Text = $"There are {numberPending} pending submissions! \nReview them now.";
-            }
-            else
-            {
-                lblSubmAnnouncement.Text = "There are no pending submissions at the moment.";
-            }
-          
-            var allBans = banController.ReadAll();
-
-            int totalBans = allBans.Length;
-
-            int activeBans = allBans.Count(ban => ban.IsActive && ban.EndDate > DateOnly.FromDateTime(DateTime.Now));
-
-            if (activeBans > 0)
-            {
-                lblUsersBanned.Text = $"Currently, there are {activeBans} active bans.\nThere have been {totalBans} bans in total until now.";
-            }
-            else
-            {
-                lblUsersBanned.Text = $"Currently, there are no active bans.\nThere have been {totalBans} bans in total until now.";
-            }
+            UpdateSubmissionsInfo();
+            UpdateBansInfo();
         }
+		private void UpdateSubmissionsInfo()
+		{
+			try
+			{
+				int numberPending = submissionController.ReadPendingAdmin(1, "", "", "").Count();
+				lblSubmAnnouncement.Text = numberPending > 0 ?
+					$"There are {numberPending} pending submissions! \nReview them now." :
+					"There are no pending submissions at the moment.";
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Failed to retrieve submission data: {ex.Message}");
+			}
+		}
 
-        private void btnLogout_Click(object sender, EventArgs e)
+		private void UpdateBansInfo()
+		{
+			try
+			{
+				var allBans = banController.ReadAll();
+				int totalBans = allBans.Length;
+				int activeBans = allBans.Count(ban => ban.IsActive && ban.EndDate > DateOnly.FromDateTime(DateTime.Now));
+
+				lblUsersBanned.Text = activeBans > 0 ?
+					$"Currently, there are {activeBans} active bans.\nThere have been {totalBans} bans in total until now." :
+					$"Currently, there are no active bans.\nThere have been {totalBans} bans in total until now.";
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Failed to retrieve ban data: {ex.Message}");
+			}
+		}
+		private void btnLogout_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
             this.Hide();

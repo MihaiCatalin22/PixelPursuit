@@ -15,24 +15,38 @@ namespace Individual_Project
 {
     public partial class BansForm : Form
     {
-        private User loggedInUser;
-        private BanController banController = new(new BanDAL());
-        private UserController userController = new(new UserDAL());
-        List<Ban> bans = new List<Ban>();
+        private readonly User loggedInUser;
+        private readonly BanController banController;
+        private readonly UserController userController;
+        private readonly List<Ban> bans;
         public BansForm(User user)
         {
             InitializeComponent();
-            loggedInUser = user;
+			loggedInUser = user ?? throw new ArgumentNullException(nameof(user), "Logged in user cannot be null.");
 
-            rbNoDate.Checked = true;
+            banController = new(new BanDAL());
+            userController = new(new UserDAL());
+            bans = new List<Ban>();
 
-            foreach (Ban ban in banController.ReadAll())
-            {
-                LoadBan(ban);
-            }
+			rbNoDate.Checked = true;
+
+            LoadAllBans();
         }
-
-        private void btnBack_Click(object sender, EventArgs e)
+		private void LoadAllBans()
+		{
+			try
+			{
+				foreach (Ban ban in banController.ReadAll())
+				{
+					LoadBan(ban);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Failed to load bans: {ex.Message}");
+			}
+		}
+		private void btnBack_Click(object sender, EventArgs e)
         {
             LandingForm landingForm = new LandingForm(loggedInUser);
             this.Hide();
@@ -90,55 +104,38 @@ namespace Individual_Project
         }
         private void Search()
         {
-            string search = tbUsername.Text;
-            DateOnly date = DateOnly.FromDateTime(dateTimePickerDate.Value);
-            bool startDate = false;
-            bool noDate = false;
-            if (rbNoDate.Checked)
-            {
-                noDate = true;
-            }
-            if (rbStartDate.Checked)
-            {
-                noDate = false;
-                startDate = true;
-            }
-            else if (rbEndDate.Checked)
-            {
-                noDate = false;
-                startDate = false;
-            }
-            lvBans.Items.Clear();
-            bans.Clear();
-            foreach (Ban ban in banController.ReadAllSearch(search))
-            {
-                if (noDate)
-                {
-                    bans.Add(ban);
-                }
-                else
-                {
-                    if (startDate)
-                    {
-                        if (ban.StartDate == date)
-                        {
-                            bans.Add(ban);
-                        }
-                    }
-                    else
-                    {
-                        if (ban.EndDate == date)
-                        {
-                            bans.Add(ban);
-                        }
-                    }
-                }
-            }
-            foreach (Ban ban in bans)
-            {
-                LoadBan(ban);
-            }
-        }
+			try
+			{
+				string search = tbUsername.Text.Trim();
+				DateOnly date = DateOnly.FromDateTime(dateTimePickerDate.Value);
+				bool startDateSearch = rbStartDate.Checked;
+				bool noDateSearch = rbNoDate.Checked;
+
+				lvBans.Items.Clear();
+				bans.Clear();
+
+				var filteredBans = banController.ReadAllSearch(search).ToList();
+
+				if (!noDateSearch)
+				{
+					filteredBans = filteredBans.Where(ban => (startDateSearch ? ban.StartDate : ban.EndDate) == date).ToList();
+				}
+
+				foreach (Ban ban in filteredBans)
+				{
+					LoadBan(ban);
+				}
+
+				if (!filteredBans.Any())
+				{
+					MessageBox.Show("No matching bans found.");
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Failed to search bans: {ex.Message}");
+			}
+		}
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             Search();
@@ -172,22 +169,44 @@ namespace Individual_Project
             }
 
             string username = lvBans.SelectedItems[0].SubItems[1].Text;
-            User user = userController.GetUserFromUsername(username);
+			var confirmResult = MessageBox.Show($"Are you sure you want to unban '{username}'?",
+										"Confirm Unban",
+										MessageBoxButtons.YesNo,
+										MessageBoxIcon.Question);
 
-            if (banController.UnbanUser(user))
-            {
-                MessageBox.Show("User has been unbanned successfully.");
-
+			if (confirmResult == DialogResult.Yes)
+			{
+				UnbanUser(username);
                 lvBans.Items.Clear();
-                foreach (Ban ban in banController.ReadAll())
-                {
-                    LoadBan(ban);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Unable to unban the user. Please check if the user is currently banned or try again later.");
-            }
-        }
-    }
+                Search();
+			}
+		}
+		private void UnbanUser(string username)
+		{
+			try
+			{
+				User user = userController.GetUserFromUsername(username);
+
+				if (user == null)
+				{
+					MessageBox.Show("User not found.");
+					return;
+				}
+
+				if (banController.UnbanUser(user))
+				{
+					MessageBox.Show("User has been unbanned successfully.");
+					LoadAllBans();
+				}
+				else
+				{
+					MessageBox.Show("Unable to unban the user. Please try again later.");
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error unbanning user: {ex.Message}");
+			}
+		}
+	}
 }

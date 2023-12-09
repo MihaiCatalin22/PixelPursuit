@@ -20,35 +20,59 @@ namespace Individual_Project
         public LoginForm()
         {
             InitializeComponent();
-        }
+			this.AcceptButton = btnLogin;
+		}
+		private int loginAttempts = 0;
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
+			string username = tBUsername.Text;
+			string password = tBPassword.Text;
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            string username = tBUsername.Text;
-            string password = tBPassword.Text;
+			if (string.IsNullOrWhiteSpace(username))
+			{
+				MessageBox.Show("Please enter a username.");
+				tBUsername.Focus();
+				return;
+			}
 
-            if (username == string.Empty || password == string.Empty)
-            {
-                MessageBox.Show("Please fill in all the fields!");
-                return;
-            }
+			if (string.IsNullOrWhiteSpace(password))
+			{
+				MessageBox.Show("Please enter a password.");
+				tBPassword.Focus();
+				return;
+			}
+			try
+			{
+				User loggedInUser = loginController.LoginUsernameAdmin(username, password);
 
-            User loggedInUser = loginController.LoginUsernameAdmin(username, password);
-
-
-            if (loggedInUser != null)
-            {
-                LandingForm landingForm = new LandingForm(loggedInUser);
-                this.Hide();
-                landingForm.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Incorrect login details.");
-                tBUsername.Text = string.Empty;
-                tBPassword.Text = string.Empty;
-            }
-        }
-    }
+				if (loggedInUser != null)
+				{
+					LandingForm landingForm = new LandingForm(loggedInUser);
+					this.Hide();
+					landingForm.ShowDialog();
+					this.Close();
+				}
+				else
+				{
+					loginAttempts++;
+					if (loginAttempts >= 5)
+					{
+						MessageBox.Show("Maximum login attempts reached. Application will now close.");
+						Application.Exit();
+					}
+					else
+					{
+						MessageBox.Show($"Incorrect login details. You have {5 - loginAttempts} attempts left.");
+						tBUsername.Text = string.Empty;
+						tBPassword.Text = string.Empty;
+						tBUsername.Focus();
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("An error occurred: " + ex.Message);
+			}
+		}		
+	}
 }
