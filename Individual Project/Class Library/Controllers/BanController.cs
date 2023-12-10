@@ -61,6 +61,10 @@ namespace Class_Library.Controllers
                 return false;
             }
         }
+        public bool IsUserCurrentlyBanned(int userId)
+        {
+            return banManager.IsUserCurrentlyBanned(userId);
+        }
     }
 }
 

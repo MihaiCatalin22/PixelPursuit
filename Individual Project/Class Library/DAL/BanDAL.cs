@@ -179,5 +179,28 @@ namespace Class_Library.DAL
 				return false;
 			}
 		}
+		public bool IsUserCurrentlyBanned(int userId)
+		{
+			try 
+			{
+				using (var connection = new SqlConnection(CONNECTION_STRING))
+				{
+					string query = "SELECT COUNT(*) FROM Ban WHERE BannedUserID = @BannedUserID AND IsActive = 1";
+					using (var command = new SqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@BannedUserID", userId);
+						connection.Open();
+						int count = (int)command.ExecuteScalar();
+						return count > 0;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				return false;
+			}
+			
+		}
 	}
 }

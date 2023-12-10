@@ -14,5 +14,6 @@ namespace Class_Library.Interfaces
         public Ban[] ReadAllSearch(string search);
         public bool Update(Ban ban);
         public bool Delete(Ban ban);
+        public bool IsUserCurrentlyBanned(int userId);
     }
 }

@@ -68,17 +68,19 @@
 			// 
 			// tBUsername
 			// 
-			tBUsername.Location = new Point(215, 134);
+			tBUsername.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+			tBUsername.Location = new Point(193, 127);
 			tBUsername.Name = "tBUsername";
-			tBUsername.Size = new Size(141, 23);
+			tBUsername.Size = new Size(141, 29);
 			tBUsername.TabIndex = 3;
 			// 
 			// tBPassword
 			// 
-			tBPassword.Location = new Point(215, 167);
+			tBPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			tBPassword.Location = new Point(193, 160);
 			tBPassword.Name = "tBPassword";
 			tBPassword.PasswordChar = '◉';
-			tBPassword.Size = new Size(141, 23);
+			tBPassword.Size = new Size(141, 29);
 			tBPassword.TabIndex = 4;
 			// 
 			// btnLogin

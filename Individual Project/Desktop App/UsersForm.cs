@@ -18,6 +18,7 @@ namespace Individual_Project
     {
         private User loggedInUser;
         private UserController userController = new(new UserDAL());
+        private BanController banController = new(new BanDAL());
         private List<User> users = new List<User>();
         public UsersForm(User admin)
         {
@@ -47,7 +48,8 @@ namespace Individual_Project
 			item.SubItems.Add(user.Username);
 			item.SubItems.Add(user.Email);
 			item.SubItems.Add(user.RegistrationDate.ToString());
-			string bannedStatus = user.Banned.HasValue ? (user.Banned.Value ? "Banned." : "Not banned.") : "Unknown";
+			bool isCurrentlyBanned = banController.IsUserCurrentlyBanned(user.Id);
+			string bannedStatus = isCurrentlyBanned ? "Banned." : "Not banned.";
 			item.SubItems.Add(bannedStatus);
 			lvUsers.Items.Add(item);
 		}
@@ -120,16 +122,32 @@ namespace Individual_Project
 			try
 			{
 				lvUsers.Items.Clear();
-				string search = tbUsername.Text.Trim();
+				string search = tbUsername.Text;
 				bool banned = cbBanned.Checked;
 
-				var users = userController.ReadAllUsersSearch(search).ToList();
+				users = userController.ReadAllUsersSearch(search).ToList();
+
+				if (!users.Any())
+				{
+					MessageBox.Show("No users found matching the search criteria.");
+					return;
+				}
 
 				foreach (User user in users)
 				{
-					if (user.Banned == banned || string.IsNullOrWhiteSpace(search))
+					if (search != string.Empty)
 					{
-						LoadUser(user);
+						if (banController.IsUserCurrentlyBanned(user.Id) == banned)
+						{
+							LoadUser(user);
+						}
+					}
+					else
+					{
+						if (!banned || banController.IsUserCurrentlyBanned(user.Id))
+						{
+							LoadUser(user);
+						}
 					}
 				}
 			}
@@ -160,7 +178,7 @@ namespace Individual_Project
 			string username = lvUsers.SelectedItems[0].SubItems[1].Text;
 			User user = userController.GetUserFromUsername(username);
 
-			if (user.Banned.HasValue && user.Banned.Value)
+			if (banController.IsUserCurrentlyBanned(user.Id))
 			{
 				MessageBox.Show("This user is already banned.");
 				return;

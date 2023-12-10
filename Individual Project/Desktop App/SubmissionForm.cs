@@ -30,15 +30,22 @@ namespace Individual_Project
         }
         private void LoadSubmission(RankedSubmission submission)
         {
-            ListViewItem item = new ListViewItem(submission.Id.ToString());
-            item.SubItems.Add(submission.Rank.ToString());
-            item.SubItems.Add(submission.User.Username);
-            item.SubItems.Add(submission.Game.Name);
-            item.SubItems.Add(submission.Platform.ToString());
-            item.SubItems.Add(submission.Date.ToShortDateString());
-            item.SubItems.Add(submission.TotalTime.ToString());
-            lvSubmissions.Items.Add(item);
-        }
+			try
+			{
+				ListViewItem item = new ListViewItem(submission.Id.ToString());
+				item.SubItems.Add(submission.Rank.ToString());
+				item.SubItems.Add(submission.User.Username);
+				item.SubItems.Add(submission.Game.Name);
+				item.SubItems.Add(submission.Platform.ToString());
+				item.SubItems.Add(submission.Date.ToShortDateString());
+				item.SubItems.Add(submission.TotalTime.ToString());
+				lvSubmissions.Items.Add(item);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error loading submission: {ex.Message}");
+			}
+		}
         private void btnPendingSubmissions_Click(object sender, EventArgs e)
         {
             PendingSubmissionsForm pendingSubmissionsForm = new PendingSubmissionsForm(loggedInUser);
@@ -89,63 +96,81 @@ namespace Individual_Project
 
         private void btnDelSubmission_Click(object sender, EventArgs e)
         {
-            if (lvSubmissions.SelectedIndices.Count > 0)
-            {
-                int index = Convert.ToInt32(lvSubmissions.SelectedItems[0].SubItems[0].Text);
-                RankedSubmission submission = submissionController.ReadRanked(index);
+			if (MessageBox.Show("Are you sure you want to delete this submission?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				try
+				{
+					int index = Convert.ToInt32(lvSubmissions.SelectedItems[0].SubItems[0].Text);
+					RankedSubmission submission = submissionController.ReadRanked(index);
 
-                if (submissionController.Delete(submission))
-                {
-                    MessageBox.Show("The submission was deleted successfully.");
-                    lvSubmissions.Items.Clear();
-
-                    foreach (RankedSubmission submission1 in submissionController.ReadApprovedAdmin(1, "", "", ""))
-                    {
-                        LoadSubmission(submission1);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("There was an error deleting the submission.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No submission was selected.");
-            }
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
+					if (submissionController.Delete(submission))
+					{
+						MessageBox.Show("The submission was deleted successfully.");
+						RefreshSubmissionsList();
+					}
+					else
+					{
+						MessageBox.Show("There was an error deleting the submission.");
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"Error deleting submission: {ex.Message}");
+				}
+			}
+			else
+			{
+				MessageBox.Show("No submission was selected.");
+			}
+		}
+		private void RefreshSubmissionsList()
+		{
+			lvSubmissions.Items.Clear();
+			foreach (RankedSubmission submission in submissionController.ReadApprovedAdmin(1, "", "", ""))
+			{
+				LoadSubmission(submission);
+			}
+		}
+		private void btnClear_Click(object sender, EventArgs e)
         {
-            lvSubmissions.Items.Clear();
-            if (tbGame.Text != string.Empty || tbUsername.Text != string.Empty || tbPlatform.Text != string.Empty)
-            {
-                tbGame.Clear();
-                tbPlatform.Clear();
-                tbUsername.Clear();
-            }
-            else
-            {
-                foreach (RankedSubmission submission in submissionController.ReadApprovedAdmin(1, "", "", ""))
-                {
-                    LoadSubmission(submission);
-                }
-            }
-        }
-        private void Search()
+			ClearSearchAndReload();
+		}
+		private void ClearSearchAndReload()
+		{
+			tbGame.Clear();
+			tbPlatform.Clear();
+			tbUsername.Clear();
+			RefreshSubmissionsList();
+		}
+		private void Search()
         {
-            string username = tbUsername.Text;
-            string platform = tbPlatform.Text;
-            string game = tbGame.Text;
-            lvSubmissions.Items.Clear();
-            submissions.Clear();
-            submissions = submissionController.ReadApprovedAdmin(1, username, game, platform).ToList();
+			try
+			{
+				string username = tbUsername.Text;
+				string platform = tbPlatform.Text;
+				string game = tbGame.Text;
 
-            foreach (RankedSubmission submission in submissions)
-            {
-                LoadSubmission(submission);
-            }
-        }
+				submissions = submissionController.ReadApprovedAdmin(1, username, game, platform).ToList();
+				if (submissions.Count == 0)
+				{
+					MessageBox.Show("No submissions found matching the search criteria.");
+					tbUsername.Clear();
+					tbPlatform.Clear();
+					tbGame.Clear();
+					return;
+				}
+
+				lvSubmissions.Items.Clear();
+				foreach (RankedSubmission submission in submissions)
+				{
+					LoadSubmission(submission);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Error during search: {ex.Message}");
+			}
+		}
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             Search();
