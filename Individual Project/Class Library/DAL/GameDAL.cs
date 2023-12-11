@@ -47,9 +47,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Create method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-				Console.WriteLine("Error creating game: " + ex.Message);
+                Console.WriteLine($"General Error in Create method: {ex.Message}");
                 return false;
             }
         }
@@ -89,9 +94,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Update method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in Update method: {ex.Message}");
                 return false;
             }
         }
@@ -116,9 +126,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Delete method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in Delete method: {ex.Message}");
                 return false;
             }
         }
@@ -154,9 +169,14 @@ namespace Class_Library.DAL
                 }
                 return game;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadById method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadById method: {ex.Message}");
                 return null;
             }
         }
@@ -191,9 +211,14 @@ namespace Class_Library.DAL
                     return games.ToArray();
                 }
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAll method: {ex.Message}");
+                return Array.Empty<Game>();
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAll method: {ex.Message}");
                 return Array.Empty<Game>();
             }
         }
@@ -232,9 +257,14 @@ namespace Class_Library.DAL
                     return games.ToArray();
                 }
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadOnePageByName method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadOnePageByName method: {ex.Message}");
                 return null;
             }
         }
@@ -275,9 +305,14 @@ namespace Class_Library.DAL
                 }
                 return games.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllByName method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAllByName method: {ex.Message}");
                 return null;
             }
         }
@@ -320,9 +355,14 @@ namespace Class_Library.DAL
                 }
                 return games.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllSearch method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAllSearch method: {ex.Message}");
                 return null;
             }
         }
@@ -345,9 +385,14 @@ namespace Class_Library.DAL
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetTotalPages method: {ex.Message}");
+                return 0;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetTotalPages method: {ex.Message}");
                 return 0;
             }
         }
@@ -374,9 +419,14 @@ namespace Class_Library.DAL
                 }
                 return false;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in UserPlayedBefore method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in UserPlayedBefore method: {ex.Message}");
                 return false;
             }
         }

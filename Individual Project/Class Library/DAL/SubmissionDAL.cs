@@ -65,9 +65,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in Create(RankedSubmission): " + ex.Message);
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in Create(RankedSubmission): " + ex.Message);
                 return false;
             }
         }
@@ -124,9 +129,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in Create(UnrankedSubmission): " + ex.Message);
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in Create(UnrankedSubmission): " + ex.Message);
                 return false;
             }
         }
@@ -154,9 +164,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in UpdateRanked: " + ex.Message);
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in UpdateRanked: " + ex.Message);
                 return false;
             }
         }
@@ -180,9 +195,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in Delete(RankedSubmission): " + ex.Message);
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in Delete(RankedSubmission): " + ex.Message);
                 return false;
             }
         }
@@ -227,9 +247,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadRecent: " + ex.Message);
+                return new Submission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadRecent: " + ex.Message);
                 return new Submission[0];
             }
         }
@@ -274,9 +299,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadRecent: " + ex.Message);
+                return new Submission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadRecent: " + ex.Message);
                 return new Submission[0];
             }
         }
@@ -325,9 +355,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadByGame: " + ex.Message);
+                return new UnrankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadByGame: " + ex.Message);
                 return new UnrankedSubmission[0];
             }
         }
@@ -375,9 +410,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadByUser: " + ex.Message);
+                return new UnrankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadByUser: " + ex.Message);
                 return new UnrankedSubmission[0];
             }
         }
@@ -426,9 +466,14 @@ namespace Class_Library.DAL
                 }
                 return submission;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadRanked: " + ex.Message);
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadRanked: " + ex.Message);
                 return null;
             }
         }
@@ -481,9 +526,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadPendingAdmin: " + ex.Message);
+                return new RankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadPendingAdmin: " + ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -536,9 +586,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadApprovedAdmin: " + ex.Message);
+                return new RankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadApprovedAdmin: " + ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -588,9 +643,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadRankedByGame: " + ex.Message);
+                return new RankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadRankedByGame: " + ex.Message);
                 return new RankedSubmission[0];
             }
         }
@@ -640,9 +700,14 @@ namespace Class_Library.DAL
                 }
                 return submissions.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception in ReadRankedByUser: " + ex.Message);
+                return new RankedSubmission[0];
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception in ReadRankedByUser: " + ex.Message);
                 return new RankedSubmission[0];
             }
         }

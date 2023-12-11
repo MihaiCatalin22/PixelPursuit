@@ -46,9 +46,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Create method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in Create method: {ex.Message}");
                 return false;
             }
         }
@@ -79,9 +84,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Update method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in Update method: {ex.Message}");
                 return false;
             }
         }
@@ -106,9 +116,14 @@ namespace Class_Library.DAL
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Delete method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in Delete method: {ex.Message}");
                 return false;
             }
         }
@@ -135,9 +150,14 @@ namespace Class_Library.DAL
                 }
                 return users.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAll method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAll method: {ex.Message}");
                 return null;
             }
         }
@@ -167,9 +187,14 @@ namespace Class_Library.DAL
                 }
                 return users.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllUsers method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAllUsers method: {ex.Message}");
                 return null;
             }
         }
@@ -199,9 +224,14 @@ namespace Class_Library.DAL
                 }
                 return users.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllUsersSearch method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAllUsersSearch method: {ex.Message}");
                 return null;
             }
         }
@@ -231,9 +261,14 @@ namespace Class_Library.DAL
                 }
                 return users.ToArray();
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllAdmins method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in ReadAllAdmins method: {ex.Message}");
                 return null;
             }
         }
@@ -263,9 +298,14 @@ namespace Class_Library.DAL
                 }
                 return salt;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetSalt method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetSalt method: {ex.Message}");
                 return null;
             }
         }
@@ -306,9 +346,14 @@ namespace Class_Library.DAL
                 }
                 return user;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetUserFromUsername method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetUserFromUsername method: {ex.Message}");
                 return null;
             }
         }
@@ -336,9 +381,14 @@ namespace Class_Library.DAL
                 }
                 return user;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetUserFromEmail method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetUserFromEmail method: {ex.Message}");
                 return null;
             }
         }
@@ -367,9 +417,14 @@ namespace Class_Library.DAL
                 }
                 return user;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetUserFromId method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetUserFromId method: {ex.Message}");
                 return null;
             }
         }
@@ -393,9 +448,14 @@ namespace Class_Library.DAL
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in UpdateUserBanStatus method: {ex.Message}");
+                return false;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in UpdateUserBanStatus method: {ex.Message}");
                 return false;
             }
         }
@@ -425,9 +485,14 @@ namespace Class_Library.DAL
 
                 return pictures;
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetAllProfilePictures method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"General Error in GetAllProfilePictures method: {ex.Message}");
                 return null;
             }
 
@@ -453,9 +518,15 @@ namespace Class_Library.DAL
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in GetProfilePictureUrlById method: {ex.Message}");
+                return null;
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);     
+                Console.WriteLine($"General Error in GetProfilePictureUrlById method: {ex.Message}");
+                return null;
             }
             return null;
         }

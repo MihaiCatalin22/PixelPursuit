@@ -16,62 +16,86 @@ namespace Class_Library.Controllers
     
         public User? LoginUsername(string username, string password)
         {
-            foreach (User user in userController.ReadAllUsers())
+            try
             {
-                string salt = userController.GetSalt(user);
-                string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
-
-                if (user.Username == username && user.Password == hashPassword)
+                foreach (User user in userController.ReadAllUsers())
                 {
-                    if (!banController.IsUserCurrentlyBanned(user.Id))
-                    {
-                        return user;
-                    }
-                    else
-                    {
+                    string salt = userController.GetSalt(user);
+                    string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
 
-                        return null;
+                    if (user.Username == username && user.Password == hashPassword)
+                    {
+                        if (!banController.IsUserCurrentlyBanned(user.Id))
+                        {
+                            return user;
+                        }
+                        else
+                        {
+
+                            return null;
+                        }
                     }
                 }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }   
         }
 
         public User? LoginEmail(string email, string password)
         {
-            foreach (User user in userController.ReadAllUsers())
+            try
             {
-                string salt = userController.GetSalt(user);
-                string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
-
-                if (user.Email == email && user.Password == hashPassword)
+                foreach (User user in userController.ReadAllUsers())
                 {
-                    if (!banController.IsUserCurrentlyBanned(user.Id))
+                    string salt = userController.GetSalt(user);
+                    string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
+
+                    if (user.Email == email && user.Password == hashPassword)
                     {
-                        return user;
-                    }
-                    else
-                    {
-                        return null;
+                        if (!banController.IsUserCurrentlyBanned(user.Id))
+                        {
+                            return user;
+                        }
+                        else
+                        {
+                            return null;
+                        }
                     }
                 }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }        
         }
 
         public User? LoginUsernameAdmin(string username, string password)
         {
-            foreach (User user in userController.ReadAllAdmins())
+            try
             {
-                string salt = userController.GetSalt(user);
-                string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
-
-                if (user.Username == username && user.Password == hashPassword)
+                foreach (User user in userController.ReadAllAdmins())
                 {
-                    return user;
+                    string salt = userController.GetSalt(user);
+                    string hashPassword = HashPassword.GenerateHashedPassword(password, salt);
+
+                    if (user.Username == username && user.Password == hashPassword)
+                    {
+                        return user;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }     
         }
         public bool IsUserBanned(string username)
         {

@@ -41,11 +41,17 @@ namespace Class_Library.DAL
                 }
 				return true;
 			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Create method: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in Create method: {ex.Message}");
+                return false;
+            }
+        }
 
 		public Ban[] ReadAll()
 		{
@@ -82,11 +88,17 @@ namespace Class_Library.DAL
 				}
 				return bans.ToArray();
 			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAll method: {ex.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in ReadAll method: {ex.Message}");
+                return null;
+            }
+        }
 
 		public Ban[] ReadAllSearch(string search)
 		{
@@ -124,11 +136,17 @@ namespace Class_Library.DAL
 				}
 				return bans.ToArray();
 			}
-			catch (Exception ex)
-			{
-				return null;
-			}
-		}
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in ReadAllSearch method: {ex.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in ReadAllSearch method: {ex.Message}");
+                return null;
+            }
+        }
 		public bool Update(Ban ban)
 		{
 			try
@@ -149,12 +167,17 @@ namespace Class_Library.DAL
 					}
 				}
 			}
-			catch (Exception ex)
-			{
-                Console.WriteLine("Exception in UpdateBan: " + ex.Message);
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Update method: {ex.Message}");
                 return false;
-			}
-		}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in Update method: {ex.Message}");
+                return false;
+            }
+        }
 		public bool Delete(Ban ban)
 		{
 			try
@@ -174,12 +197,17 @@ namespace Class_Library.DAL
 					}
 				}
 			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-				return false;
-			}
-		}
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in Update method: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in Update method: {ex.Message}");
+                return false;
+            }
+        }
 		public bool IsUserCurrentlyBanned(int userId)
 		{
 			try 
@@ -196,12 +224,17 @@ namespace Class_Library.DAL
 					}
 				}
 			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-				return false;
-			}
-			
-		}
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error in IsUserCurrentlyBanned method: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General Error in IsUserCurrentlyBanned method: {ex.Message}");
+                return false;
+            }
+
+        }
 	}
 }
