@@ -34,10 +34,13 @@ namespace Razor_Pages_Web_App.Pages
         [BindProperty]
         public string UsernameColor { get; set; }
 
-        public List<string> PresetImages { get; private set; }
+        public List<ProfileImage> PresetImages { get; private set; }
 
         private IWebHostEnvironment _environment;
-
+        public string GetProfilePictureUrlById(int id)
+        {
+            return userController.GetProfilePictureUrlById(id);
+        }
         public void OnGet()
         {
             string username = HttpContext.User.Identity.Name;
@@ -45,6 +48,14 @@ namespace Razor_Pages_Web_App.Pages
 
             LoggedUser = userController.GetUserFromUsername(username);
             PresetImages = userController.GetAllProfilePictures();
+
+            if (PresetImages == null || !PresetImages.Any())
+            {
+                PresetImages = new List<ProfileImage>();
+            }
+
+            string profilePicUrl = userController.GetProfilePictureUrlById(LoggedUser.ProfilePicture);
+            ViewData["ProfilePicUrl"] = profilePicUrl;
         }
 
         public IActionResult OnPost()
@@ -55,9 +66,9 @@ namespace Razor_Pages_Web_App.Pages
                 ViewData["Message"] = username;
                 LoggedUser = userController.GetUserFromUsername(username);
 
-                if (int.TryParse(Request.Form["SelectedProfileImage"], out int profilePicId))
+                if (int.TryParse(Request.Form["SelectedProfileImage"], out int selectedImageId))
                 {
-                    LoggedUser.ProfilePicture = profilePicId;
+                    LoggedUser.ProfilePicture = selectedImageId;
                 }
 
                 LoggedUser.Email = Email;

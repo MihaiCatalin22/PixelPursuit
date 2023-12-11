@@ -1,0 +1,14 @@
+﻿@page
+@model Razor_Pages_Web_App.Pages.DeniedModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="text-center">
+        <h3 class="text-danger display-4">Access Denied</h3>
+        <h1 class="display-4">You do not have permission to access this page.</h1>
+        <h1 class="display-4">Please log in or create an account to continue.</h1>
+        <a asp-page="/Login" class="btn btn-primary">Log In</a>
+        <a asp-page="/CreateAccount" class="btn btn-primary">Create Account</a>
+    </div>
+</div>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Desktop App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2375dddb760d14e3a7ea993fbd849b9c4f343f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6843fa70a7fead8ddb25901659cbb4043963a3f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Desktop App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Desktop App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,15 +1,15 @@
 ﻿@page
 @model Razor_Pages_Web_App.Pages.ProfileModel
 @{
-    string profilePicUrl = Model.PresetImages.FirstOrDefault(url => url.Contains(Model.LoggedUser.ProfilePicture.ToString()));
+    var currentProfilePic = Model.PresetImages.FirstOrDefault(p => p.Id == Model.LoggedUser.ProfilePicture);
 }
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-3 profile-pic-box">
-            <img id="currentProfilePic" src="@profilePicUrl" alt="Current Profile Image" style="width: 250px; height: 250px;" />
+            <img id="currentProfilePic" src="@Model.GetProfilePictureUrlById(Model.LoggedUser.ProfilePicture)" alt="Current Profile Image" style="width: 250px; height: 250px;" />
             <button class="btn btn-primary mt-2" onclick="openModal()">Choose Profile Picture</button>
         </div>
-
+        
         <input type="hidden" id="hiddenProfilePicUrl" name="SelectedProfileImage" />
         <div class="col-9">
             <h1>Profile</h1>
@@ -76,10 +76,10 @@
             <div id="profilePictureModal" class="overlay" style="display: none;">
                 <div class="modal-content">
                     <h4>Select Profile Picture</h4>
-                    <div class="grid-container">
-                        @foreach (var imageUrl in Model.PresetImages)
+                    <div class="grid-container2">
+                        @foreach (var image in Model.PresetImages)
                         {
-                            <img src="@imageUrl" alt="Profile Image" class="selectable-image" data-image-url="@imageUrl" />
+                            <img src="@image.Url" alt="Profile Image" class="selectable-image" onclick="selectProfileImage('@image.Id', '@image.Url')" />
                         }
                     </div>
                     <button type="button" onclick="closeModal()" class="btn btn-secondary">Cancel</button>
@@ -111,16 +111,18 @@
             document.getElementById('profilePictureModal').style.display = 'none';
         }
 
-        function selectProfileImage(imageId) {
-             document.getElementById('currentProfilePic').src = imageId;
-             document.getElementById('hiddenProfilePicUrl').value = imageId;
-             closeModal();
+        function selectProfileImage(imageId, imageUrl) {
+            document.getElementById('currentProfilePic').src = imageUrl;
+            document.getElementById('hiddenProfilePicUrl').value = imageId;
+            closeModal();
         }
 
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll('.selectable-image').forEach(img => {
                 img.addEventListener('click', function () {
-                    selectProfileImage(this.dataset.imageUrl);
+                    var imageId = this.getAttribute('onclick').split(',')[0].replace("selectProfileImage('", "").replace("'", "").trim();
+                    var imageUrl = this.src;
+                    selectProfileImage(imageId, imageUrl);
                 });
             });
         });

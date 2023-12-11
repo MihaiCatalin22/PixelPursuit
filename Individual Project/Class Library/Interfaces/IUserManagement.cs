@@ -21,7 +21,8 @@ namespace Class_Library.Interfaces
         public User? GetUserFromEmail(string email);
         public User? GetUserFromId(int id);
         public bool UpdateUserBanStatus(int userId, bool isBanned);
-        public List<string> GetAllProfilePictures();
+        public List<ProfileImage> GetAllProfilePictures();
+        public string GetProfilePictureUrlById(int id);
     }
 }
 

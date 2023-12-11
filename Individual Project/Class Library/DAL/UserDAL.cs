@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Identity.Client;
+using System.Runtime;
 
 namespace Class_Library.DAL
 {
@@ -235,7 +236,7 @@ namespace Class_Library.DAL
                 Console.WriteLine(ex.Message);
                 return null;
             }
-        }       
+        }
 
         public string? GetSalt(User user)
         {
@@ -329,7 +330,7 @@ namespace Class_Library.DAL
 
                         if (dr.Read())
                         {
-                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));                          
+                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
                         }
                     }
                 }
@@ -398,21 +399,26 @@ namespace Class_Library.DAL
                 return false;
             }
         }
-        public List<string> GetAllProfilePictures()
+        public List<ProfileImage> GetAllProfilePictures()
         {
-            try 
+            try
             {
-                var pictures = new List<string>();
+                var pictures = new List<ProfileImage>();
 
                 using (var conn = new SqlConnection(CONNECTION_STRING))
                 {
                     conn.Open();
-                    var cmd = new SqlCommand("SELECT ImageUrl FROM ProfilePictures", conn);
+                    var cmd = new SqlCommand("SELECT Id, ImageUrl FROM ProfilePictures", conn);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            pictures.Add(reader.GetString(0));
+                            var profileImage = new ProfileImage
+                            {
+                                Id = reader.GetInt32(0),
+                                Url = reader.GetString(1)
+                            };
+                            pictures.Add(profileImage);
                         }
                     }
                 }
@@ -424,6 +430,34 @@ namespace Class_Library.DAL
                 Console.WriteLine(ex.Message);
                 return null;
             }
+
+        }
+        public string GetProfilePictureUrlById(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                {
+                    string sql = "SELECT ImageUrl FROM ProfilePictures WHERE Id = @id";
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        conn.Open();
+                        var result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            return result.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);     
+            }
+            return null;
         }
     }
 }

@@ -1,6 +1,14 @@
 ﻿@page
+@using Class_Library.Classes
 @model Razor_Pages_Web_App.Pages.CreateSubmissionModel
 @{
+	var enumPlatformOptions = Enum.GetValues(typeof(EnumPlatform))
+										.Cast<EnumPlatform>()
+										.Select(e => new SelectListItem
+										  {
+											  Value = ((int)e).ToString(),
+											  Text = e.ToString()
+										  });
 }
 @if (TempData["Message"] != null)
 {
@@ -36,74 +44,24 @@
 					<br />
 
 					<label asp-for="@Model.Hours" class="h5">Hours:  </label>
-					<input type="number" max="24" min="0" asp-for="@Model.Hours" value="@Model.Hours" class="form-control" />
+					<input type="number" max="72" min="-1" asp-for="@Model.Hours" value="@Model.Hours" class="form-control" />
 					<br />
 
 					<label asp-for="@Model.Minutes" class="h5">Minutes:  </label>
-					<input type="number" max="59" min="0" asp-for="@Model.Minutes" value="@Model.Minutes" class="form-control" />
+					<input type="number" max="59" min="-1" asp-for="@Model.Minutes" value="@Model.Minutes" class="form-control" />
 					<br />
 
 					<label asp-for="@Model.Seconds" class="h5">Seconds:  </label>
-					<input type="number" max="59" min="0" asp-for="@Model.Seconds" value="@Model.Seconds" class="form-control" />
+					<input type="number" max="59" min="-1" asp-for="@Model.Seconds" value="@Model.Seconds" class="form-control" />
 					<br />
 
 					<label asp-for="@Model.Platform" class="h5">Platform:  </label>
 					<select asp-for="@Model.Platform" class="form-control">
-						<option value="-1" hidden disabled selected>Select your platform:</option>
-						<option value="0">PC</option>
-						<option value="1">XboxSeriesX</option>
-						<option value="2">XboxSeriesS</option>
-						<option value="3">XboxOneX</option>
-						<option value="4">XboxOneS</option>
-						<option value="5">XboxOne</option>
-						<option value="6">Xbox360</option>
-						<option value="7">Xbox360Kinect</option>
-						<option value="8">Xbox</option>
-						<option value="9">PlayStation5</option>
-						<option value="10">PlayStation4Pro</option>
-						<option value="11">PlayStation4</option>
-						<option value="12">PlayStation3</option>
-						<option value="13">PlayStation2</option>
-						<option value="14">PlayStation</option>
-						<option value="15">PlayStationVita</option>
-						<option value="16">PlayStationPortable</option>
-						<option value="17">NintendoSwitch</option>
-						<option value="18">NintendoSwitchLite</option>
-						<option value="19">NintendoWiiU</option>
-						<option value="20">NintendoWii</option>
-						<option value="21">Nintendo3DS</option>
-						<option value="22">Nintendo2DS</option>
-						<option value="23">NintendoDS</option>
-						<option value="24">Android</option>
-						<option value="25">iOS</option>
-						<option value="26">AndroidTV</option>
-						<option value="27">AppleTV</option>
-						<option value="28">AppleWatch</option>
-						<option value="29">Arcade</option>
-						<option value="30">Atari2600</option>
-						<option value="31">Atari5200</option>
-						<option value="32">Atari7800</option>
-						<option value="33">Chromebook</option>
-						<option value="34">CommodoreCDTV</option>
-						<option value="35">Dreamcast</option>
-						<option value="36">DVDPlayer</option>
-						<option value="37">fireTV</option>
-						<option value="38">Flash</option>
-						<option value="39">Genesis</option>
-						<option value="40">iPod</option>
-						<option value="41">Linux</option>
-						<option value="42">Mac</option>
-						<option value="43">MSDOS</option>
-						<option value="44">N64</option>
-						<option value="45">NES</option>
-						<option value="46">Oculus</option>
-						<option value="47">Saturn</option>
-						<option value="48">SegaCD</option>
-						<option value="49">SNES</option>
-						<option value="50">SteamDeck</option>
-						<option value="51">Web</option>
-						<option value="52">WindowsPhone</option>
-						<option value="53">ZXSpectrum</option>
+						<option value="" hidden disabled selected>Select your platform:</option>
+						@foreach (var option in enumPlatformOptions)
+						{
+							<option value="@option.Value">@option.Text</option>
+						}
 					</select>
 					<br />
 					@{

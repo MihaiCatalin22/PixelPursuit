@@ -81,5 +81,27 @@ namespace Class_Library.Controllers
         {
             return gameManager.UserPlayedBefore(user, game);
         }
+        public static TimeSpan ConvertToTimeSpan(int hours, int minutes, int seconds)
+        {
+            return new TimeSpan(hours, minutes, seconds);
+        }
+        public void UpdateGameStats(Game game, int hours, int minutes, int seconds)
+        {
+            TimeSpan newSubmissionTime = ConvertToTimeSpan(hours, minutes, seconds);
+
+            game.TotalTime = game.TotalTime.Add(newSubmissionTime);
+
+            if (game.BestTime == TimeSpan.Zero)
+            {
+                game.BestTime = TimeSpan.MaxValue;
+            }
+
+            if (newSubmissionTime < game.BestTime)
+            {
+                game.BestTime = newSubmissionTime;
+            }
+
+            Update(game);
+        }
     }
 }

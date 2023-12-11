@@ -15,3 +15,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Desktop_App
 build_property.ProjectDir = E:\uni\s2\project\individual\individual-assigment-semester-2\Individual Project\Desktop App\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

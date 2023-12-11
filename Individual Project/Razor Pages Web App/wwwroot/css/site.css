@@ -175,6 +175,7 @@ table, th, td {
 .profile {
     text-decoration: none;
 }
+
 .btn-submission {
     display: block;
     width: 80%;
@@ -205,6 +206,7 @@ table, th, td {
     right: 10px;
     text-align: center;
 }
+
 .game-background {
     background-size: cover;
     background-position: center;
@@ -267,7 +269,7 @@ table, th, td {
     border-color: #007bff;
  }
 
-.grid-container {
+.grid-container2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

@@ -10,16 +10,16 @@ namespace Razor_Pages_Web_App.Pages
     {
         private SubmissionController submissionController { get; set; } = new(new SubmissionDAL());
         [BindProperty]
-        public SubmissionController subCont {  get; set; }
+        public SubmissionController subCont { get; set; }
         [BindProperty]
         public Submission[] submissions { get; set; }
         [BindProperty]
         public RankedSubmission[] rankedSubmissions { get; set; }
         [BindProperty]
-        public User LoggedUser {  get; set; }
+        public User LoggedUser { get; set; }
         private UserController userController = new(new UserDAL());
         [BindProperty]
-        public int Type {  get; set; }
+        public int Type { get; set; }
         public IActionResult OnGet(int type)
         {
             string username = HttpContext.User.Identity.Name;
@@ -34,7 +34,7 @@ namespace Razor_Pages_Web_App.Pages
             submissions = submissionController.ReadRecent(LoggedUser.Id);
 
             List<RankedSubmission> ranked = new();
-            foreach(var submission in submissions)
+            foreach (var submission in submissions)
             {
                 if (submissionController.ReadRanked(submission.Id) != null)
                 {
@@ -61,7 +61,7 @@ namespace Razor_Pages_Web_App.Pages
                 submissions = submissionController.ReadRankedByUser(LoggedUser.Id);
                 rankedSubmissions = submissionController.ReadRankedByUser(LoggedUser.Id);
             }
-            else if (Type == 2) 
+            else if (Type == 2)
             {
                 submissions = submissionController.ReadByUser(LoggedUser.Id);
             }
@@ -77,3 +77,4 @@ namespace Razor_Pages_Web_App.Pages
         }
     }
 }
+

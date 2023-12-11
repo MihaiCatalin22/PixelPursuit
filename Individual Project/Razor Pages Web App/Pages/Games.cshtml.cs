@@ -4,6 +4,7 @@ using Class_Library.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Razor_Pages_Web_App.Pages
 {
@@ -17,50 +18,76 @@ namespace Razor_Pages_Web_App.Pages
         public int Count { get; set; }
         public int pageSize = 8;
         [BindProperty]
+        [StringLength(100, ErrorMessage = "Search query is too long.")]
         public string SearchQuery { get; set; }
         public int TotalPages { get; set; }
         public IActionResult OnGet(int id)
         {
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            ID = id;
-            GameList = gameController.ReadAllByName(SearchQuery);
-            Count = GameList.Count();
-            GamePage = gameController.ReadOnePageByName(ID, SearchQuery);
-            TotalPages = gameController.GetTotalPages(Count);
+            try
+            {
+                string username = HttpContext.User.Identity.Name;
+                ViewData["Message"] = username;
+                ID = id;
+                GameList = gameController.ReadAllByName(SearchQuery);
+                Count = GameList.Count();
+                GamePage = gameController.ReadOnePageByName(ID, SearchQuery);
+                TotalPages = gameController.GetTotalPages(Count);
 
-            if (ID >= TotalPages)
-            {
-                return RedirectToPage("/Games");
+                if (ID >= TotalPages)
+                {
+                    return RedirectToPage("/Games");
+                }
+                else
+                {
+                    return Page();
+                }
             }
-            else
+            catch (Exception ex) 
             {
+                ViewData["ErrorMessage"] = $"Error occurred: {ex.Message}";
                 return Page();
             }
+            
         }
         public IActionResult OnPost(int id)
         {
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            GameList = gameController.ReadAllByName(SearchQuery);
-            Count = GameList.Count();
-            GamePage = gameController.ReadOnePageByName(ID, SearchQuery);
-            TotalPages = gameController.GetTotalPages(Count);
+            try
+            {
+                string username = HttpContext.User.Identity.Name;
+                ViewData["Message"] = username;
+                GameList = gameController.ReadAllByName(SearchQuery);
+                Count = GameList.Count();
+                GamePage = gameController.ReadOnePageByName(ID, SearchQuery);
+                TotalPages = gameController.GetTotalPages(Count);
 
-            if (ID >= TotalPages)
-            {
-                return RedirectToPage("/Games");
+                if (ID >= TotalPages)
+                {
+                    return RedirectToPage("/Games");
+                }
+                else
+                {
+                    return Page();
+                }
             }
-            else
+            catch (Exception ex)
             {
+                ViewData["ErrorMessage"] = $"Error occurred: {ex.Message}";
                 return Page();
-            }
+            }         
         }
         public IActionResult OnPostClear()
         {
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            return RedirectToPage("/Games");
+            try
+            {
+                string username = HttpContext.User.Identity.Name;
+                ViewData["Message"] = username;
+                return RedirectToPage("/Games");
+            }
+            catch (Exception ex)
+            {
+                ViewData["ErrorMessage"] = $"Error occurred: {ex.Message}";
+                return Page();
+            }   
         }
     }
 }

@@ -93,9 +93,13 @@ namespace Class_Library.Controllers
         {
             return userManager.UpdateUserBanStatus(userId, isBanned);
         }        
-        public List<String> GetAllProfilePictures()
+        public List<ProfileImage> GetAllProfilePictures()
         {
             return userManager.GetAllProfilePictures();
+        }
+        public string GetProfilePictureUrlById(int id)
+        {
+            return userManager.GetProfilePictureUrlById(id);
         }
     }
 }
