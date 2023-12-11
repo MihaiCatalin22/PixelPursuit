@@ -36,8 +36,9 @@ namespace Class_Library.DAL
 
 						if (result < 0) return false;
 					}
-
-				}
+                    UserDAL userDAL = new UserDAL();
+                    userDAL.UpdateUserBanStatus(ban.User.Id, true);
+                }
 				return true;
 			}
 			catch (Exception ex)

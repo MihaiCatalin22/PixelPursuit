@@ -1,14 +1,16 @@
 using Class_Library.Classes;
 using Class_Library.Controllers;
 using Class_Library.DAL;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Primitives;
 using System.ComponentModel.DataAnnotations;
 
 namespace Razor_Pages_Web_App.Pages
 {
     public class ProfileModel : PageModel
-    {
+    {       
         public ProfileModel(IWebHostEnvironment environment)
         {
             _environment = environment;
@@ -24,7 +26,7 @@ namespace Razor_Pages_Web_App.Pages
         public string Email { get; set; }
 
         private UserController userController = new(new UserDAL());
-   
+
         [BindProperty]
         [MaxLength(100, ErrorMessage = "Bio cannot be longer than 100 characters!")]
         public string Bio { get; set; }
@@ -32,11 +34,9 @@ namespace Razor_Pages_Web_App.Pages
         [BindProperty]
         public string UsernameColor { get; set; }
 
-        [BindProperty]
-        public IFormFile Image { get; set; }
+        public List<string> PresetImages { get; private set; }
 
         private IWebHostEnvironment _environment;
-
 
         public void OnGet()
         {
@@ -44,79 +44,78 @@ namespace Razor_Pages_Web_App.Pages
             ViewData["Message"] = username;
 
             LoggedUser = userController.GetUserFromUsername(username);
-
+            PresetImages = userController.GetAllProfilePictures();
         }
 
         public IActionResult OnPost()
         {
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            LoggedUser = userController.GetUserFromUsername(username);
+            try
+            {
+                string username = HttpContext.User.Identity.Name;
+                ViewData["Message"] = username;
+                LoggedUser = userController.GetUserFromUsername(username);
 
-            LoggedUser.Email = Email;
-            LoggedUser.Bio = Bio;
-            LoggedUser.UsernameColor = UsernameColor;
+                if (int.TryParse(Request.Form["SelectedProfileImage"], out int profilePicId))
+                {
+                    LoggedUser.ProfilePicture = profilePicId;
+                }
 
-            userController.Update(LoggedUser);
-            return Page();
+                LoggedUser.Email = Email;
+                LoggedUser.Bio = Bio;
+                LoggedUser.UsernameColor = UsernameColor;
+
+                userController.Update(LoggedUser);
+                return RedirectToPage("/Profile");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Error"] = "An error occurred while updating your profile: " + ex.Message;
+                return Page();
+            }
         }
 
         public IActionResult OnPostDelete()
         {
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            LoggedUser = userController.GetUserFromUsername(username);
-
-            userController.Delete(LoggedUser);
-            HttpContext.Session.Clear();
-
-            return RedirectToPage("/Index");
-        }
-
-        public async Task<IActionResult> OnPostImageAsync()
-        {
-
-            string username = HttpContext.User.Identity.Name;
-            ViewData["Message"] = username;
-            LoggedUser = userController.GetUserFromUsername(username);
-
-            Email = LoggedUser.Email;
-            Bio = LoggedUser.Bio;
-            UsernameColor = LoggedUser.UsernameColor;
-
-            if (Image != null)
+            try
             {
-                var index = Image.FileName.LastIndexOf(".");
-                var extension = Image.FileName.Substring(index);
+                string username = HttpContext.User.Identity.Name;
+                ViewData["Message"] = username;
+                LoggedUser = userController.GetUserFromUsername(username);
 
-                List<string> extensions = new List<string> { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
+                userController.Delete(LoggedUser);
+                HttpContext.SignOutAsync();
 
-                if (extensions.Contains(extension))
+                return RedirectToPage("/Index");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Error"] = "An error occurred while deleting your profile: " + ex.Message;
+                return Page();
+            }
+        }
+        public async Task<IActionResult> OnPostUpdateImageAsync(string image)
+        {
+            try
+            {
+                string username = HttpContext.User.Identity.Name;
+                LoggedUser = userController.GetUserFromUsername(username);
+
+                if (int.TryParse(image, out int profilePicId))
                 {
-                    var fileName = GetUniqueName(Image.FileName);
-                    var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-                    var filePath = Path.Combine(uploads, fileName);
-                    Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    LoggedUser.ProfilePicture = profilePicId;
+                    bool updateResult = userController.Update(LoggedUser);
 
-                    LoggedUser.ProfilePicture = fileName;
-
-                    userController.Update(LoggedUser);
+                    return new JsonResult(new { success = updateResult, message = updateResult ? "Profile picture updated successfully." : "Error updating profile picture." });
                 }
                 else
                 {
-                    ViewData["Error"] = "Invalid file type.";
+                    return new JsonResult(new { success = false, message = "Error: Invalid image ID." });
                 }
-
             }
-            return Page();
-        }
-
-        private string GetUniqueName(string fileName)
-        {
-            fileName = Path.GetFileName(fileName);
-            return Path.GetFileNameWithoutExtension(fileName)
-                   + "_" + Guid.NewGuid().ToString().Substring(0, 4)
-                   + Path.GetExtension(fileName);
+            catch (Exception ex)
+            {
+                return new JsonResult(new { success = false, message = $"Error: {ex.Message}" });
+            }
         }
     }
 }

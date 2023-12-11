@@ -9,42 +9,56 @@
     <br>
 
     <form method="post">
-        <div class="text-danger" asp-validation-asp-validation-summary="ModelOnly"></div>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
         <div class="form-group row justify-content-md-center" style="font-size:medium">
             <div class="col col-lg-2">
-                <label asp-for="LoginInfo" style="display: inline-block; margin-right: 5px;">Enter your username or email:*</label>
+                <label for="LoginInfo">Enter your username or email:*</label>
             </div>
             <div class="col col-lg-2">
-                <input type="text" autocomplete="off" asp-for="LoginInfo" class="form-control" required />
+                <input type="text" autocomplete="off" asp-for="LoginInfo" class="form-control" required id="LoginInfo" />
+                <span class="text-danger" asp-validation-for="LoginInfo"></span>
             </div>
-            <span class="text-danger" asp-validation-for="LoginInfo"></span>
         </div>
         <br />
 
         <div class="form-group row justify-content-md-center" style="font-size:medium;">
             <div class="col col-lg-2">
-                <label asp-for="Password" style="display:inline-block; margin-right: 5px;">Enter your password:*</label>
+                <label asp-for="Password">Enter your password:*</label>
             </div>
             <div class="col col-lg-2">
-                <input type="password" asp-for="Password" class="form-control" required/>
+                <input type="password" asp-for="Password" class="form-control" required id="Password" />
+                <span class="text-danger" asp-validation-for="Password"></span>
             </div>
-            <span class="text-danger" asp-validation-for="Password"></span>
         </div>
         <br />
 
         <div class="form-group row justify-content-md-center" style="font-size:medium;">
             <div class="col col-lg-2">
-                <input type="checkbox" asp-formaction="@Model.RememberMe" />
-                <label asp-for="@Model.RememberMe">Remember me</label>
+                <input type="checkbox" asp-for="RememberMe" />
+                <label asp-for="RememberMe">Remember me</label>
             </div>
         </div>
         <br />
 
         <div class="form-group row justify-content-md-center">
             <div class="text-center">
-                <input type="submit" class="btn btn-primary" value="Login" />
+                <input type="submit" class="btn btn-primary" value="Login" id="loginButton" onclick="showLoading()" />
             </div>
         </div>
     </form>
 </div>
+<script>
+    function showLoading() {
+        var loginInfo = document.getElementById('LoginInfo').value;
+        var password = document.getElementById('Password').value;
+        var button = document.getElementById('loginButton');
+
+        if (loginInfo && password) {
+            button.value = 'Logging in...';
+            setTimeout(function () {
+                document.forms[0].submit();
+            }, 1500);
+        }
+    }
+</script>

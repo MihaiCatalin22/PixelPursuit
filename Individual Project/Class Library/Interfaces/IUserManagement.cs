@@ -18,7 +18,10 @@ namespace Class_Library.Interfaces
         public bool Delete(User user);
         public string? GetSalt(User user);
         public User? GetUserFromUsername(string username);
+        public User? GetUserFromEmail(string email);
         public User? GetUserFromId(int id);
+        public bool UpdateUserBanStatus(int userId, bool isBanned);
+        public List<string> GetAllProfilePictures();
     }
 }
 

@@ -127,7 +127,7 @@ namespace Class_Library.DAL
 
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
 
@@ -159,7 +159,7 @@ namespace Class_Library.DAL
 
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
 
@@ -191,7 +191,7 @@ namespace Class_Library.DAL
 
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
 
@@ -223,7 +223,7 @@ namespace Class_Library.DAL
 
                         while (dr.Read())
                         {
-                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
+                            users.Add(new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10])));
                         }
                     }
 
@@ -287,7 +287,18 @@ namespace Class_Library.DAL
 
                         if (dr.Read())
                         {
-                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
+                            user = new User(
+                                Convert.ToInt32(dr["Id"]),
+                                dr["Username"].ToString(),
+                                dr["Password"].ToString(),
+                                dr["Email"].ToString(),
+                                DateOnly.FromDateTime(Convert.ToDateTime(dr["RegistrationDate"])),
+                                dr["UsernameColor"].ToString(),
+                                Convert.ToInt32(dr["ProfilePicture"]),
+                                dr["Bio"] as string,
+                                dr.GetBoolean(dr.GetOrdinal("Banned")),
+                                dr.GetBoolean(dr.GetOrdinal("IsAdmin"))
+                            );
                         }
                     }
 
@@ -300,7 +311,36 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+        public User? GetUserFromEmail(string email)
+        {
+            try
+            {
+                User user = new();
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "SELECT * FROM [User] WHERE Email = @email";
 
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        conn.Open();
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));                          
+                        }
+                    }
+                }
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
         public User? GetUserFromId(int id)
         {
             try
@@ -319,7 +359,7 @@ namespace Class_Library.DAL
 
                         if (dr.Read())
                         {
-                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
+                            user = new User(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), DateOnly.FromDateTime(Convert.ToDateTime(dr[5])), dr[6].ToString(), Convert.ToInt32(dr[7]), dr[8].ToString(), Convert.ToBoolean(dr[9]), Convert.ToBoolean(dr[10]));
                         }
                     }
 
@@ -332,5 +372,59 @@ namespace Class_Library.DAL
                 return null;
             }
         }
+        public bool UpdateUserBanStatus(int userId, bool isBanned)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
+                {
+                    string sql = "UPDATE [User] SET Banned = @isBanned WHERE Id = @userId";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@isBanned", isBanned);
+                        cmd.Parameters.AddWithValue("@userId", userId);
+
+                        conn.Open();
+                        int result = cmd.ExecuteNonQuery();
+
+                        return result > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        public List<string> GetAllProfilePictures()
+        {
+            try 
+            {
+                var pictures = new List<string>();
+
+                using (var conn = new SqlConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+                    var cmd = new SqlCommand("SELECT ImageUrl FROM ProfilePictures", conn);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            pictures.Add(reader.GetString(0));
+                        }
+                    }
+                }
+
+                return pictures;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }
+

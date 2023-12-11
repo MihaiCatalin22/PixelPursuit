@@ -30,15 +30,22 @@
     @{
         foreach (Submission submission in Model.submissions)
         {
-            <div class="col mt-3">
-                <div class="card centertext" style="width:300px; height:350px">
-                    <div class="card-body">
-                        <img src="@submission.Game.PictureLink" style="width:200px; height:250px">
-                        <h4 class="card-title"><a class="profile" href="/UserProfile?id=@submission.User.Id"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span></a> - @submission.Game.Name</h4>
-                        <p class="card-text"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span> has finished @submission.Game.Name in @submission.TotalTime.ToString().</p>
+            if (Model.submissions.Any())
+            {
+                <div class="col mt-3">
+                    <div class="card centertext" style="width:300px; height:415px">
+                        <div class="card-body">
+                            <img src="@submission.Game.PictureLink" style="width:200px; height:250px">
+                            <h4 class="card-title"><a class="profile" href="/UserProfile?id=@submission.User.Id"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span></a> - @submission.Game.Name</h4>
+                            <p class="card-text"><span style="color:@submission.User.UsernameColor">@submission.User.Username</span> has finished @submission.Game.Name in @submission.TotalTime.ToString().</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <p>No recent submissions to display.</p>
+            }
         }
     }
 </div>

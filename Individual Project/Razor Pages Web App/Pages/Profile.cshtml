@@ -1,20 +1,16 @@
 ﻿@page
 @model Razor_Pages_Web_App.Pages.ProfileModel
 @{
+    string profilePicUrl = Model.PresetImages.FirstOrDefault(url => url.Contains(Model.LoggedUser.ProfilePicture.ToString()));
 }
 <div class="container">
     <div class="row mt-5">
-        <div class="col-3">
-
-            <img src="~/uploads/@Model.LoggedUser.ProfilePicture" style="width: 250px; height: 250px;" class="border mb-1" />
-            <br />
-            <form method="post" enctype="multipart/form-data">
-                <input type="file" asp-for="@Model.Image" class="form-control mb-1" accept="image/png, image/jpg, image/jpeg, image/bmp, image/gif" />
-                <input type="submit" asp-page-handler="Image" class="btn btn-success" value="Change profile picture"></input>
-            </form>
+        <div class="col-md-3 profile-pic-box">
+            <img id="currentProfilePic" src="@profilePicUrl" alt="Current Profile Image" style="width: 250px; height: 250px;" />
+            <button class="btn btn-primary mt-2" onclick="openModal()">Choose Profile Picture</button>
         </div>
 
-
+        <input type="hidden" id="hiddenProfilePicUrl" name="SelectedProfileImage" />
         <div class="col-9">
             <h1>Profile</h1>
             <br />
@@ -77,11 +73,22 @@
                 </div>
 
             </form>
-
+            <div id="profilePictureModal" class="overlay" style="display: none;">
+                <div class="modal-content">
+                    <h4>Select Profile Picture</h4>
+                    <div class="grid-container">
+                        @foreach (var imageUrl in Model.PresetImages)
+                        {
+                            <img src="@imageUrl" alt="Profile Image" class="selectable-image" data-image-url="@imageUrl" />
+                        }
+                    </div>
+                    <button type="button" onclick="closeModal()" class="btn btn-secondary">Cancel</button>
+                    <button type="button" onclick="updateProfilePicture()" class="btn btn-success">Save</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 @{
     if (Model.ViewData["Error"] != null)
     {
@@ -96,18 +103,34 @@
 
 @section Scripts {
     <script>
+        function openModal() {
+            document.getElementById('profilePictureModal').style.display = 'flex';
+        }
 
+        function closeModal() {
+            document.getElementById('profilePictureModal').style.display = 'none';
+        }
+
+        function selectProfileImage(imageId) {
+             document.getElementById('currentProfilePic').src = imageId;
+             document.getElementById('hiddenProfilePicUrl').value = imageId;
+             closeModal();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.selectable-image').forEach(img => {
+                img.addEventListener('click', function () {
+                    selectProfileImage(this.dataset.imageUrl);
+                });
+            });
+        });
         function confirmPost() {
             return confirm("Are you sure you want to delete your account? This action is permanent!");
         }
-    </script>
 
-    <script>
         function getColour() {
-            var colorPicker = document.getElementById("colorPicker");
-            var selectedColor = colorPicker.value;
-
-        @Model.UsernameColor = selectedColor;
+            var colorPicker = document.getElementById("colourPicker");
+            document.getElementById("hiddenColour").value = colorPicker.value;
         }
     </script>
 }

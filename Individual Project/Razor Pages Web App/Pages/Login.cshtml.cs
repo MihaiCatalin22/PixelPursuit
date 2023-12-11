@@ -36,60 +36,63 @@ namespace Razor_Pages_Web_App.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            User loggedInUser = null;
-
-            if (LoginInfo.Contains("@"))
+            if (!ModelState.IsValid)
             {
-                loggedInUser = loginController.LoginEmail(LoginInfo, Password);
-                if (loggedInUser != null)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, loggedInUser.Username),
-                        new Claim(ClaimTypes.Role, "LoggedIn"),
-                    };
-
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = RememberMe,
-                        ExpiresUtc = DateTime.UtcNow.AddMonths(1),
-                    };
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                    await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
-
-                    return RedirectToPage("Index");
-                }
-                ModelState.AddModelError(string.Empty, "Wrong email or password.");
                 return Page();
             }
-            else
+
+            User loggedInUser = LoginInfo.Contains("@") ? LoginByEmail() : LoginByUsername();
+
+            if (loggedInUser != null)
             {
-                loggedInUser = loginController.LoginUsername(LoginInfo, Password);
-                if (loggedInUser != null)
+                if (loginController.IsUserBanned(loggedInUser.Username))
                 {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, loggedInUser.Username),
-                        new Claim("id", loggedInUser.Id.ToString()),
-                    };
-
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = RememberMe,
-                    };
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                    await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
-
-                    return RedirectToPage("Index");
-
+                    ModelState.AddModelError(string.Empty, "Your account is currently banned.");
+                    return Page();
                 }
-                ModelState.AddModelError(string.Empty, "Wrong username or password.");
-                return Page();
+                await SignInUser(loggedInUser);
+                return RedirectToPage("Index");
             }
+
+            ModelState.AddModelError(string.Empty, "Invalid login credentials or you are currently banned.");
+            return Page();
+        }
+        private User LoginByEmail()
+        {
+            User user = loginController.LoginEmail(LoginInfo, Password);
+            if (user == null)
+            {
+                ModelState.AddModelError("LoginFailed", "Email not found or password is incorrect.");
+            }
+            return user;
+        }
+
+        private User LoginByUsername()
+        {
+            User user = loginController.LoginUsername(LoginInfo, Password);
+            if (user == null)
+            {
+                ModelState.AddModelError("LoginFailed", "Username not found or password is incorrect.");
+            }
+            return user;
+        }
+
+        private async Task SignInUser(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, "LoggedIn"),
+            };
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = RememberMe,
+                ExpiresUtc = DateTime.UtcNow.AddDays(30),
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
         }
     }
 }

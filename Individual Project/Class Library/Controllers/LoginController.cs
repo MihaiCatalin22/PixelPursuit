@@ -23,12 +23,15 @@ namespace Class_Library.Controllers
 
                 if (user.Username == username && user.Password == hashPassword)
                 {
-                    if (banController.UnbanUser(user))
+                    if (!banController.IsUserCurrentlyBanned(user.Id))
                     {
-                        user.Banned = false;
-                        userController.Update(user);
+                        return user;
                     }
-                    return user;
+                    else
+                    {
+
+                        return null;
+                    }
                 }
             }
             return null;
@@ -43,12 +46,14 @@ namespace Class_Library.Controllers
 
                 if (user.Email == email && user.Password == hashPassword)
                 {
-                    if (banController.UnbanUser(user))
+                    if (!banController.IsUserCurrentlyBanned(user.Id))
                     {
-                        user.Banned = false;
-                        userController.Update(user);
+                        return user;
                     }
-                    return user;
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             return null;
@@ -67,6 +72,15 @@ namespace Class_Library.Controllers
                 }
             }
             return null;
+        }
+        public bool IsUserBanned(string username)
+        {
+            var user = userController.GetUserFromUsername(username);
+            if (user != null)
+            {
+                return banController.IsUserCurrentlyBanned(user.Id);
+            }
+            return false;
         }
     }
 }

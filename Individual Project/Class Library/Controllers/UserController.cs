@@ -63,7 +63,12 @@ namespace Class_Library.Controllers
                 return userManager.GetUserFromUsername(username);
             return null;
         }
-
+        public User? GetUserFromEmail(string email)
+        {
+            if (email != null)
+                return userManager.GetUserFromEmail(email);
+            return null;
+        }
         public User? GetUserFromId(int id)
         {
             if (id != null)
@@ -83,6 +88,14 @@ namespace Class_Library.Controllers
             if (user != null && GetUserFromId(user.Id) != null)
                 return userManager.GetSalt(user);
             return null;
+        }
+        public bool UpdateUserBanStatus(int userId, bool isBanned)
+        {
+            return userManager.UpdateUserBanStatus(userId, isBanned);
+        }        
+        public List<String> GetAllProfilePictures()
+        {
+            return userManager.GetAllProfilePictures();
         }
     }
 }
