@@ -56,7 +56,10 @@ namespace Class_Library.DAL
                                 }
 
                                 game.NumberOfRuns++;
-
+                                if (!gameDAL.UserPlayedBefore(submission.User, game))
+                                {
+                                    game.NumberOfPlayers++;
+                                }
                                 gameDAL.Update(game);
                             }
                         }
@@ -120,7 +123,10 @@ namespace Class_Library.DAL
                                 }
 
                                 game.NumberOfRuns++;
-
+                                if (!gameDAL.UserPlayedBefore(submission.User, game))
+                                {
+                                    game.NumberOfPlayers++;
+                                }
                                 gameDAL.Update(game);
                             }
                         }

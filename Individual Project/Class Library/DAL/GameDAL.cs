@@ -403,7 +403,7 @@ namespace Class_Library.DAL
             {
                 using SqlConnection conn = new SqlConnection(CONNECTION_STRING);
                 {
-                    string sql = "SELECT s.* FROM Game AS g INNER JOIN Submission AS s ON g.Id = s.GameID INNER JOIN [User] AS u ON s.UserID = u.Id WHERE s.GameID = @gameId AND s.UserID = @userId";
+                    string sql = "SELECT COUNT(*) FROM Submission WHERE GameID = @gameId AND UserID = @userId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
@@ -413,11 +413,9 @@ namespace Class_Library.DAL
                         conn.Open();
                         int result = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        if (result > 0)
-                            return true;
+                        return result > 0;
                     }
                 }
-                return false;
             }
             catch (SqlException ex)
             {

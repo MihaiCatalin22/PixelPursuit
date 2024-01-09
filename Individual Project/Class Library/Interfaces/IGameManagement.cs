@@ -19,6 +19,5 @@ namespace Class_Library.Interfaces
         public Game[] ReadAllSearch(string name, string company);
         public int GetTotalPages(int pagesize);
         public bool UserPlayedBefore(User user, Game game);
-
     }
 }

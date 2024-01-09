@@ -20,23 +20,23 @@ namespace Class_Library.Controllers
         {
             try
             {
-				if (game != null)
-				{
-					foreach (Game game1 in ReadAll())
-					{
-						if (game.ReleaseDate == game1.ReleaseDate && game.BestTime == game1.BestTime && game.TotalTime == game1.TotalTime && game.Name == game1.Name && game.Company == game1.Company && game.Genres == game1.Genres && game.Platforms == game1.Platforms && game.NumberOfPlayers == game1.NumberOfPlayers && game.NumberOfRuns == game1.NumberOfRuns && game.TrailerLink == game1.TrailerLink && game.PictureLink == game1.PictureLink && game.BackgroundPictureLink == game1.BackgroundPictureLink)
-							return false;
-					}
-					return gameManager.Create(game);
-				}
+                if (game != null)
+                {
+                    foreach (Game game1 in ReadAll())
+                    {
+                        if (game.ReleaseDate == game1.ReleaseDate && game.BestTime == game1.BestTime && game.TotalTime == game1.TotalTime && game.Name == game1.Name && game.Company == game1.Company && game.Genres == game1.Genres && game.Platforms == game1.Platforms && game.NumberOfPlayers == game1.NumberOfPlayers && game.NumberOfRuns == game1.NumberOfRuns && game.TrailerLink == game1.TrailerLink && game.PictureLink == game1.PictureLink && game.BackgroundPictureLink == game1.BackgroundPictureLink)
+                            return false;
+                    }
+                    return gameManager.Create(game);
+                }
                 return true;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("Error creating game: " + ex.Message);
-				return false;
-			}
-		}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error creating game: " + ex.Message);
+                return false;
+            }
+        }
         public bool Delete(Game game)
         {
             if (game != null && ReadByID(game.ID) != null)

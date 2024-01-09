@@ -25,7 +25,7 @@ namespace UnitTest
         public void CreateRankedSubmission_ShouldReturnTrue_WhenSubmissionIsValid()
         {
             var validSubmission = new RankedSubmission(
-                new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
+                new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", 1, "Bio", false, false),
                 new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
                 DateOnly.FromDateTime(DateTime.Now),
                 TimeSpan.FromHours(2),
@@ -54,7 +54,7 @@ namespace UnitTest
         public void ReadRecentByUsername_ShouldReturnSubmissions()
         {
             var submissions = new Submission[] {
-            new RankedSubmission(new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
+            new RankedSubmission(new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", 1, "Bio", false, false),
             new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(2),
@@ -71,7 +71,7 @@ namespace UnitTest
         public void ReadRecentByUserId_ShouldReturnSubmissions()
         {
             var submissions = new Submission[] {
-            new UnrankedSubmission(new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", "profile2.jpg", "Bio2", false, false),
+            new UnrankedSubmission(new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", 2, "Bio2", false, false),
             new Game(2, "GameName2", "GameCompany2", DateOnly.FromDateTime(DateTime.Now), "trailerLink2", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Adventure", "Xbox", "pictureLink2", "backgroundLink2"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(1),
@@ -90,7 +90,7 @@ namespace UnitTest
             var gameId = 2;
             var username = "Bob";
             var submissions = new UnrankedSubmission[] {
-            new UnrankedSubmission(new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", "profile2.jpg", "Bio2", false, false),
+            new UnrankedSubmission(new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", 2, "Bio2", false, false),
             new Game(2, "GameName2", "GameCompany2", DateOnly.FromDateTime(DateTime.Now), "trailerLink2", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Adventure", "Xbox", "pictureLink2", "backgroundLink2"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(1),
@@ -108,7 +108,7 @@ namespace UnitTest
         {
             var userId = 1;
             var submissions = new UnrankedSubmission[] {
-            new UnrankedSubmission(new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
+            new UnrankedSubmission(new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", 1, "Bio", false, false),
             new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(2),
@@ -127,7 +127,7 @@ namespace UnitTest
             var submissionId = 3;
             var submission = new RankedSubmission(
                 3,
-                new User(3, "JohnDoe", "pass123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", "profile3.jpg", "Bio3", false, true),
+                new User(3, "JohnDoe", "pass123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", 3, "Bio3", false, true),
                 new Game(3, "GameName3", "GameCompany3", DateOnly.FromDateTime(DateTime.Now), "trailerLink3", 10, 20, TimeSpan.FromHours(1), TimeSpan.FromHours(30), "RPG", "PS5", "pictureLink3", "backgroundLink3"),
                 DateOnly.FromDateTime(DateTime.Now),
                 TimeSpan.FromHours(1.5),
@@ -150,7 +150,7 @@ namespace UnitTest
             var submissions = new RankedSubmission[] {
             new RankedSubmission(
             3,
-            new User(3, "JohnDoe", "pass123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", "profile3.jpg", "Bio3", false, true),
+            new User(3, "JohnDoe", "pass123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", 3, "Bio3", false, true),
             new Game(3, "GameName3", "GameCompany3", DateOnly.FromDateTime(DateTime.Now), "trailerLink3", 10, 20, TimeSpan.FromHours(1), TimeSpan.FromHours(30), "RPG", "PS5", "pictureLink3", "backgroundLink3"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(1.5),
@@ -177,7 +177,7 @@ namespace UnitTest
             var submissions = new RankedSubmission[] {
             new RankedSubmission(
             1,
-            new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
+            new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", 1, "Bio", false, false),
             new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(2),
@@ -200,7 +200,7 @@ namespace UnitTest
             var gameId = 3;
             var submissions = new RankedSubmission[] {
             new RankedSubmission(
-            new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", "profile3.jpg", "Bio3", false, true),
+            new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", 3, "Bio3", false, true),
             new Game(3, "GameName3", "GameCompany3", DateOnly.FromDateTime(DateTime.Now), "trailerLink3", 10, 20, TimeSpan.FromHours(1), TimeSpan.FromHours(30), "RPG", "PS5", "pictureLink3", "backgroundLink3"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(1.5),
@@ -218,7 +218,7 @@ namespace UnitTest
         public void UpdateRanked_ShouldReturnTrue_WhenSubmissionIsValid()
         {
             var submission = new RankedSubmission(
-                new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", "profile3.jpg", "Bio3", false, true),
+                new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", 3, "Bio3", false, true),
                 new Game(3, "GameName3", "GameCompany3", DateOnly.FromDateTime(DateTime.Now), "trailerLink3", 10, 20, TimeSpan.FromHours(1), TimeSpan.FromHours(30), "RPG", "PS5", "pictureLink3", "backgroundLink3"),
                 DateOnly.FromDateTime(DateTime.Now),
                 TimeSpan.FromHours(1.5),
@@ -234,7 +234,7 @@ namespace UnitTest
         public void Delete_ShouldReturnTrue_WhenSubmissionIsValid()
         {
             var submission = new RankedSubmission(
-                new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", "profile3.jpg", "Bio3", false, true),
+                new User(3, "Charlie", "pass789", "charlie@example.com", DateOnly.FromDateTime(DateTime.Now), "#ABCDEF", 3, "Bio3", false, true),
                 new Game(3, "GameName3", "GameCompany3", DateOnly.FromDateTime(DateTime.Now), "trailerLink3", 10, 20, TimeSpan.FromHours(1), TimeSpan.FromHours(30), "RPG", "PS5", "pictureLink3", "backgroundLink3"),
                 DateOnly.FromDateTime(DateTime.Now),
                 TimeSpan.FromHours(1.5),
@@ -255,7 +255,7 @@ namespace UnitTest
             var platformSearch = EnumPlatform.Xbox.ToString();
             var submissions = new RankedSubmission[] {
             new RankedSubmission(
-            new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", "profile2.jpg", "Bio2", false, false),
+            new User(2, "Bob", "password456", "bob@example.com", DateOnly.FromDateTime(DateTime.Now), "#000000", 2, "Bio2", false, false),
             new Game(2, "GameName2", "GameCompany2", DateOnly.FromDateTime(DateTime.Now), "trailerLink2", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Adventure", "Xbox", "pictureLink2", "backgroundLink2"),
             DateOnly.FromDateTime(DateTime.Now),
             TimeSpan.FromHours(1),
@@ -273,7 +273,7 @@ namespace UnitTest
         public void PredictRank_ShouldReturnValidRankAndPosition()
         {
             var submission = new RankedSubmission(
-                new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", "profile.jpg", "Bio", false, false),
+                new User(1, "JohnDoe", "password123", "john@example.com", DateOnly.FromDateTime(DateTime.Now), "#FFFFFF", 2, "Bio", false, false),
                 new Game(1, "GameName", "GameCompany", DateOnly.FromDateTime(DateTime.Now), "trailerLink", 0, 0, TimeSpan.Zero, TimeSpan.Zero, "Action", "PC", "pictureLink", "backgroundLink"),
                 DateOnly.FromDateTime(DateTime.Now),
                 TimeSpan.FromHours(2),
